@@ -13,7 +13,7 @@ public interface DAO<T> {
 
     List<T> readAll() throws IOException, ClassNotFoundException;
 //    Data data = new Data();
-//    List<Object[]> xxxObjects = data.getDataListQuery("SELECT * FROM xxx");
+//    List<Object[]> xxxObjects = data.getDataListQuery("SELECT * FROM xxx", XXX.class);
 //    List<XXX> xxxs = new ArrayList<XXX>();
 //        for (Object[] o : xxxObjects) {
 //        XXX xxx = new XXX();

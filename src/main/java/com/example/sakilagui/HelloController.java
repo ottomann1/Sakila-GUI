@@ -1,9 +1,5 @@
 package com.example.sakilagui;
 
-import Business.Address;
-import Business.Customer;
-import DAO.AddressDAO;
-import DAO.CustomerDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

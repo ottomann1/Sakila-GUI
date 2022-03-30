@@ -35,6 +35,21 @@ public class Address {
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
+    public Address(int addressId, String address, String address2, String district, int cityId, String postalCode, String phone, Object location, Timestamp lastUpdate) {
+        this.addressId = addressId;
+        this.address = address;
+        this.address2 = address2;
+        this.district = district;
+        this.cityId = cityId;
+        this.postalCode = postalCode;
+        this.phone = phone;
+        this.location = location;
+        this.lastUpdate = lastUpdate;
+    }
+
+    public Address() {
+    }
+
     public int getAddressId() {
         return addressId;
     }

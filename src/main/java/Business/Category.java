@@ -17,6 +17,15 @@ public class Category {
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
+    public Category(int categoryId, String name, Timestamp lastUpdate) {
+        this.categoryId = categoryId;
+        this.name = name;
+        this.lastUpdate = lastUpdate;
+    }
+    public Category(){
+
+    }
+
     public int getCategoryId() {
         return categoryId;
     }

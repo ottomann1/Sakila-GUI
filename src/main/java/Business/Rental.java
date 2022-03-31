@@ -1,6 +1,7 @@
 package Business;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.Collection;
 import java.util.Objects;
@@ -34,6 +35,21 @@ public class Rental {
     @ManyToOne
     @JoinColumn(name = "customer_id", referencedColumnName = "customer_id", nullable = false)
     private Customer customerByCustomerId;
+
+    public Rental(int rentalId, Timestamp rentalDate, int inventoryId, int customerId, Timestamp returnDate, int staffId, Timestamp lastUpdate) {
+        this.rentalId = rentalId;
+        this.rentalDate = rentalDate;
+        this.inventoryId = inventoryId;
+        this.customerId = customerId;
+        this.returnDate = returnDate;
+        this.staffId = staffId;
+        this.lastUpdate = lastUpdate;
+       // this.paymentsByRentalId = paymentsByRentalId;
+       // this.customerByCustomerId = customerByCustomerId;
+    }
+    public Rental(){
+
+    }
 
     public int getRentalId() {
         return rentalId;

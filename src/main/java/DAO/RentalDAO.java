@@ -1,39 +1,40 @@
 package DAO;
 
-import Business.Address;
+import Business.Rental;
 import Database.Data;
+import org.hibernate.query.criteria.internal.expression.function.CurrentTimeFunction;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class AddressDAO implements DAO {
+public class RentalDAO implements DAO {
     @Override
     public Optional read(long id) throws IOException, ClassNotFoundException {
         Data data = new Data();
-        Optional<Address> address = Optional.ofNullable((Address) data.getData(Address.class, (int) id));
-        return address;
+        Optional<Rental> rental = Optional.ofNullable((Rental) data.getData(Rental.class, (int) id));
+        return rental;
     }
 
     @Override
     public List readAll() throws IOException, ClassNotFoundException {
         Data data = new Data();
-        List<Object[]> addressObjects = data.getDataListQuery("SELECT * FROM address", Address.class);
-        List<Address> addresss = new ArrayList<Address>();
-        for (Object[] o : addressObjects) {
-            Address address = new Address((Integer) o[0], o[1].toString(), o[2].toString(), o[3].toString(), (Integer) o[4], o[5].toString(), o[6].toString(), o[7], (Timestamp) o[8]);
-            addresss.add(address);
+        List<Object[]> rentalObjects = data.getDataListQuery("SELECT * FROM rental", Rental.class);
+        List<Rental> rentals = new ArrayList<Rental>();
+        for (Object[] o : rentalObjects) {
+            Rental rental = new Rental((Integer) o[0], (Timestamp) o[1], (int) o[2], (int) o[3], (Timestamp) o[4], (int) o[5], (Timestamp) o[6]);
+            rentals.add(rental);
         }
-        return addresss;
+        return rentals;
     }
 
     @Override
     public void create(Object o) throws IOException, ClassNotFoundException {
         Data data = new Data();
         data.setData(o);
-
     }
 
     @Override
@@ -46,10 +47,8 @@ public class AddressDAO implements DAO {
     @Override
     public void delete(Object o) throws IOException {
         Data data = new Data();
-        Address address = (Address) o;
-        data.deleteEm(Address.class, address.getAddressId());
-
-
+        Rental rental = (Rental) o;
+        data.deleteEm(Rental.class, rental.getRentalId());
     }
 
     @Override

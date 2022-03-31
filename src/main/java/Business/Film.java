@@ -48,6 +48,26 @@ public class Film {
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
+    public Film(int filmId, String title, String description, Object releaseYear, int languageId, int originalLanguageId, Object rentalDuration, BigDecimal rentalRate, Object length, BigDecimal replacementCost, Object rating, Object specialFeatures, Timestamp lastUpdate) {
+        this.filmId = filmId;
+        this.title = title;
+        this.description = description;
+        this.releaseYear = releaseYear;
+        this.languageId = languageId;
+        this.originalLanguageId = originalLanguageId;
+        this.rentalDuration = rentalDuration;
+        this.rentalRate = rentalRate;
+        this.length = length;
+        this.replacementCost = replacementCost;
+        this.rating = rating;
+        this.specialFeatures = specialFeatures;
+        this.lastUpdate = lastUpdate;
+    }
+
+    public Film(){
+
+    }
+
     public int getFilmId() {
         return filmId;
     }

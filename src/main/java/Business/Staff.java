@@ -47,6 +47,23 @@ public class Staff {
     @OneToMany(mappedBy = "staffByStaffId")
     private Collection<Rental> rentalsByStaffId;
 
+    public Staff(int staffId, String firstName, String lastName, int addressId, byte[] picture, String email, int storeId, byte active, String username, String password, Timestamp lastUpdate) {
+        this.staffId = staffId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.addressId = addressId;
+        this.picture = picture;
+        this.email = email;
+        this.storeId = storeId;
+        this.active = active;
+        this.username = username;
+        this.password = password;
+        this.lastUpdate = lastUpdate;
+    }
+    public Staff(){
+
+    }
+
     public int getStaffId() {
         return staffId;
     }

@@ -1,6 +1,6 @@
 package DAO;
 
-import Business.Address;
+import Business.Category;
 import Database.Data;
 
 import java.io.IOException;
@@ -9,24 +9,24 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class AddressDAO implements DAO {
+public class CategoryDAO implements DAO {
     @Override
     public Optional read(long id) throws IOException, ClassNotFoundException {
         Data data = new Data();
-        Optional<Address> address = Optional.ofNullable((Address) data.getData(Address.class, (int) id));
-        return address;
+        Optional<Category> category = Optional.ofNullable((Category) data.getData(Category.class, (int) id));
+        return category;
     }
 
     @Override
     public List readAll() throws IOException, ClassNotFoundException {
         Data data = new Data();
-        List<Object[]> addressObjects = data.getDataListQuery("SELECT * FROM address", Address.class);
-        List<Address> addresss = new ArrayList<Address>();
-        for (Object[] o : addressObjects) {
-            Address address = new Address((Integer) o[0], o[1].toString(), o[2].toString(), o[3].toString(), (Integer) o[4], o[5].toString(), o[6].toString(), o[7], (Timestamp) o[8]);
-            addresss.add(address);
+        List<Object[]> categoryObjects = data.getDataListQuery("SELECT * FROM category", Category.class);
+        List<Category> categorys = new ArrayList<Category>();
+        for (Object[] o : categoryObjects) {
+            Category category = new Category((Integer) o[0], o[1].toString(), (Timestamp) o[2]);
+            categorys.add(category);
         }
-        return addresss;
+        return categorys;
     }
 
     @Override
@@ -46,9 +46,8 @@ public class AddressDAO implements DAO {
     @Override
     public void delete(Object o) throws IOException {
         Data data = new Data();
-        Address address = (Address) o;
-        data.deleteEm(Address.class, address.getAddressId());
-
+        Category category = (Category) o;
+        data.deleteEm(Category.class, category.getCategoryId());
 
     }
 

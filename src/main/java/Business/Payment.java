@@ -33,6 +33,20 @@ public class Payment {
     @JoinColumn(name = "customer_id", referencedColumnName = "customer_id", nullable = false)
     private Customer customerByCustomerId;
 
+    public Payment(int paymentId, int customerId, int staffId, Integer rentalId, BigDecimal amount, Timestamp paymentDate, Timestamp lastUpdate) {
+        this.paymentId = paymentId;
+        this.customerId = customerId;
+        this.staffId = staffId;
+        this.rentalId = rentalId;
+        this.amount = amount;
+        this.paymentDate = paymentDate;
+        this.lastUpdate = lastUpdate;
+       // this.customerByCustomerId = customerByCustomerId;
+    }
+    public Payment(){
+
+    }
+
     public int getPaymentId() {
         return paymentId;
     }

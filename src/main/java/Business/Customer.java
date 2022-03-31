@@ -35,6 +35,21 @@ public class Customer {
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
+    public Customer(int customerId, Object storeId, String firstName, String lastName, String email, int addressId, byte active, Timestamp createDate, Timestamp lastUpdate) {
+        this.customerId = customerId;
+        this.storeId = storeId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.addressId = addressId;
+        this.active = active;
+        this.createDate = createDate;
+        this.lastUpdate = lastUpdate;
+    }
+    public Customer(){
+
+    }
+
     public int getCustomerId() {
         return customerId;
     }

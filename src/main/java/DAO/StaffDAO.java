@@ -1,6 +1,6 @@
 package DAO;
 
-import Business.Address;
+import Business.Staff;
 import Database.Data;
 
 import java.io.IOException;
@@ -9,47 +9,44 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class AddressDAO implements DAO {
+public class StaffDAO implements DAO {
     @Override
     public Optional read(long id) throws IOException, ClassNotFoundException {
         Data data = new Data();
-        Optional<Address> address = Optional.ofNullable((Address) data.getData(Address.class, (int) id));
-        return address;
+        Optional<Staff> staff = Optional.ofNullable((Staff) data.getData(Staff.class, (int) id));
+        return staff;
+
     }
 
     @Override
     public List readAll() throws IOException, ClassNotFoundException {
         Data data = new Data();
-        List<Object[]> addressObjects = data.getDataListQuery("SELECT * FROM address", Address.class);
-        List<Address> addresss = new ArrayList<Address>();
-        for (Object[] o : addressObjects) {
-            Address address = new Address((Integer) o[0], o[1].toString(), o[2].toString(), o[3].toString(), (Integer) o[4], o[5].toString(), o[6].toString(), o[7], (Timestamp) o[8]);
-            addresss.add(address);
+        List<Object[]> staffObjects = data.getDataListQuery("SELECT * FROM staff", Staff.class);
+        List<Staff> staffs = new ArrayList<Staff>();
+        for (Object[] o : staffObjects) {
+            Staff staff = new Staff((int) o[0], o[1].toString(), o[2].toString(), (int) o[3], (byte[]) o[4], o[5].toString(), (int) o[6], (byte) o[7], o[8].toString(), o[9].toString(), (Timestamp) o[10]);
+            staffs.add(staff);
         }
-        return addresss;
+        return staffs;
     }
 
     @Override
     public void create(Object o) throws IOException, ClassNotFoundException {
         Data data = new Data();
         data.setData(o);
-
     }
 
     @Override
     public void update(Object newT, Object oldT) throws IOException {
         Data data = new Data();
         data.updateData(newT);
-
     }
 
     @Override
     public void delete(Object o) throws IOException {
         Data data = new Data();
-        Address address = (Address) o;
-        data.deleteEm(Address.class, address.getAddressId());
-
-
+        Staff staff = (Staff) o;
+        data.deleteEm(Staff.class, staff.getStaffId());
     }
 
     @Override

@@ -42,9 +42,9 @@ public class Staff {
     @Basic
     @Column(name = "last_update")
     private Timestamp lastUpdate;
-    @OneToMany(mappedBy = "staffByStaffId")
+    @OneToMany(mappedBy = "paymentsByStaffId")
     private Collection<Payment> paymentsByStaffId;
-    @OneToMany(mappedBy = "staffByStaffId")
+    @OneToMany(mappedBy = "rentalsByStaffId")
     private Collection<Rental> rentalsByStaffId;
 
     public Staff(int staffId, String firstName, String lastName, int addressId, byte[] picture, String email, int storeId, byte active, String username, String password, Timestamp lastUpdate) {
@@ -165,14 +165,6 @@ public class Staff {
         int result = Objects.hash(staffId, firstName, lastName, addressId, email, storeId, active, username, password, lastUpdate);
         result = 31 * result + Arrays.hashCode(picture);
         return result;
-    }
-
-    public Collection<Payment> getPaymentsByStaffId() {
-        return paymentsByStaffId;
-    }
-
-    public void setPaymentsByStaffId(Collection<Payment> paymentsByStaffId) {
-        this.paymentsByStaffId = paymentsByStaffId;
     }
 
     public Collection<Rental> getRentalsByStaffId() {

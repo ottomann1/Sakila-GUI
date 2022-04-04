@@ -20,7 +20,7 @@ public class CategoryDAO implements DAO {
     @Override
     public List readAll() throws IOException, ClassNotFoundException {
         Data data = new Data();
-        List<Object[]> categoryObjects = data.getDataListQuery("SELECT * FROM category", Category.class);
+        List<Object[]> categoryObjects = data.getDataListQuery("SELECT * FROM category");
         List<Category> categorys = new ArrayList<Category>();
         for (Object[] o : categoryObjects) {
             Category category = new Category((Integer) o[0], o[1].toString(), (Timestamp) o[2]);

@@ -5,10 +5,8 @@ import Database.Data;
 
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.math.BigInteger;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.sql.Timestamp;
@@ -25,7 +23,7 @@ public class PaymentDAO implements DAO {
     @Override
     public List readAll() throws IOException, ClassNotFoundException {
         Data data = new Data();
-        List<Object[]> paymentObjects = data.getDataListQuery("SELECT * FROM payment", Payment.class);
+        List<Object[]> paymentObjects = data.getDataListQuery("SELECT * FROM payment");
         List<Payment> payments = new ArrayList<Payment>();
         for (Object[] o : paymentObjects) {
             Payment payment = new Payment((int) o[0], (int) o[1], (int) o[2], (Integer) o[3], (BigDecimal) o[4], (Timestamp) o[5], (Timestamp) o[6]);

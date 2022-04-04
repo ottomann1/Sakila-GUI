@@ -6,7 +6,6 @@ import Database.Data;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,7 +20,7 @@ public class CustomerDAO implements DAO {
     @Override
     public List readAll() throws IOException, ClassNotFoundException {
         Data data = new Data();
-        List<Object[]> customerObjects = data.getDataListQuery("SELECT * FROM customer", Customer.class);
+        List<Object[]> customerObjects = data.getDataListQuery("SELECT * FROM customer");
         List<Customer> customers = new ArrayList<Customer>();
         for (Object[] o : customerObjects) {
             Customer customer = new Customer((Integer) o[0], (Integer) o[1], o[2].toString(), o[3].toString(), o[4].toString(), (Integer) o[5], (byte) o[6], (Timestamp) o[7], (Timestamp) o[8]);

@@ -5,9 +5,12 @@ import Database.Data;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.sql.Date;
 import java.sql.Timestamp;
-import java.text.DecimalFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 
 public class FilmDAO implements DAO {
     @Override
@@ -20,10 +23,13 @@ public class FilmDAO implements DAO {
     @Override
     public List readAll() throws IOException, ClassNotFoundException {
         Data data = new Data();
-        List<Object[]> filmObjects = data.getDataListQuery("SELECT * FROM film", Film.class);
+        List<Object[]> filmObjects = data.getDataListQuery("SELECT * FROM film");
         List<Film> films = new ArrayList<Film>();
+        filmActor filmActor = new filmActor();
         for (Object[] o : filmObjects) {
-            Film film = new Film((Integer) o[0], o[1].toString(), o[2].toString(), (Date) o[3], (Integer) o[4], (Integer) o[5], (Integer) o[6], (BigDecimal) o[7], (Integer) o[8], (BigDecimal) o[9], (Enum) o[10], (Set) o[11], (Timestamp) o[12]);
+            Film film = new Film((Short) o[0], o[1].toString(), o[2].toString(), (Date) o[3], (Byte) o[4],
+                    (Byte) o[6], (BigDecimal) o[7], (Short) o[8], (BigDecimal) o[9],
+                    o[10].toString(), o[11].toString(), (Timestamp) o[12], filmActor.get((Short)o[0]));
             films.add(film);
         }
         return films;

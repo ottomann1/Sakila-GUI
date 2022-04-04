@@ -30,12 +30,36 @@ public class Address {
     private String phone;
     @Basic
     @Column(name = "location")
-    private Object location;
+    private String location;
     @Basic
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
-    public Address(int addressId, String address, String address2, String district, int cityId, String postalCode, String phone, Object location, Timestamp lastUpdate) {
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "addresses_by_city_id_city_id")
+    private City addressesByCityId;
+
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "address_by_city_id_city_id")
+    private City addressByCityId;
+
+    public City getAddressByCityId() {
+        return addressByCityId;
+    }
+
+    public void setAddressByCityId(City addressByCityId) {
+        this.addressByCityId = addressByCityId;
+    }
+
+    public City getAddressesByCityId() {
+        return addressesByCityId;
+    }
+
+    public void setAddressesByCityId(City addressesByCityId) {
+        this.addressesByCityId = addressesByCityId;
+    }
+
+    public Address(int addressId, String address, String address2, String district, int cityId, String postalCode, String phone, String location, Timestamp lastUpdate) {
         this.addressId = addressId;
         this.address = address;
         this.address2 = address2;
@@ -106,11 +130,11 @@ public class Address {
         this.phone = phone;
     }
 
-    public Object getLocation() {
+    public String getLocation() {
         return location;
     }
 
-    public void setLocation(Object location) {
+    public void setLocation(String location) {
         this.location = location;
     }
 

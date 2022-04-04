@@ -30,11 +30,35 @@ public class Rental {
     @Basic
     @Column(name = "last_update")
     private Timestamp lastUpdate;
-    @OneToMany(mappedBy = "rentalByRentalId")
+    @OneToMany(mappedBy = "paymentsByRentalId")
     private Collection<Payment> paymentsByRentalId;
-    @ManyToOne
-    @JoinColumn(name = "customer_id", referencedColumnName = "customer_id", nullable = false)
-    private Customer customerByCustomerId;
+//    @ManyToOne
+//    @JoinColumn(name = "customer_id", referencedColumnName = "customer_id", nullable = false)
+//    private Customer customerByCustomerId;
+
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "rentals_by_staff_id_staff_id")
+    private Staff rentalsByStaffId;
+
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "rental_by_staff_id_staff_id")
+    private Staff rentalByStaffId;
+
+    public Staff getRentalByStaffId() {
+        return rentalByStaffId;
+    }
+
+    public void setRentalByStaffId(Staff rentalByStaffId) {
+        this.rentalByStaffId = rentalByStaffId;
+    }
+
+    public Staff getRentalsByStaffId() {
+        return rentalsByStaffId;
+    }
+
+    public void setRentalsByStaffId(Staff rentalsByStaffId) {
+        this.rentalsByStaffId = rentalsByStaffId;
+    }
 
     public Rental(int rentalId, Timestamp rentalDate, int inventoryId, int customerId, Timestamp returnDate, int staffId, Timestamp lastUpdate) {
         this.rentalId = rentalId;
@@ -128,11 +152,11 @@ public class Rental {
         this.paymentsByRentalId = paymentsByRentalId;
     }
 
-    public Customer getCustomerByCustomerId() {
-        return customerByCustomerId;
-    }
-
-    public void setCustomerByCustomerId(Customer customerByCustomerId) {
-        this.customerByCustomerId = customerByCustomerId;
-    }
+//    public Customer getCustomerByCustomerId() {
+//        return customerByCustomerId;
+//    }
+//
+//    public void setCustomerByCustomerId(Customer customerByCustomerId) {
+//        this.customerByCustomerId = customerByCustomerId;
+//    }
 }

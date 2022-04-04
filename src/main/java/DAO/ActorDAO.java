@@ -20,7 +20,7 @@ public class ActorDAO implements DAO{
     @Override
     public List readAll() throws IOException, ClassNotFoundException {
     Data data = new Data();
-    List<Object[]> actorObjects = data.getDataListQuery("SELECT * FROM actor", Actor.class);
+    List<Object[]> actorObjects = data.getDataListQuery("SELECT * FROM actor");
     List<Actor> actors = new ArrayList<Actor>();
         for (Object[] o : actorObjects) {
         Actor actor = new Actor((Integer) o[0], o[1].toString(), o[2].toString(), (Timestamp) o[3]);

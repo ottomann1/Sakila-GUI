@@ -2,7 +2,10 @@ package Business;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
@@ -10,7 +13,7 @@ public class Film {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "film_id")
-    private int filmId;
+    private short filmId;
     @Basic
     @Column(name = "title")
     private String title;
@@ -19,42 +22,53 @@ public class Film {
     private String description;
     @Basic
     @Column(name = "release_year")
-    private Object releaseYear;
+    private Date releaseYear;
     @Basic
     @Column(name = "language_id")
-    private int languageId;
+    private Byte languageId;
     @Basic
     @Column(name = "original_language_id")
-    private int originalLanguageId;
+    private Byte originalLanguageId;
     @Basic
     @Column(name = "rental_duration")
-    private Object rentalDuration;
+    private Byte rentalDuration;
     @Basic
     @Column(name = "rental_rate")
     private BigDecimal rentalRate;
     @Basic
     @Column(name = "length")
-    private Object length;
+    private short length;
     @Basic
     @Column(name = "replacement_cost")
     private BigDecimal replacementCost;
     @Basic
     @Column(name = "rating")
-    private Object rating;
+    private String rating;
     @Basic
     @Column(name = "special_features")
-    private Object specialFeatures;
+    private String specialFeatures;
     @Basic
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
-    public Film(int filmId, String title, String description, Object releaseYear, int languageId, int originalLanguageId, Object rentalDuration, BigDecimal rentalRate, Object length, BigDecimal replacementCost, Object rating, Object specialFeatures, Timestamp lastUpdate) {
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "film_actor",
+            joinColumns = {@JoinColumn(name = "actor_id")},
+            inverseJoinColumns = {@JoinColumn(name = "film_id")}
+    )
+    private Collection<Actor> actor = new ArrayList<Actor>();
+
+    public Film(short filmId, String title, String description, Date releaseYear,
+                byte languageId, byte rentalDuration,
+                BigDecimal rentalRate, short length, BigDecimal replacementCost,
+                String rating, String specialFeatures, Timestamp lastUpdate,
+                Collection<Actor> actor) {
         this.filmId = filmId;
         this.title = title;
         this.description = description;
         this.releaseYear = releaseYear;
         this.languageId = languageId;
-        this.originalLanguageId = originalLanguageId;
         this.rentalDuration = rentalDuration;
         this.rentalRate = rentalRate;
         this.length = length;
@@ -62,18 +76,31 @@ public class Film {
         this.rating = rating;
         this.specialFeatures = specialFeatures;
         this.lastUpdate = lastUpdate;
+        this.actor = actor;
     }
 
     public Film(){
 
     }
 
-    public int getFilmId() {
+    public Collection<Actor> getActor() {
+        return actor;
+    }
+
+    public void setActor(Collection<Actor> actor) {
+        this.actor = actor;
+    }
+
+    public short getFilmId() {
         return filmId;
     }
 
-    public void setFilmId(int filmId) {
+    public void setFilmId(short filmId) {
         this.filmId = filmId;
+    }
+
+    public void setLength(short length) {
+        this.length = length;
     }
 
     public String getTitle() {
@@ -92,35 +119,23 @@ public class Film {
         this.description = description;
     }
 
-    public Object getReleaseYear() {
-        return releaseYear;
-    }
-
-    public void setReleaseYear(Object releaseYear) {
-        this.releaseYear = releaseYear;
-    }
-
-    public int getLanguageId() {
+    public short getLanguageId() {
         return languageId;
     }
 
-    public void setLanguageId(int languageId) {
+    public void setLanguageId(Byte languageId) {
         this.languageId = languageId;
     }
 
-    public int getOriginalLanguageId() {
+    public Byte getOriginalLanguageId() {
         return originalLanguageId;
     }
 
-    public void setOriginalLanguageId(int originalLanguageId) {
+    public void setOriginalLanguageId(Byte originalLanguageId) {
         this.originalLanguageId = originalLanguageId;
     }
 
-    public Object getRentalDuration() {
-        return rentalDuration;
-    }
-
-    public void setRentalDuration(Object rentalDuration) {
+    public void setRentalDuration(Byte rentalDuration) {
         this.rentalDuration = rentalDuration;
     }
 
@@ -132,12 +147,8 @@ public class Film {
         this.rentalRate = rentalRate;
     }
 
-    public Object getLength() {
+    public int getLength() {
         return length;
-    }
-
-    public void setLength(Object length) {
-        this.length = length;
     }
 
     public BigDecimal getReplacementCost() {
@@ -148,20 +159,24 @@ public class Film {
         this.replacementCost = replacementCost;
     }
 
-    public Object getRating() {
+    public String getRating() {
         return rating;
     }
 
-    public void setRating(Object rating) {
+    public void setRating(String rating) {
         this.rating = rating;
     }
 
-    public Object getSpecialFeatures() {
-        return specialFeatures;
+    public Date getReleaseYear() {
+        return releaseYear;
     }
 
-    public void setSpecialFeatures(Object specialFeatures) {
-        this.specialFeatures = specialFeatures;
+    public int getRentalDuration() {
+        return rentalDuration;
+    }
+
+    public String getSpecialFeatures() {
+        return specialFeatures;
     }
 
     public Timestamp getLastUpdate() {
@@ -170,6 +185,14 @@ public class Film {
 
     public void setLastUpdate(Timestamp lastUpdate) {
         this.lastUpdate = lastUpdate;
+    }
+
+    public void setReleaseYear(Date releaseYear) {
+        this.releaseYear = releaseYear;
+    }
+
+    public void setSpecialFeatures(String specialFeatures) {
+        this.specialFeatures = specialFeatures;
     }
 
     @Override

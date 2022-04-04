@@ -27,6 +27,8 @@ public class Actor {
         this.lastUpdate = lastUpdate;
     }
 
+    
+
     public Actor() {
     }
 

@@ -2,10 +2,8 @@ package DAO;
 
 import Business.Rental;
 import Database.Data;
-import org.hibernate.query.criteria.internal.expression.function.CurrentTimeFunction;
 
 import java.io.IOException;
-import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +20,7 @@ public class RentalDAO implements DAO {
     @Override
     public List readAll() throws IOException, ClassNotFoundException {
         Data data = new Data();
-        List<Object[]> rentalObjects = data.getDataListQuery("SELECT * FROM rental", Rental.class);
+        List<Object[]> rentalObjects = data.getDataListQuery("SELECT * FROM rental");
         List<Rental> rentals = new ArrayList<Rental>();
         for (Object[] o : rentalObjects) {
             Rental rental = new Rental((Integer) o[0], (Timestamp) o[1], (int) o[2], (int) o[3], (Timestamp) o[4], (int) o[5], (Timestamp) o[6]);

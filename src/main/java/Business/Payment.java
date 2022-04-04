@@ -29,9 +29,45 @@ public class Payment {
     @Basic
     @Column(name = "last_update")
     private Timestamp lastUpdate;
-    @ManyToOne
-    @JoinColumn(name = "customer_id", referencedColumnName = "customer_id", nullable = false)
-    private Customer customerByCustomerId;
+//    @ManyToOne
+//    @JoinColumn(name = "customer_id", referencedColumnName = "customer_id", nullable = false)
+//    private Customer customerByCustomerId;
+
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "staff_by_staff_id_staff_id")
+    private Staff staffByStaffId;
+
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "payments_by_staff_id_staff_id")
+    private Staff paymentsByStaffId;
+
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "payments_by_rental_id_rental_id")
+    private Rental paymentsByRentalId;
+
+    public Rental getPaymentsByRentalId() {
+        return paymentsByRentalId;
+    }
+
+    public void setPaymentsByRentalId(Rental paymentsByRentalId) {
+        this.paymentsByRentalId = paymentsByRentalId;
+    }
+
+    public Staff getPaymentsByStaffId() {
+        return paymentsByStaffId;
+    }
+
+    public void setPaymentsByStaffId(Staff paymentsByStaffId) {
+        this.paymentsByStaffId = paymentsByStaffId;
+    }
+
+    public Staff getStaffByStaffId() {
+        return staffByStaffId;
+    }
+
+    public void setStaffByStaffId(Staff staffByStaffId) {
+        this.staffByStaffId = staffByStaffId;
+    }
 
     public Payment(int paymentId, int customerId, int staffId, Integer rentalId, BigDecimal amount, Timestamp paymentDate, Timestamp lastUpdate) {
         this.paymentId = paymentId;
@@ -115,12 +151,12 @@ public class Payment {
     public int hashCode() {
         return Objects.hash(paymentId, customerId, staffId, rentalId, amount, paymentDate, lastUpdate);
     }
-
-    public Customer getCustomerByCustomerId() {
-        return customerByCustomerId;
-    }
-
-    public void setCustomerByCustomerId(Customer customerByCustomerId) {
-        this.customerByCustomerId = customerByCustomerId;
-    }
+//
+//    public Customer getCustomerByCustomerId() {
+//        return customerByCustomerId;
+//    }
+//
+//    public void setCustomerByCustomerId(Customer customerByCustomerId) {
+//        this.customerByCustomerId = customerByCustomerId;
+//    }
 }

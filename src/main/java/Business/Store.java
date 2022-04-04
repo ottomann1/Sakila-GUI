@@ -10,13 +10,13 @@ public class Store {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "store_id")
-    private Object storeId;
+    private int storeId;
     @Basic
     @Column(name = "manager_staff_id")
-    private Object managerStaffId;
+    private int managerStaffId;
     @Basic
     @Column(name = "address_id")
-    private Object addressId;
+    private int addressId;
     @Basic
     @Column(name = "last_update")
     private Timestamp lastUpdate;
@@ -28,23 +28,11 @@ public class Store {
     }
 
     public void setStoreId(Object storeId) {
+        this.storeId = (int) storeId;
+    }
+
+    public void setStoreId(int storeId) {
         this.storeId = storeId;
-    }
-
-    public Object getManagerStaffId() {
-        return managerStaffId;
-    }
-
-    public void setManagerStaffId(Object managerStaffId) {
-        this.managerStaffId = managerStaffId;
-    }
-
-    public Object getAddressId() {
-        return addressId;
-    }
-
-    public void setAddressId(Object addressId) {
-        this.addressId = addressId;
     }
 
     public Timestamp getLastUpdate() {

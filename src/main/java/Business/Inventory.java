@@ -9,38 +9,62 @@ public class Inventory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "inventory_id")
-    private Object inventoryId;
+    private int inventoryId;
     @Basic
     @Column(name = "film_id")
-    private Object filmId;
+    private int filmId;
     @Basic
     @Column(name = "store_id")
-    private Object storeId;
+    private int storeId;
     @Basic
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
-    public Object getInventoryId() {
+    @ManyToOne
+    @JoinColumn(name = "store_by_stored_id_store_id")
+    private Store storeByStoredId;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "store_by_store_id_store_id")
+    private Store storeByStoreId;
+
+    public Store getStoreByStoreId() {
+        return storeByStoreId;
+    }
+
+    public void setStoreByStoreId(Store storeByStoreId) {
+        this.storeByStoreId = storeByStoreId;
+    }
+
+    public Store getStoreByStoredId() {
+        return storeByStoredId;
+    }
+
+    public void setStoreByStoredId(Store storeByStoredId) {
+        this.storeByStoredId = storeByStoredId;
+    }
+
+    public int getInventoryId() {
         return inventoryId;
     }
 
-    public void setInventoryId(Object inventoryId) {
+    public void setInventoryId(int inventoryId) {
         this.inventoryId = inventoryId;
     }
 
-    public Object getFilmId() {
+    public int getFilmId() {
         return filmId;
     }
 
-    public void setFilmId(Object filmId) {
+    public void setFilmId(int filmId) {
         this.filmId = filmId;
     }
 
-    public Object getStoreId() {
+    public int getStoreId() {
         return storeId;
     }
 
-    public void setStoreId(Object storeId) {
+    public void setStoreId(int storeId) {
         this.storeId = storeId;
     }
 

@@ -20,10 +20,10 @@ public class AddressDAO implements DAO {
     @Override
     public List readAll() throws IOException, ClassNotFoundException {
         Data data = new Data();
-        List<Object[]> addressObjects = data.getDataListQuery("SELECT * FROM address", Address.class);
+        List<Object[]> addressObjects = data.getDataListQuery("SELECT * FROM address");
         List<Address> addresss = new ArrayList<Address>();
         for (Object[] o : addressObjects) {
-            Address address = new Address((Integer) o[0], o[1].toString(), o[2].toString(), o[3].toString(), (Integer) o[4], o[5].toString(), o[6].toString(), o[7], (Timestamp) o[8]);
+            Address address = new Address((Integer) o[0], o[1].toString(), o[2].toString(), o[3].toString(), (Integer) o[4], o[5].toString(), o[6].toString(), o[7].toString(), (Timestamp) o[8]);
             addresss.add(address);
         }
         return addresss;

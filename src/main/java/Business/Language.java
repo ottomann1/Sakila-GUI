@@ -9,7 +9,7 @@ public class Language {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "language_id")
-    private Object languageId;
+    private int languageId;
     @Basic
     @Column(name = "name")
     private String name;
@@ -17,11 +17,11 @@ public class Language {
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
-    public Object getLanguageId() {
+    public int getLanguageId() {
         return languageId;
     }
 
-    public void setLanguageId(Object languageId) {
+    public void setLanguageId(int languageId) {
         this.languageId = languageId;
     }
 

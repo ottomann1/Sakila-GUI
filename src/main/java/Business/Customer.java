@@ -12,7 +12,7 @@ public class Customer {
     private int customerId;
     @Basic
     @Column(name = "store_id")
-    private Object storeId;
+    private int storeId;
     @Basic
     @Column(name = "first_name")
     private String firstName;
@@ -35,7 +35,7 @@ public class Customer {
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
-    public Customer(int customerId, Object storeId, String firstName, String lastName, String email, int addressId, byte active, Timestamp createDate, Timestamp lastUpdate) {
+    public Customer(int customerId, int storeId, String firstName, String lastName, String email, int addressId, byte active, Timestamp createDate, Timestamp lastUpdate) {
         this.customerId = customerId;
         this.storeId = storeId;
         this.firstName = firstName;
@@ -58,11 +58,11 @@ public class Customer {
         this.customerId = customerId;
     }
 
-    public Object getStoreId() {
+    public int getStoreId() {
         return storeId;
     }
 
-    public void setStoreId(Object storeId) {
+    public void setStoreId(int storeId) {
         this.storeId = storeId;
     }
 

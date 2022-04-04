@@ -9,7 +9,7 @@ public class Country {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "country_id")
-    private Object countryId;
+    private int countryId;
     @Basic
     @Column(name = "country")
     private String country;
@@ -17,11 +17,20 @@ public class Country {
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
-    public Object getCountryId() {
+    public Country(int countryId, String country, Timestamp lastUpdate) {
+        this.countryId = countryId;
+        this.country = country;
+        this.lastUpdate = lastUpdate;
+    }
+
+    public Country() {
+    }
+
+    public int getCountryId() {
         return countryId;
     }
 
-    public void setCountryId(Object countryId) {
+    public void setCountryId(int countryId) {
         this.countryId = countryId;
     }
 

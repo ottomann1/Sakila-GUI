@@ -62,14 +62,14 @@ public class Data {
         }
         return tempObject;
     }
-    public List<Object[]> getDataListQuery(String query, Class tableClass) {
+    public List<Object[]> getDataListQuery(String query) {
         EntityManager em = ENTITY_MANAGER_FACTORY.createEntityManager();
         EntityTransaction transaction = null;
         List<Object[]> Objects = null;
         try {
             transaction = em.getTransaction();
             transaction.begin();
-            Query tempQuery = em.createNativeQuery(query, tableClass);
+            Query tempQuery = em.createNativeQuery(query);
             Objects = tempQuery.getResultList();
             transaction.commit();
         } catch (Exception e) {

@@ -15,11 +15,11 @@
                <content>
                   <TableView fx:id="filmTable" prefHeight="458.0" prefWidth="913.0">
                     <columns>
-                      <TableColumn fx:id="title" prefWidth="274.244197845459" text="Title" />
-                      <TableColumn fx:id="Description" prefWidth="253.7558135986328" text="Description" />
-                        <TableColumn fx:id="releaseYear" minWidth="0.0" prefWidth="106.562744140625" text="Relese Year" />
-                        <TableColumn fx:id="Language" minWidth="1.875396728515625" prefWidth="180.818115234375" text="Language" />
-                        <TableColumn fx:id="Length" minWidth="0.0" prefWidth="125.79901123046875" text="Length" />
+                      <TableColumn fx:id="filmTitle" prefWidth="274.244197845459" text="Title" />
+                      <TableColumn fx:id="filmDescription" prefWidth="253.7558135986328" text="Description" />
+                        <TableColumn fx:id="filmReleaseYear" minWidth="0.0" prefWidth="106.562744140625" text="Relese Year" />
+                        <TableColumn fx:id="filmLanguage" minWidth="1.875396728515625" prefWidth="180.818115234375" text="Language" />
+                        <TableColumn fx:id="filmLength" minWidth="0.0" prefWidth="125.79901123046875" text="Length" />
                     </columns>
                   </TableView>
                </content>
@@ -39,7 +39,7 @@
                   <TableView fx:id="storeTable" prefHeight="200.0" prefWidth="200.0">
                      <columns>
                         <TableColumn fx:id="storeAddress" prefWidth="362.0" text="Adress" />
-                        <TableColumn fx:id="Staff" minWidth="0.0" prefWidth="389.0" text="Staff" />
+                        <TableColumn fx:id="storeStaff" minWidth="0.0" prefWidth="389.0" text="Staff" />
                      </columns>
                   </TableView>
                </content>
@@ -48,11 +48,11 @@
                <content>
                   <TableView fx:id="staffTable" prefHeight="200.0" prefWidth="200.0">
                      <columns>
-                        <TableColumn fx:id="Store ID" prefWidth="75.0" text="Store ID" />
+                        <TableColumn fx:id="staffStoreId" prefWidth="75.0" text="Store ID" />
                         <TableColumn fx:id="staffFirstName" prefWidth="248.42540740966797" text="First Name" />
                         <TableColumn fx:id="staffLastName" prefWidth="225.5745849609375" text="Last Name" />
                         <TableColumn fx:id="staffEmail" prefWidth="206.64056396484375" text="E-Mail" />
-                        <TableColumn fx:id="Address" prefWidth="187.31280517578125" text="Address" />
+                        <TableColumn fx:id="staffAddress" prefWidth="187.31280517578125" text="Address" />
                      </columns>
                   </TableView>
                </content>

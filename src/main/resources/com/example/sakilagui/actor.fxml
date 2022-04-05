@@ -5,7 +5,6 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane prefHeight="110.0" prefWidth="577.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sakilagui.Actor">
    <children>
       <TextField layoutX="74.0" layoutY="45.0" />
@@ -13,6 +12,6 @@
       <Label layoutX="25.0" layoutY="49.0" text="Actor" />
       <Label layoutX="121.0" layoutY="28.0" text="First name" />
       <Label layoutX="290.0" layoutY="28.0" text="Last name" />
-      <Button layoutX="449.0" layoutY="45.0" mnemonicParsing="false" text="Button" />
+      <Button layoutX="449.0" layoutY="45.0" mnemonicParsing="false" onAction="#pelleClick" text="Button" />
    </children>
 </AnchorPane>

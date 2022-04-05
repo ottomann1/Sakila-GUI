@@ -1,0 +1,7 @@
+        XXXDAO xxxDAO = new XXXDAO();
+        List<XXX> xxx = xxxDAO.readAll();
+        ObservableList<XXX> observableXXXs = FXCollections.observableArrayList(xxx);
+        xxxTable.setItems(observableXXXs);
+        xxxTitle.setCellValueFactory(new PropertyValueFactory<>(""));
+        xxxTable.setItems(observableXXXs);
+        xxxTable.getColumns().setAll();

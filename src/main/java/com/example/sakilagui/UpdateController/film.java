@@ -1,4 +1,4 @@
-package com.example.sakilagui.AddController;
+package com.example.sakilagui.UpdateController;
 
 import Business.Actor;
 import Business.Category;
@@ -7,8 +7,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-
-import java.awt.*;
 
 public class film {
 
@@ -50,6 +48,7 @@ public class film {
 
     @FXML
     void addActorOnClick(ActionEvent event) {
+
     }
 
     @FXML

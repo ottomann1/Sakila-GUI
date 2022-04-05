@@ -2,15 +2,20 @@ package com.example.sakilagui;
 
 import Business.*;
 import DAO.*;
+import com.example.sakilagui.UpdateController.upActor;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -126,11 +131,11 @@ public class BusinessTabs {
 
     @FXML
     void initialize() throws IOException, ClassNotFoundException {
-        filmLoad();
-        customerLoad();
-        actorLoad();
+//        filmLoad();
+//        customerLoad();
+//        actorLoad();
         staffLoad();
-        addressLoad();
+//        addressLoad();
     }
 
     void filmLoad() throws IOException, ClassNotFoundException {
@@ -179,7 +184,7 @@ public class BusinessTabs {
         staffFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         staffLastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
         staffEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
-        staffAddress.setCellValueFactory(new PropertyValueFactory<>("addressId")); // change to address with OneToOne
+        staffAddress.setCellValueFactory(new PropertyValueFactory<>("address")); // change to address with OneToOne
         staffTable.setItems(observableStaffs);
         staffTable.getColumns().setAll(staffStoreId, staffFirstName, staffLastName, staffEmail, staffAddress);
     }
@@ -209,37 +214,23 @@ public class BusinessTabs {
     }
 
     @FXML
-    void actorTabClick(ActionEvent event) {
-
-    }
-
-    @FXML
-    void addressTabClick(ActionEvent event) {
-
-    }
-
-    @FXML
     void backClick(ActionEvent event) {
 
     }
 
     @FXML
-    void createClick(ActionEvent event) {
-
-    }
-
-    @FXML
-    void customerTabClick(ActionEvent event) {
-
+    void createClick(ActionEvent event) throws IOException {
+        if(actorTab.isSelected()){
+            Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/actor.fxml"));
+            Scene scene = new Scene(loader.load());
+            thisStage.setScene(scene);
+            thisStage.show();
+        }
     }
 
     @FXML
     void deleteClick(ActionEvent event) {
-
-    }
-
-    @FXML
-    void filmTabClick(ActionEvent event) {
 
     }
 
@@ -249,18 +240,18 @@ public class BusinessTabs {
     }
 
     @FXML
-    void staffTabClick(ActionEvent event) {
-
-    }
-
-    @FXML
-    void storeTabClick(ActionEvent event) {
-
-    }
-
-    @FXML
-    void updateClick(ActionEvent event) {
-
+    void updateClick(ActionEvent event) throws IOException {
+        if(actorTab.isSelected()){
+            if(actorTable.isFocused()){
+                Actor actor = actorTable.getSelectionModel().getSelectedItem();
+            Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/actor.fxml"));
+            Scene scene = new Scene(loader.load());
+            upActor updateactor =loader.getController();
+            updateactor.setFields(actor);
+            thisStage.setScene(scene);
+            thisStage.show();
+        }}
     }
 
 }

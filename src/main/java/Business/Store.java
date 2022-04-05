@@ -10,29 +10,51 @@ public class Store {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "store_id")
-    private int storeId;
+    private byte storeId;
     @Basic
     @Column(name = "manager_staff_id")
-    private int managerStaffId;
+    private byte managerStaffId;
     @Basic
     @Column(name = "address_id")
-    private int addressId;
+    private short addressId;
     @Basic
     @Column(name = "last_update")
     private Timestamp lastUpdate;
     @OneToMany(mappedBy = "storeByStoreId")
     private Collection<Inventory> inventoriesByStoreId;
 
-    public Object getStoreId() {
+    public Store(byte storeId, byte managerStaffId, short addressId, Timestamp lastUpdate) {
+        this.storeId = storeId;
+        this.managerStaffId = managerStaffId;
+        this.addressId = addressId;
+        this.lastUpdate = lastUpdate;
+    }
+
+    public Store() {
+    }
+
+    public byte getStoreId() {
         return storeId;
     }
 
-    public void setStoreId(Object storeId) {
-        this.storeId = (int) storeId;
+    public void setStoreId(byte storeId) {
+        this.storeId = storeId;
     }
 
-    public void setStoreId(int storeId) {
-        this.storeId = storeId;
+    public byte getManagerStaffId() {
+        return managerStaffId;
+    }
+
+    public void setManagerStaffId(byte managerStaffId) {
+        this.managerStaffId = managerStaffId;
+    }
+
+    public short getAddressId() {
+        return addressId;
+    }
+
+    public void setAddressId(short addressId) {
+        this.addressId = addressId;
     }
 
     public Timestamp getLastUpdate() {
@@ -41,19 +63,6 @@ public class Store {
 
     public void setLastUpdate(Timestamp lastUpdate) {
         this.lastUpdate = lastUpdate;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Store store = (Store) o;
-        return Objects.equals(storeId, store.storeId) && Objects.equals(managerStaffId, store.managerStaffId) && Objects.equals(addressId, store.addressId) && Objects.equals(lastUpdate, store.lastUpdate);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(storeId, managerStaffId, addressId, lastUpdate);
     }
 
     public Collection<Inventory> getInventoriesByStoreId() {

@@ -18,9 +18,9 @@ public class Staff {
     @Basic
     @Column(name = "last_name")
     private String lastName;
-    @Basic
-    @Column(name = "address_id")
-    private short addressId;
+
+    @OneToOne
+    private Address address;
     @Basic
     @Column(name = "picture")
     private byte[] picture;
@@ -47,11 +47,11 @@ public class Staff {
     @OneToMany(mappedBy = "rentalsByStaffId")
     private Collection<Rental> rentalsByStaffId;
 
-    public Staff(byte staffId, String firstName, String lastName, short addressId, byte[] picture, String email, byte storeId, boolean active, String username, String password, Timestamp lastUpdate, Collection<Payment> paymentsByStaffId, Collection<Rental> rentalsByStaffId) {
+    public Staff(byte staffId, String firstName, String lastName, Address address, byte[] picture, String email, byte storeId, boolean active, String username, String password, Timestamp lastUpdate, Collection<Payment> paymentsByStaffId, Collection<Rental> rentalsByStaffId) {
         this.staffId = staffId;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.addressId = addressId;
+        this.address = address;
         this.picture = picture;
         this.email = email;
         this.storeId = storeId;
@@ -63,11 +63,11 @@ public class Staff {
         this.rentalsByStaffId = rentalsByStaffId;
     }
 
-    public Staff(byte staffId, String firstName, String lastName, short addressId, byte[] picture, String email, byte storeId, boolean active, String username, Timestamp lastUpdate) {
+    public Staff(byte staffId, String firstName, String lastName, Address address, byte[] picture, String email, byte storeId, boolean active, String username, Timestamp lastUpdate) {
         this.staffId = staffId;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.addressId = addressId;
+        this.address = address;
         this.picture = picture;
         this.email = email;
         this.storeId = storeId;
@@ -76,24 +76,11 @@ public class Staff {
         this.lastUpdate = lastUpdate;
     }
 
-    public Staff(){
+    public Staff() {
 
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Staff staff = (Staff) o;
-        return staffId == staff.staffId && addressId == staff.addressId && storeId == staff.storeId && active == staff.active && Objects.equals(firstName, staff.firstName) && Objects.equals(lastName, staff.lastName) && Arrays.equals(picture, staff.picture) && Objects.equals(email, staff.email) && Objects.equals(username, staff.username) && Objects.equals(password, staff.password) && Objects.equals(lastUpdate, staff.lastUpdate) && Objects.equals(paymentsByStaffId, staff.paymentsByStaffId) && Objects.equals(rentalsByStaffId, staff.rentalsByStaffId);
-    }
 
-    @Override
-    public int hashCode() {
-        int result = Objects.hash(staffId, firstName, lastName, addressId, email, storeId, active, username, password, lastUpdate, paymentsByStaffId, rentalsByStaffId);
-        result = 31 * result + Arrays.hashCode(picture);
-        return result;
-    }
 
     public byte getStaffId() {
         return staffId;
@@ -119,12 +106,12 @@ public class Staff {
         this.lastName = lastName;
     }
 
-    public short getAddressId() {
-        return addressId;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setAddressId(short addressId) {
-        this.addressId = addressId;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     public byte[] getPicture() {

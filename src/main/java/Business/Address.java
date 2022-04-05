@@ -39,6 +39,11 @@ public class Address {
     @JoinColumn(name = "city_id")
     private City city;
 
+    @Override
+    public String toString() {
+        return address;
+    }
+
     public Address(short addressId, String address, String district, City city, String postalCode, String phone, String location, Timestamp lastUpdate) {
         this.addressId = addressId;
         this.address = address;

@@ -31,17 +31,21 @@ public class ActorDAO implements DAO{
 
     @Override
     public void create(Object o) throws IOException, ClassNotFoundException {
-
+        Data data = new Data();
+        data.setData(o);
     }
 
     @Override
     public void update(Object newT, Object oldT) throws IOException {
-
+        Data data = new Data();
+        data.updateData(newT);
     }
 
     @Override
     public void delete(Object o) throws IOException {
-
+    Data data = new Data();
+    Actor actor = (Actor) o;
+        data.deleteEm(Actor.class, actor.getActorId());
     }
 
     @Override

@@ -1,6 +1,7 @@
 package DAO;
 
 import Business.Address;
+import Business.City;
 import Database.Data;
 
 import java.io.IOException;
@@ -11,9 +12,9 @@ import java.util.Optional;
 
 public class AddressDAO implements DAO {
     @Override
-    public Optional read(long id) throws IOException, ClassNotFoundException {
+    public Object read(long id) throws IOException, ClassNotFoundException {
         Data data = new Data();
-        Optional<Address> address = Optional.ofNullable((Address) data.getData(Address.class, (int) id));
+        Object address = data.getData(Address.class, (int) id);
         return address;
     }
 
@@ -23,11 +24,13 @@ public class AddressDAO implements DAO {
         List<Object[]> addressObjects = data.getDataListQuery("SELECT * FROM address");
         List<Address> addresss = new ArrayList<Address>();
         for (Object[] o : addressObjects) {
-            Address address = new Address((Integer) o[0], o[1].toString(), o[2].toString(), o[3].toString(), (Integer) o[4], o[5].toString(), o[6].toString(), o[7].toString(), (Timestamp) o[8]);
+//            Address address = new Address((Integer) o[0], o[1].toString(), o[2].toString(), o[3].toString(), (Integer) o[4], o[5].toString(), o[6].toString(), o[7].toString(), (Timestamp) o[8]);
+            Address address = new Address((Integer) o[0], o[1].toString(), o[2].toString(), o[3].toString(), o[4].toString(), o[5].toString(), o[6].toString(), (Timestamp) o[7], (City) o[8]);
             addresss.add(address);
         }
         return addresss;
     }
+
 
     @Override
     public void create(Object o) throws IOException, ClassNotFoundException {

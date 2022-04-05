@@ -6,10 +6,11 @@ import java.util.Optional;
 
 public interface DAO<T> {
 
-    Optional<T> read(long id) throws IOException, ClassNotFoundException;
+    Object read(long id) throws IOException, ClassNotFoundException;
 //    Data data = new Data();
 //    Optional<XXX> xxx = Optional.ofNullable((XXX) data.getData(XXX.class, (int) id));
 //    return xxx;
+
 
     List<T> readAll() throws IOException, ClassNotFoundException;
 //    Data data = new Data();

@@ -19,9 +19,9 @@ public class Address {
     @Basic
     @Column(name = "district")
     private String district;
-    @Basic
-    @Column(name = "city_id")
-    private int cityId;
+    //    @Basic
+//    @Column(name = "city_id")
+//    private int cityId;
     @Basic
     @Column(name = "postal_code")
     private String postalCode;
@@ -35,24 +35,39 @@ public class Address {
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinColumn(name = "city_id")
     private City cityByCity;
 
-    public Address(int addressId, String address, String address2, String district, int cityId, String postalCode, String phone, String location, Timestamp lastUpdate) {
+//    public Address(int addressId, String address, String address2, String district, int cityId, String postalCode, String phone, String location, Timestamp lastUpdate) {
+//        this.addressId = addressId;
+//        this.address = address;
+//        this.address2 = address2;
+//        this.district = district;
+//        this.cityId = cityId;
+//        this.postalCode = postalCode;
+//        this.phone = phone;
+//        this.location = location;
+//        this.lastUpdate = lastUpdate;
+//    }
+
+    public Address(int addressId, String address, String address2, String district, String postalCode, String phone, String location, Timestamp lastUpdate, City cityByCity) {
         this.addressId = addressId;
         this.address = address;
         this.address2 = address2;
         this.district = district;
-        this.cityId = cityId;
         this.postalCode = postalCode;
         this.phone = phone;
         this.location = location;
         this.lastUpdate = lastUpdate;
+        this.cityByCity = cityByCity;
     }
 
     public Address() {
     }
+
+
+
 
     public int getAddressId() {
         return addressId;
@@ -86,13 +101,13 @@ public class Address {
         this.district = district;
     }
 
-    public int getCityId() {
-        return cityId;
-    }
-
-    public void setCityId(int cityId) {
-        this.cityId = cityId;
-    }
+//    public int getCityId() {
+//        return cityId;
+//    }
+//
+//    public void setCityId(int cityId) {
+//        this.cityId = cityId;
+//    }
 
     public String getPostalCode() {
         return postalCode;
@@ -126,16 +141,48 @@ public class Address {
         this.lastUpdate = lastUpdate;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Address address1 = (Address) o;
-        return addressId == address1.addressId && cityId == address1.cityId && Objects.equals(address, address1.address) && Objects.equals(address2, address1.address2) && Objects.equals(district, address1.district) && Objects.equals(postalCode, address1.postalCode) && Objects.equals(phone, address1.phone) && Objects.equals(location, address1.location) && Objects.equals(lastUpdate, address1.lastUpdate);
-    }
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//        Address address1 = (Address) o;
+//        return addressId == address1.addressId && cityId == address1.cityId && Objects.equals(address, address1.address) && Objects.equals(address2, address1.address2) && Objects.equals(district, address1.district) && Objects.equals(postalCode, address1.postalCode) && Objects.equals(phone, address1.phone) && Objects.equals(location, address1.location) && Objects.equals(lastUpdate, address1.lastUpdate);
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(addressId, address, address2, district, cityId, postalCode, phone, location, lastUpdate);
+//    }
+//
+//    @Override
+//    public String toString() {
+//        return "Address{" +
+//                "addressId=" + addressId +
+//                ", address='" + address + '\'' +
+//                ", address2='" + address2 + '\'' +
+//                ", district='" + district + '\'' +
+//                ", cityId=" + cityId +
+//                ", postalCode='" + postalCode + '\'' +
+//                ", phone='" + phone + '\'' +
+//                ", location='" + location + '\'' +
+//                ", lastUpdate=" + lastUpdate +
+//                ", cityByCity=" + cityByCity +
+//                '}';
+//    }
+
 
     @Override
-    public int hashCode() {
-        return Objects.hash(addressId, address, address2, district, cityId, postalCode, phone, location, lastUpdate);
+    public String toString() {
+        return "Address{" +
+                "addressId=" + addressId +
+                ", address='" + address + '\'' +
+                ", address2='" + address2 + '\'' +
+                ", district='" + district + '\'' +
+                ", postalCode='" + postalCode + '\'' +
+                ", phone='" + phone + '\'' +
+                ", location='" + location + '\'' +
+                ", lastUpdate=" + lastUpdate +
+                ", cityByCity=" + cityByCity +
+                '}';
     }
 }

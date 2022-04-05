@@ -21,8 +21,8 @@ public class City {
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
-    @OneToMany(mappedBy = "address")
-    private Collection<Address> addressesByCityId;
+//    @OneToMany(mappedBy = "address")
+//    private Collection<Address> addressesByCityId;
 
     public int getCityId() {
         return cityId;

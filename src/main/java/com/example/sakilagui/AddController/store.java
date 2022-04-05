@@ -2,6 +2,7 @@ package com.example.sakilagui.AddController;
 
 import Business.Address;
 import Business.Staff;
+import Business.Store;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
@@ -25,6 +26,7 @@ public class store {
 
     @FXML
     void addStoreOnClick(ActionEvent event) {
+        Store store = new Store();
 
     }
 

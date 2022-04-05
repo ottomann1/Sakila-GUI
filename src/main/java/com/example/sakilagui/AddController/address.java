@@ -1,10 +1,20 @@
 package com.example.sakilagui.AddController;
 
+import Business.Actor;
+import Business.Address;
 import Business.City;
+import DAO.ActorDAO;
+import DAO.AddressDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class address {
 
@@ -25,7 +35,20 @@ public class address {
     private TextField postalCodeField;
 
     @FXML
-    void addAddressOnClick(ActionEvent event) {
+    void addAddressOnClick(ActionEvent event) throws IOException, ClassNotFoundException {
+        Address address = new Address();
+        address.setAddress(addressField.getText());
+        address.setDistrict(districtField.getText());
+        address.setPhone(phoneField.getText());
+        address.setCity(cityDropDown.getValue());
+        address.setPostalCode(postalCodeField.getText());
+        AddressDAO addressDAO = new AddressDAO();
+        addressDAO.create(address);
+        Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/BusinessTabs.fxml"));
+        Scene scene = new Scene(loader.load());
+        thisStage.setScene(scene);
+        thisStage.show();
 
     }
 

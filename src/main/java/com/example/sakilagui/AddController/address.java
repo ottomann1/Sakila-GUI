@@ -1,4 +1,4 @@
-package com.example.sakilagui;
+package com.example.sakilagui.AddController;
 
 import Business.City;
 import javafx.event.ActionEvent;

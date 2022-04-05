@@ -1,4 +1,4 @@
-package com.example.sakilagui;
+package com.example.sakilagui.AddController;
 
 import Business.Address;
 import Business.Staff;

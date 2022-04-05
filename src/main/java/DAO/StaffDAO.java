@@ -24,7 +24,8 @@ public class StaffDAO implements DAO {
         List<Object[]> staffObjects = data.getDataListQuery("SELECT * FROM staff");
         List<Staff> staffs = new ArrayList<Staff>();
         for (Object[] o : staffObjects) {
-            Staff staff = new Staff((int) o[0], o[1].toString(), o[2].toString(), (int) o[3], (byte[]) o[4], o[5].toString(), (int) o[6], (byte) o[7], o[8].toString(), o[9].toString(), (Timestamp) o[10]);
+            Staff staff = new Staff((byte) o[0], o[1].toString(), o[2].toString(), (short) o[3], (byte[]) o[4], o[5].toString(),
+                    (byte) o[6], (boolean) o[7], o[8].toString(), (Timestamp) o[10]);
             staffs.add(staff);
         }
         return staffs;

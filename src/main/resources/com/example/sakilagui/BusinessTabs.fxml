@@ -11,7 +11,7 @@
    <children>
       <TabPane layoutY="49.0" prefHeight="397.0" prefWidth="1114.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab fx:id="filmTab" onSelectionChanged="#filmTabClick" text="Film">
+          <Tab fx:id="filmTab" text="Film">
                <content>
                   <TableView fx:id="filmTable" prefHeight="458.0" prefWidth="913.0">
                     <columns>
@@ -24,7 +24,7 @@
                   </TableView>
                </content>
           </Tab>
-            <Tab fx:id="actorTab" onSelectionChanged="#actorTabClick" text="Actors">
+            <Tab fx:id="actorTab" text="Actors">
                <content>
                   <TableView fx:id="actorTable" prefHeight="200.0" prefWidth="200.0">
                      <columns>
@@ -34,7 +34,7 @@
                   </TableView>
                </content>
             </Tab>
-            <Tab fx:id="storeTab" onSelectionChanged="#storeTabClick" text="Store">
+            <Tab fx:id="storeTab" text="Store">
                <content>
                   <TableView fx:id="storeTable" prefHeight="200.0" prefWidth="200.0">
                      <columns>
@@ -44,7 +44,7 @@
                   </TableView>
                </content>
             </Tab>
-            <Tab fx:id="staffTab" onSelectionChanged="#staffTabClick" text="Staff">
+            <Tab fx:id="staffTab" text="Staff">
                <content>
                   <TableView fx:id="staffTable" prefHeight="200.0" prefWidth="200.0">
                      <columns>
@@ -57,26 +57,26 @@
                   </TableView>
                </content>
             </Tab>
-            <Tab fx:id="customerTab" onSelectionChanged="#customerTabClick" text="Customer">
+            <Tab fx:id="customerTab" text="Customer">
                <content>
                   <TableView fx:id="customerTable" prefHeight="200.0" prefWidth="200.0">
                      <columns>
-                        <TableColumn fx:id="customerFirstName" prefWidth="75.0" text="First Name" />
-                        <TableColumn fx:id="customerLastName" prefWidth="75.0" text="Last Name" />
-                        <TableColumn fx:id="customerEmail" prefWidth="75.0" text="E-Mail" />
-                        <TableColumn fx:id="customerAddress" prefWidth="75.0" text="Address" />
+                        <TableColumn fx:id="customerFirstName" prefWidth="195.0" text="First Name" />
+                        <TableColumn fx:id="customerLastName" prefWidth="321.0" text="Last Name" />
+                        <TableColumn fx:id="customerEmail" prefWidth="250.0" text="E-Mail" />
+                        <TableColumn fx:id="customerAddress" prefWidth="336.0" text="Address" />
                      </columns>
                   </TableView>
                </content>
             </Tab>
-            <Tab fx:id="addressTab" onSelectionChanged="#addressTabClick" text="Address">
+            <Tab fx:id="addressTab" text="Address">
                <content>
                   <TableView fx:id="addressTable" prefHeight="371.0" prefWidth="939.0">
                      <columns>
-                        <TableColumn fx:id="addressAddress" prefWidth="75.0" text="Address" />
-                        <TableColumn fx:id="addressCity" prefWidth="75.0" text="City" />
-                        <TableColumn fx:id="addressPostal" prefWidth="414.9533386230469" text="Postal Code" />
-                        <TableColumn fx:id="addressPhone" prefWidth="375.0467224121094" text="Phone" />
+                        <TableColumn fx:id="addressAddress" prefWidth="350.0" text="Address" />
+                        <TableColumn fx:id="addressCity" prefWidth="260.0" text="City" />
+                        <TableColumn fx:id="addressPostal" prefWidth="156.0" text="Postal Code" />
+                        <TableColumn fx:id="addressPhone" prefWidth="264.0" text="Phone" />
                      </columns>
                   </TableView>
                </content>

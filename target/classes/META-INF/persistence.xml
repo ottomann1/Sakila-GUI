@@ -27,6 +27,12 @@
         <class>Business.SalesByFilmCategory</class>
         <class>Business.SalesByStore</class>
         <class>Business.StaffList</class>
+        <class>Business.ActorInfo</class>
+        <class>Business.CustomerList</class>
+        <class>Business.FilmList</class>
+        <class>Business.SalesByFilmCategory</class>
+        <class>Business.SalesByStore</class>
+        <class>Business.StaffList</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>

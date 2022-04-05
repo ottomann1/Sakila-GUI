@@ -1,5 +1,6 @@
 package DAO;
 
+import Business.Address;
 import Business.Customer;
 import Database.Data;
 
@@ -23,7 +24,9 @@ public class CustomerDAO implements DAO {
         List<Object[]> customerObjects = data.getDataListQuery("SELECT * FROM customer");
         List<Customer> customers = new ArrayList<Customer>();
         for (Object[] o : customerObjects) {
-            Customer customer = new Customer((Integer) o[0], (Integer) o[1], o[2].toString(), o[3].toString(), o[4].toString(), (Integer) o[5], (byte) o[6], (Timestamp) o[7], (Timestamp) o[8]);
+            Customer customer = new Customer((short) o[0], (Byte) o[1], o[2].toString(),
+                    o[3].toString(), o[4].toString(), (Address) (data.getData(Address.class, (short) o[5])),
+                    (boolean) o[6], (Timestamp) o[7], (Timestamp) o[8]);
             customers.add(customer);
         }
         return customers;

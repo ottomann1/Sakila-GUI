@@ -124,6 +124,15 @@ public class BusinessTabs {
     @FXML
     private TableView<Store> storeTable;
 
+    @FXML
+    void initialize() throws IOException, ClassNotFoundException {
+//        filmLoad();
+//        customerLoad();
+//        actorLoad();
+//        staffLoad();
+//        addressLoad();
+    }
+
     void filmLoad() throws IOException, ClassNotFoundException {
         FilmDAO filmDAO = new FilmDAO();
         List<Film> film = filmDAO.readAll();
@@ -146,7 +155,7 @@ public class BusinessTabs {
         actorFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         actorLastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
         actorTable.setItems(observableActors);
-        actorTable.getColumns().setAll();
+        actorTable.getColumns().setAll(actorFirstName, actorLastName);
     }
 
     void storeLoad(){
@@ -158,7 +167,7 @@ public class BusinessTabs {
 //        storeTable.setItems(observableStores);
 //        storeTitle.setCellValueFactory(new PropertyValueFactory<>(""));
 //        storeTable.setItems(observableStores);
-//        storeTable.getColumns().setAll();
+//        storeTable.getColumns().setAll(storeTitle,);
     }
 
     void staffLoad() throws IOException, ClassNotFoundException {
@@ -172,7 +181,7 @@ public class BusinessTabs {
         staffEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
         staffAddress.setCellValueFactory(new PropertyValueFactory<>("addressId")); // change to address with OneToOne
         staffTable.setItems(observableStaffs);
-        staffTable.getColumns().setAll();
+        staffTable.getColumns().setAll(staffStoreId, staffFirstName, staffLastName, staffEmail, staffAddress);
     }
     void customerLoad() throws IOException, ClassNotFoundException {
         CustomerDAO customerDAO = new CustomerDAO();
@@ -182,9 +191,9 @@ public class BusinessTabs {
         customerFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         customerLastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
         customerEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
-        customerAddress.setCellValueFactory(new PropertyValueFactory<>("addressId")); // change to address with OneToOne
+        customerAddress.setCellValueFactory(new PropertyValueFactory<>("address")); // change to address with OneToOne
         customerTable.setItems(observableCustomers);
-        customerTable.getColumns().setAll();
+        customerTable.getColumns().setAll(customerFirstName, customerLastName, customerEmail, customerAddress);
     }
     void addressLoad() throws IOException, ClassNotFoundException {
         AddressDAO addressDAO = new AddressDAO();
@@ -192,11 +201,11 @@ public class BusinessTabs {
         ObservableList<Address> observableAddresss = FXCollections.observableArrayList(address);
         addressTable.setItems(observableAddresss);
         addressAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
-        addressCity.setCellValueFactory(new PropertyValueFactory<>("cityId")); // change to city with OneToOne
+        addressCity.setCellValueFactory(new PropertyValueFactory<>("city")); // change to city with OneToOne
         addressPostal.setCellValueFactory(new PropertyValueFactory<>("postalCode"));
         addressPhone.setCellValueFactory(new PropertyValueFactory<>("phone"));
         addressTable.setItems(observableAddresss);
-        addressTable.getColumns().setAll();
+        addressTable.getColumns().setAll(addressAddress, addressCity, addressPostal, addressPhone);
     }
 
     @FXML

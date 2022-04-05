@@ -9,7 +9,7 @@ public class Actor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "actor_id")
-    private int actorId;
+    private short actorId;
     @Basic
     @Column(name = "first_name")
     private String firstName;
@@ -32,7 +32,7 @@ public class Actor {
                 ", " + lastUpdate;
     }
 
-    public Actor(int actorId, String firstName, String lastName, Timestamp lastUpdate) {
+    public Actor(short actorId, String firstName, String lastName, Timestamp lastUpdate) {
         this.actorId = actorId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -46,7 +46,7 @@ public class Actor {
         return actorId;
     }
 
-    public void setActorId(int actorId) {
+    public void setActorId(short actorId) {
         this.actorId = actorId;
     }
 

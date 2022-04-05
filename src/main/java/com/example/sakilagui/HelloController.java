@@ -1,5 +1,6 @@
 package com.example.sakilagui;
 
+import Business.Actor;
 import Business.Film;
 import DAO.ActorDAO;
 import DAO.FilmDAO;
@@ -30,19 +31,19 @@ public class HelloController {
     private Tab actorTab;
 
     @FXML
-    private TableColumn<?, ?> actorTabFirstName;
+    private TableColumn<Actor, ?> actorTabFirstName;
 
     @FXML
-    private TableColumn<?, ?> actorTabId;
+    private TableColumn<Actor, ?> actorTabId;
 
     @FXML
-    private TableColumn<?, ?> actorTabLastName;
+    private TableColumn<Actor, ?> actorTabLastName;
 
     @FXML
-    private TableColumn<?, ?> actorTabMovies;
+    private TableColumn<Actor, ?> actorTabMovies;
 
     @FXML
-    private TableView<?> actorTable;
+    private TableView<Actor> actorTable;
 
     @FXML
     private AnchorPane ap;

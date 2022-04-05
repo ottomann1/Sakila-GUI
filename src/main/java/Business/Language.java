@@ -17,6 +17,15 @@ public class Language {
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
+    public Language(int languageId, String name, Timestamp lastUpdate) {
+        this.languageId = languageId;
+        this.name = name;
+        this.lastUpdate = lastUpdate;
+    }
+
+    public Language() {
+    }
+
     public int getLanguageId() {
         return languageId;
     }
@@ -46,7 +55,7 @@ public class Language {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Language language = (Language) o;
-        return Objects.equals(languageId, language.languageId) && Objects.equals(name, language.name) && Objects.equals(lastUpdate, language.lastUpdate);
+        return languageId == language.languageId && Objects.equals(name, language.name) && Objects.equals(lastUpdate, language.lastUpdate);
     }
 
     @Override

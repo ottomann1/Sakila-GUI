@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="ap" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="524.0" prefWidth="1114.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sakilagui.HelloController">
+   <children>
+      <TabPane layoutX="9.0" layoutY="87.0" prefHeight="352.0" prefWidth="1096.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Film">
+               <content>
+                  <TableView prefHeight="458.0" prefWidth="913.0">
+                    <columns>
+                      <TableColumn prefWidth="274.244197845459" text="Title" />
+                      <TableColumn prefWidth="253.7558135986328" text="Description" />
+                        <TableColumn minWidth="0.0" prefWidth="106.562744140625" text="Relese Year" />
+                        <TableColumn minWidth="1.875396728515625" prefWidth="180.818115234375" text="Language" />
+                        <TableColumn minWidth="0.0" prefWidth="125.79901123046875" text="Length" />
+                    </columns>
+                  </TableView>
+               </content>
+          </Tab>
+            <Tab text="Actors">
+               <content>
+                  <TableView prefHeight="200.0" prefWidth="200.0">
+                     <columns>
+                        <TableColumn prefWidth="204.79600143432617" text="First Name" />
+                        <TableColumn prefWidth="222.5487518310547" text="Last Name" />
+                     </columns>
+                  </TableView>
+               </content>
+            </Tab>
+            <Tab text="Store">
+               <content>
+                  <TableView prefHeight="200.0" prefWidth="200.0">
+                     <columns>
+                        <TableColumn prefWidth="75.0" text="Adress" />
+                        <TableColumn prefWidth="75.0" text="Staff" />
+                     </columns>
+                  </TableView>
+               </content>
+            </Tab>
+            <Tab text="Staff">
+               <content>
+                  <TableView prefHeight="200.0" prefWidth="200.0">
+                     <columns>
+                        <TableColumn prefWidth="75.0" text="Store ID" />
+                        <TableColumn prefWidth="248.42540740966797" text="First Name" />
+                        <TableColumn prefWidth="225.5745849609375" text="Last Name" />
+                        <TableColumn prefWidth="206.64056396484375" text="E-Mail" />
+                        <TableColumn prefWidth="187.31280517578125" text="Adress" />
+                     </columns>
+                  </TableView>
+               </content>
+            </Tab>
+            <Tab text="Customer">
+               <content>
+                  <TableView prefHeight="200.0" prefWidth="200.0">
+                     <columns>
+                        <TableColumn prefWidth="75.0" text="First Name" />
+                        <TableColumn prefWidth="75.0" text="Last Name" />
+                        <TableColumn prefWidth="75.0" text="E-Main" />
+                        <TableColumn prefWidth="75.0" text="Adress" />
+                     </columns>
+                  </TableView>
+               </content>
+            </Tab>
+            <Tab text="adress">
+               <content>
+                  <TableView prefHeight="371.0" prefWidth="939.0">
+                     <columns>
+                        <TableColumn prefWidth="75.0" text="Adress" />
+                        <TableColumn prefWidth="75.0" text="City" />
+                        <TableColumn prefWidth="414.9533386230469" text="Postal Code" />
+                        <TableColumn prefWidth="375.0467224121094" text="Phone" />
+                     </columns>
+                  </TableView>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+      <Button layoutX="39.0" layoutY="458.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="117.0" text="CREATE" />
+      <Button layoutX="165.0" layoutY="458.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="117.0" text="READ" />
+      <Button layoutX="291.0" layoutY="458.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="117.0" text="UPDATE" />
+      <Button layoutX="417.0" layoutY="458.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="117.0" text="DELETE" />
+   </children>
+</AnchorPane>

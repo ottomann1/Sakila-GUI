@@ -55,7 +55,7 @@ public class Country {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Country country1 = (Country) o;
-        return Objects.equals(countryId, country1.countryId) && Objects.equals(country, country1.country) && Objects.equals(lastUpdate, country1.lastUpdate);
+        return countryId == country1.countryId && Objects.equals(country, country1.country) && Objects.equals(lastUpdate, country1.lastUpdate);
     }
 
     @Override

@@ -137,4 +137,6 @@ public class HelloController {
 
     }
 
+    public void ReadCusClick(ActionEvent actionEvent) {
+    }
 }

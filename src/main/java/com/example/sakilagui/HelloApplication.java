@@ -1,7 +1,9 @@
 package com.example.sakilagui;
 
 import Business.Address;
+import Business.City;
 import DAO.AddressDAO;
+import DAO.CityDAO;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -22,15 +24,24 @@ public class HelloApplication extends Application {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
 //        launch();
 
-        System.out.println("Hello World");
+//        System.out.println("Hello World");
+//
+//        Address addressA = new Address();
+//
+//        AddressDAO addressDAO = new AddressDAO();
+//
+////        addressA = (Address) addressDAO.read(1);
+//
+//        System.out.println(addressA.toString());
 
-        Address addressA = new Address();
+        City cityA = new City();
 
-        AddressDAO addressDAO = new AddressDAO();
+        CityDAO cityDAO = new CityDAO();
 
-        addressA = (Address) addressDAO.read(1);
+        cityA = (City) cityDAO.read(1);
 
-        System.out.println(addressA.toString());
+        System.out.println(cityA.toString());
+
 
     }
 

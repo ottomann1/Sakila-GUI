@@ -14,15 +14,37 @@ public class City {
     @Basic
     @Column(name = "city")
     private String city;
-    @Basic
-    @Column(name = "country_id")
-    private int countryId;
+//    @Basic
+//    @Column(name = "country_id")
+//    private int countryId;
     @Basic
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
 //    @OneToMany(mappedBy = "address")
 //    private Collection<Address> addressesByCityId;
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name="country_id")
+    private Country country;
+
+    public City(int cityId, String city, Timestamp lastUpdate, Country country) {
+        this.cityId = cityId;
+        this.city = city;
+        this.lastUpdate = lastUpdate;
+        this.country = country;
+    }
+
+    public City() {
+    }
+
+    public Country getCountry() {
+        return country;
+    }
+
+    public void setCountry(Country country) {
+        this.country = country;
+    }
 
     public int getCityId() {
         return cityId;
@@ -40,13 +62,13 @@ public class City {
         this.city = city;
     }
 
-    public int getCountryId() {
-        return countryId;
-    }
-
-    public void setCountryId(int countryId) {
-        this.countryId = countryId;
-    }
+//    public int getCountryId() {
+//        return countryId;
+//    }
+//
+//    public void setCountryId(int countryId) {
+//        this.countryId = countryId;
+//    }
 
     public Timestamp getLastUpdate() {
         return lastUpdate;
@@ -56,17 +78,26 @@ public class City {
         this.lastUpdate = lastUpdate;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        City city1 = (City) o;
-        return cityId == city1.cityId && countryId == city1.countryId && Objects.equals(city, city1.city) && Objects.equals(lastUpdate, city1.lastUpdate);
-    }
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//        City city1 = (City) o;
+//        return cityId == city1.cityId && countryId == city1.countryId && Objects.equals(city, city1.city) && Objects.equals(lastUpdate, city1.lastUpdate);
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(cityId, city, countryId, lastUpdate);
+//    }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(cityId, city, countryId, lastUpdate);
+    public String toString() {
+        return "City{" +
+                "cityId=" + cityId +
+                ", city='" + city + '\'' +
+                ", lastUpdate=" + lastUpdate +
+                ", country=" + country +
+                '}';
     }
-
 }

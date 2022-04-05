@@ -1,0 +1,60 @@
+package DAO;
+
+
+import Business.Language;
+import Database.Data;
+
+import java.io.IOException;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+public class LanguageDAO implements  DAO {
+
+    @Override
+    public Optional read(long id) throws IOException, ClassNotFoundException {
+        Data data = new Data();
+        Optional<Language> language = Optional.ofNullable((Language) data.getData(Language.class, (short) id));
+        return language;
+    }
+
+    @Override
+    public List readAll() throws IOException, ClassNotFoundException {
+        Data data = new Data();
+        List<Object[]> langObjects = data.getDataListQuery("SELECT * FROM language");
+        List<Language> languageList = new ArrayList<Language>();
+        for (Object[] o : langObjects) {
+            Language language = new Language((byte) o[0], o[1].toString(), (Timestamp) o[2]);
+            languageList.add(language);
+        }
+        return languageList;
+    }
+
+    @Override
+    public void create(Object o) throws IOException, ClassNotFoundException {
+        Data data = new Data();
+        data.setData(o);
+
+    }
+
+    @Override
+    public void update(Object newT, Object oldT) throws IOException {
+        Data data = new Data();
+        data.updateData(newT);
+
+    }
+
+    @Override
+    public void delete(Object o) throws IOException {
+        Data data = new Data();
+        Language language = (Language) o;
+        data.deleteEm(Language.class, language.getLanguageId());
+
+    }
+
+    @Override
+    public void deleteAll() throws IOException {
+
+    }
+}

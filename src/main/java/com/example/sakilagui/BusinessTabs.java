@@ -1,6 +1,7 @@
 package com.example.sakilagui;
 
 import Business.*;
+import DAO.ActorDAO;
 import DAO.FilmDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -138,8 +139,15 @@ public class BusinessTabs {
         filmTable.getColumns().setAll(filmTitle, filmDescription, filmReleaseYear, filmLanguage, filmLength);
     }
 
-    void actorLoad(){
-
+    void actorLoad() throws IOException, ClassNotFoundException {
+        ActorDAO actorDAO = new ActorDAO();
+        List<Actor> actor = actorDAO.readAll();
+        ObservableList<Actor> observableActors = FXCollections.observableArrayList(actor);
+        actorTable.setItems(observableActors);
+        actorFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+        actorLastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+        actorTable.setItems(observableActors);
+        actorTable.getColumns().setAll();
     }
 
     void storeLoad(){

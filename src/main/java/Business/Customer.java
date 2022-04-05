@@ -9,10 +9,10 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "customer_id")
-    private int customerId;
+    private short customerId;
     @Basic
     @Column(name = "store_id")
-    private int storeId;
+    private byte storeId;
     @Basic
     @Column(name = "first_name")
     private String firstName;
@@ -23,11 +23,8 @@ public class Customer {
     @Column(name = "email")
     private String email;
     @Basic
-    @Column(name = "address_id")
-    private int addressId;
-    @Basic
     @Column(name = "active")
-    private byte active;
+    private boolean active;
     @Basic
     @Column(name = "create_date")
     private Timestamp createDate;
@@ -35,34 +32,53 @@ public class Customer {
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
-    public Customer(int customerId, int storeId, String firstName, String lastName, String email, int addressId, byte active, Timestamp createDate, Timestamp lastUpdate) {
+    @OneToOne
+    @JoinColumn(name = "address_id")
+    private Address address;
+
+
+    public Customer(short customerId, byte storeId, String firstName, String lastName, String email, boolean active, Timestamp createDate, Timestamp lastUpdate, Address address) {
         this.customerId = customerId;
         this.storeId = storeId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.addressId = addressId;
         this.active = active;
         this.createDate = createDate;
         this.lastUpdate = lastUpdate;
+        this.address = address;
     }
+
     public Customer(){
 
     }
 
-    public int getCustomerId() {
+    public Customer(short i, Byte aByte, String toString, String toString1, String toString2,
+                    Address data, boolean active , Timestamp timestamp, Timestamp timestamp1) {
+        this.customerId = i;
+        this.storeId = aByte;
+        this.firstName = toString;
+        this.lastName = toString1;
+        this.email = toString2;
+        this.address = data;
+        this.active = active;
+        this.createDate = timestamp;
+        this.lastUpdate = timestamp1;
+    }
+
+    public short getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(int customerId) {
+    public void setCustomerId(short customerId) {
         this.customerId = customerId;
     }
 
-    public int getStoreId() {
+    public byte getStoreId() {
         return storeId;
     }
 
-    public void setStoreId(int storeId) {
+    public void setStoreId(byte storeId) {
         this.storeId = storeId;
     }
 
@@ -90,21 +106,14 @@ public class Customer {
         this.email = email;
     }
 
-    public int getAddressId() {
-        return addressId;
-    }
-
-    public void setAddressId(int addressId) {
-        this.addressId = addressId;
-    }
-
-    public byte getActive() {
+    public boolean isActive() {
         return active;
     }
 
-    public void setActive(byte active) {
+    public void setActive(boolean active) {
         this.active = active;
     }
+
 
     public Timestamp getCreateDate() {
         return createDate;
@@ -122,16 +131,12 @@ public class Customer {
         this.lastUpdate = lastUpdate;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Customer customer = (Customer) o;
-        return customerId == customer.customerId && addressId == customer.addressId && active == customer.active && Objects.equals(storeId, customer.storeId) && Objects.equals(firstName, customer.firstName) && Objects.equals(lastName, customer.lastName) && Objects.equals(email, customer.email) && Objects.equals(createDate, customer.createDate) && Objects.equals(lastUpdate, customer.lastUpdate);
+    public Address getAddress() {
+        return address;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(customerId, storeId, firstName, lastName, email, addressId, active, createDate, lastUpdate);
+    public void setAddress(Address address) {
+        this.address = address;
     }
+
 }

@@ -16,7 +16,7 @@ public class PaymentDAO implements DAO {
     @Override
     public Optional read(long id) throws IOException, ClassNotFoundException {
         Data data = new Data();
-        Optional<Payment> payment = Optional.ofNullable((Payment) data.getData(Payment.class, (int) id));
+        Optional<Payment> payment = Optional.ofNullable((Payment) data.getData(Payment.class, (short) id));
         return payment;
     }
 

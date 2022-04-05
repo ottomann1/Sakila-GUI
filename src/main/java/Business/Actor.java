@@ -2,8 +2,6 @@ package Business;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Objects;
 
 @Entity
@@ -11,7 +9,7 @@ public class Actor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "actor_id")
-    private int actorId;
+    private short actorId;
     @Basic
     @Column(name = "first_name")
     private String firstName;
@@ -22,8 +20,10 @@ public class Actor {
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
-    @ManyToMany(mappedBy = "actor", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Collection<Film> film = new ArrayList<Film>();
+    @Override
+    public String toString() {
+        return firstName +" " +lastName;
+    }
 
     public String toStringHeavy() {
         return actorId +
@@ -32,41 +32,21 @@ public class Actor {
                 ", " + lastUpdate;
     }
 
-    @Override
-    public String toString() {
-        return "Actor{" +
-                "actorId=" + actorId +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", lastUpdate=" + lastUpdate +
-                ", film=" + film +
-                '}';
-    }
-
-    public Actor(int actorId, String firstName, String lastName, Timestamp lastUpdate, Collection<Film> film) {
+    public Actor(short actorId, String firstName, String lastName, Timestamp lastUpdate) {
         this.actorId = actorId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.lastUpdate = lastUpdate;
-        this.film = film;
     }
 
     public Actor() {
-    }
-
-    public Collection<Film> getFilm() {
-        return film;
-    }
-
-    public void setFilm(Collection<Film> film) {
-        this.film = film;
     }
 
     public int getActorId() {
         return actorId;
     }
 
-    public void setActorId(int actorId) {
+    public void setActorId(short actorId) {
         this.actorId = actorId;
     }
 

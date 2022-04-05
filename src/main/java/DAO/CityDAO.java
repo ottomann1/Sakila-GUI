@@ -1,6 +1,5 @@
 package DAO;
 
-import Business.Address;
 import Business.City;
 import Business.Country;
 import Database.Data;
@@ -9,26 +8,26 @@ import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
-public class CityDAO implements DAO{
+public class CityDAO implements DAO {
     @Override
-    public Object read(long id) throws IOException, ClassNotFoundException {
+    public Optional read(long id) throws IOException, ClassNotFoundException {
         Data data = new Data();
-        Object city = data.getData(City.class, (int) id);
+        Optional<City> city = Optional.ofNullable((City) data.getData(City.class, (short) id));
         return city;
     }
 
     @Override
-    public List readAll() throws IOException, ClassNotFoundException {
+    public List readAll() throws IOException, ClassNotFoundException{
         Data data = new Data();
         List<Object[]> cityObjects = data.getDataListQuery("SELECT * FROM city");
-        List<City> city = new ArrayList<City>();
+        List<City> citys = new ArrayList<City>();
         for (Object[] o : cityObjects) {
-//            Address address = new Address((Integer) o[0], o[1].toString(), o[2].toString(), o[3].toString(), (Integer) o[4], o[5].toString(), o[6].toString(), o[7].toString(), (Timestamp) o[8]);
-            City cityObj = new City((Integer) o[0],o[1].toString(),(Timestamp) o[2], (Country) o[3]);
-            city.add(cityObj);
+            City city = new City((short) o[0], o[1].toString(), (short) o[2], (Timestamp) o[3]);
+            citys.add(city);
         }
-        return city;
+        return citys;
     }
 
 

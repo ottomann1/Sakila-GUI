@@ -9,7 +9,7 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "address_id")
-    private int addressId;
+    private short addressId;
     @Basic
     @Column(name = "address")
     private String address;
@@ -19,7 +19,7 @@ public class Address {
     @Basic
     @Column(name = "district")
     private String district;
-    //    @Basic
+//    @Basic
 //    @Column(name = "city_id")
 //    private int cityId;
     @Basic
@@ -35,45 +35,30 @@ public class Address {
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     @JoinColumn(name = "city_id")
-    private City cityByCity;
+    private City city;
 
-//    public Address(int addressId, String address, String address2, String district, int cityId, String postalCode, String phone, String location, Timestamp lastUpdate) {
-//        this.addressId = addressId;
-//        this.address = address;
-//        this.address2 = address2;
-//        this.district = district;
-//        this.cityId = cityId;
-//        this.postalCode = postalCode;
-//        this.phone = phone;
-//        this.location = location;
-//        this.lastUpdate = lastUpdate;
-//    }
-
-    public Address(int addressId, String address, String address2, String district, String postalCode, String phone, String location, Timestamp lastUpdate, City cityByCity) {
+    public Address(short addressId, String address, String district, City city, String postalCode, String phone, String location, Timestamp lastUpdate) {
         this.addressId = addressId;
         this.address = address;
-        this.address2 = address2;
         this.district = district;
+//        this.cityId = cityId;
+        this.city = city;
         this.postalCode = postalCode;
         this.phone = phone;
         this.location = location;
         this.lastUpdate = lastUpdate;
-        this.cityByCity = cityByCity;
     }
 
     public Address() {
     }
 
-
-
-
-    public int getAddressId() {
+    public short getAddressId() {
         return addressId;
     }
 
-    public void setAddressId(int addressId) {
+    public void setAddressId(short addressId) {
         this.addressId = addressId;
     }
 
@@ -109,6 +94,15 @@ public class Address {
 //        this.cityId = cityId;
 //    }
 
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
+    }
+
     public String getPostalCode() {
         return postalCode;
     }
@@ -139,50 +133,5 @@ public class Address {
 
     public void setLastUpdate(Timestamp lastUpdate) {
         this.lastUpdate = lastUpdate;
-    }
-
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//        Address address1 = (Address) o;
-//        return addressId == address1.addressId && cityId == address1.cityId && Objects.equals(address, address1.address) && Objects.equals(address2, address1.address2) && Objects.equals(district, address1.district) && Objects.equals(postalCode, address1.postalCode) && Objects.equals(phone, address1.phone) && Objects.equals(location, address1.location) && Objects.equals(lastUpdate, address1.lastUpdate);
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(addressId, address, address2, district, cityId, postalCode, phone, location, lastUpdate);
-//    }
-//
-//    @Override
-//    public String toString() {
-//        return "Address{" +
-//                "addressId=" + addressId +
-//                ", address='" + address + '\'' +
-//                ", address2='" + address2 + '\'' +
-//                ", district='" + district + '\'' +
-//                ", cityId=" + cityId +
-//                ", postalCode='" + postalCode + '\'' +
-//                ", phone='" + phone + '\'' +
-//                ", location='" + location + '\'' +
-//                ", lastUpdate=" + lastUpdate +
-//                ", cityByCity=" + cityByCity +
-//                '}';
-//    }
-
-
-    @Override
-    public String toString() {
-        return "Address{" +
-                "addressId=" + addressId +
-                ", address='" + address + '\'' +
-                ", address2='" + address2 + '\'' +
-                ", district='" + district + '\'' +
-                ", postalCode='" + postalCode + '\'' +
-                ", phone='" + phone + '\'' +
-                ", location='" + location + '\'' +
-                ", lastUpdate=" + lastUpdate +
-                ", cityByCity=" + cityByCity +
-                '}';
     }
 }

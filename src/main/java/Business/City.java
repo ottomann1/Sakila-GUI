@@ -20,7 +20,8 @@ public class City {
     @Basic
     @Column(name = "last_update")
     private Timestamp lastUpdate;
-    @OneToMany(mappedBy = "addressByCityId")
+
+    @OneToMany(mappedBy = "address")
     private Collection<Address> addressesByCityId;
 
     public int getCityId() {

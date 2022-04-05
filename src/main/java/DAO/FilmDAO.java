@@ -29,7 +29,7 @@ public class FilmDAO implements DAO {
         for (Object[] o : filmObjects) {
             Film film = new Film((Short) o[0], o[1].toString(), o[2].toString(), (Date) o[3], (Byte) o[4],
                     (Byte) o[6], (BigDecimal) o[7], (Short) o[8], (BigDecimal) o[9],
-                    o[10].toString(), o[11].toString(), (Timestamp) o[12], filmActor.get((Short)o[0]));
+                    o[10].toString(), o[11].toString(), (Timestamp) o[12], filmActor.getActorsByFilmId((Short)o[0]));
             films.add(film);
         }
         return films;

@@ -20,6 +20,8 @@ public class Inventory {
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
+    //ska nog inte se ut såhär men
+
     @ManyToOne
     @JoinColumn(name = "store_by_stored_id_store_id")
     private Store storeByStoredId;

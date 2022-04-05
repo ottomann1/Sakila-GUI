@@ -35,29 +35,9 @@ public class Address {
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "addresses_by_city_id_city_id")
-    private City addressesByCityId;
-
-    @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "address_by_city_id_city_id")
-    private City addressByCityId;
-
-    public City getAddressByCityId() {
-        return addressByCityId;
-    }
-
-    public void setAddressByCityId(City addressByCityId) {
-        this.addressByCityId = addressByCityId;
-    }
-
-    public City getAddressesByCityId() {
-        return addressesByCityId;
-    }
-
-    public void setAddressesByCityId(City addressesByCityId) {
-        this.addressesByCityId = addressesByCityId;
-    }
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    @JoinColumn(name = "city_id")
+    private City cityByCity;
 
     public Address(int addressId, String address, String address2, String district, int cityId, String postalCode, String phone, String location, Timestamp lastUpdate) {
         this.addressId = addressId;

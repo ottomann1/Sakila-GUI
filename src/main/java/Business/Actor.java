@@ -20,14 +20,24 @@ public class Actor {
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
+    @Override
+    public String toString() {
+        return firstName +" " +lastName;
+    }
+
+    public String toStringHeavy() {
+        return actorId +
+                ", " + firstName + '\'' +
+                ", " + lastName + '\'' +
+                ", " + lastUpdate;
+    }
+
     public Actor(int actorId, String firstName, String lastName, Timestamp lastUpdate) {
         this.actorId = actorId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.lastUpdate = lastUpdate;
     }
-
-    
 
     public Actor() {
     }

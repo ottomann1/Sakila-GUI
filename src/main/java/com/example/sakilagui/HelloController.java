@@ -112,10 +112,6 @@ public class HelloController {
         filmTable.getColumns().setAll(filmTableTitle, filmTabLength, filmTabLanguage, filmTabRating);
     }
 
-    @FXML
-    void ReadCusClick(ActionEvent event) {
-
-    }
 
     @FXML
     void backButtonClick(ActionEvent event) {

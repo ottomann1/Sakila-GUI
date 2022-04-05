@@ -8,17 +8,15 @@
 
 <AnchorPane prefHeight="186.0" prefWidth="585.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sakilagui.Staff">
    <children>
-      <TextField layoutX="70.0" layoutY="44.0" />
-      <TextField layoutX="229.0" layoutY="44.0" />
-      <TextField layoutX="395.0" layoutY="44.0" />
-      <ChoiceBox layoutX="69.0" layoutY="132.0" prefWidth="150.0" />
-      <ChoiceBox layoutX="229.0" layoutY="132.0" prefWidth="150.0" />
+      <TextField fx:id="firstNameField" layoutX="70.0" layoutY="44.0" />
+      <TextField fx:id="lastNameField" layoutX="229.0" layoutY="44.0" />
+      <TextField fx:id="emailField" layoutX="395.0" layoutY="44.0" />
+      <ChoiceBox fx:id="addressDropDown" layoutX="75.0" layoutY="102.0" prefWidth="150.0" />
       <Label layoutX="14.0" layoutY="48.0" text="Customer" />
       <Label layoutX="117.0" layoutY="27.0" text="First name" />
       <Label layoutX="277.0" layoutY="27.0" text="Last name" />
       <Label layoutX="455.0" layoutY="27.0" text="Email" />
-      <Label layoutX="130.0" layoutY="117.0" text="Store" />
-      <Label layoutX="282.0" layoutY="117.0" text="Address" />
-      <Button layoutX="444.0" layoutY="132.0" mnemonicParsing="false" text="Button" />
+      <Label layoutX="128.0" layoutY="87.0" text="Address" />
+      <Button layoutX="444.0" layoutY="132.0" mnemonicParsing="false" onAction="#addCustomerOnClick" text="Button" />
    </children>
 </AnchorPane>

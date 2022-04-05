@@ -1,19 +1,21 @@
 package DAO;
 
 import Business.Category;
+import Business.Film;
 import Database.Data;
 
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
 public class CategoryDAO implements DAO {
     @Override
-    public Optional read(long id) throws IOException, ClassNotFoundException {
+    public Object read(long id) throws IOException, ClassNotFoundException {
         Data data = new Data();
-        Optional<Category> category = Optional.ofNullable((Category) data.getData(Category.class, (int) id));
+        Object category = data.getData(Category.class, (int) id);
         return category;
     }
 
@@ -23,7 +25,7 @@ public class CategoryDAO implements DAO {
         List<Object[]> categoryObjects = data.getDataListQuery("SELECT * FROM category");
         List<Category> categorys = new ArrayList<Category>();
         for (Object[] o : categoryObjects) {
-            Category category = new Category((Integer) o[0], o[1].toString(), (Timestamp) o[2]);
+            Category category = new Category((Integer) o[0], o[1].toString(), (Timestamp) o[2], (Collection<Film>) o[3]);
             categorys.add(category);
         }
         return categorys;

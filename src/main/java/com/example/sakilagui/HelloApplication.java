@@ -2,8 +2,10 @@ package com.example.sakilagui;
 
 import Business.Address;
 import Business.City;
+import Business.Film;
 import DAO.AddressDAO;
 import DAO.CityDAO;
+import DAO.FilmDAO;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -34,13 +36,21 @@ public class HelloApplication extends Application {
 //
 //        System.out.println(addressA.toString());
 
-        City cityA = new City();
+//        City cityA = new City();
+//
+//        CityDAO cityDAO = new CityDAO();
+//
+//        cityA = (City) cityDAO.read(1);
+//
+//        System.out.println(cityA.toString());
 
-        CityDAO cityDAO = new CityDAO();
+        Film filmA = new Film();
 
-        cityA = (City) cityDAO.read(1);
+        FilmDAO filmDAO = new FilmDAO();
 
-        System.out.println(cityA.toString());
+        filmA = (Film) filmDAO.read(1);
+
+        System.out.println(filmA.toString());
 
 
     }

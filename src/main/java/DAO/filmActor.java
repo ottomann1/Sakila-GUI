@@ -16,7 +16,7 @@ public class filmActor {
         List<Actor> actors = new ArrayList<Actor>();
         List<Object[]> objects = data.getDataListQuery("SELECT * FROM film_actor where film_id = "+id);
         for(Object[] o:objects){
-            actors.add((Actor) actorDAO.read((short)o[0]).get());
+//            actors.add((Actor) actorDAO.read((short)o[0]).get());
         }
         return actors;
     }
@@ -27,7 +27,7 @@ public class filmActor {
         List<Film> films = new ArrayList<Film>();
         List<Object[]> objects = data.getDataListQuery("SELECT * FROM film_actor where actor_id = "+id);
         for(Object[] o:objects){
-            films.add((Film) filmDAO.read((short)o[1]).get());
+//            films.add((Film) filmDAO.read((short)o[1]).get());
         }
         return films;
     }

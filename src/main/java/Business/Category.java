@@ -2,6 +2,8 @@ package Business;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
@@ -17,13 +19,26 @@ public class Category {
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
-    public Category(int categoryId, String name, Timestamp lastUpdate) {
+    @ManyToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Collection<Film> film = new ArrayList<Film>();
+
+    public Category(int categoryId, String name, Timestamp lastUpdate, Collection<Film> film) {
         this.categoryId = categoryId;
         this.name = name;
         this.lastUpdate = lastUpdate;
+        this.film = film;
     }
+
     public Category(){
 
+    }
+
+    public Collection<Film> getFilm() {
+        return film;
+    }
+
+    public void setFilm(Collection<Film> film) {
+        this.film = film;
     }
 
     public int getCategoryId() {
@@ -61,5 +76,15 @@ public class Category {
     @Override
     public int hashCode() {
         return Objects.hash(categoryId, name, lastUpdate);
+    }
+
+    @Override
+    public String toString() {
+        return "Category{" +
+                "categoryId=" + categoryId +
+                ", name='" + name + '\'' +
+                ", lastUpdate=" + lastUpdate +
+                ", film=" + film +
+                '}';
     }
 }

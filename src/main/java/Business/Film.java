@@ -13,7 +13,7 @@ public class Film {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "film_id")
-    private short filmId;
+    private int filmId;
     @Basic
     @Column(name = "title")
     private String title;
@@ -37,7 +37,7 @@ public class Film {
     private BigDecimal rentalRate;
     @Basic
     @Column(name = "length")
-    private short length;
+    private int length;
     @Basic
     @Column(name = "replacement_cost")
     private BigDecimal replacementCost;
@@ -59,9 +59,17 @@ public class Film {
     )
     private Collection<Actor> actor = new ArrayList<Actor>();
 
-    public Film(short filmId, String title, String description, Date releaseYear,
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "film_category",
+            joinColumns = {@JoinColumn(name = "film_id")},
+            inverseJoinColumns = {@JoinColumn(name = "category_id")}
+    )
+    private Collection<Category> category = new ArrayList<Category>();
+
+    public Film(int filmId, String title, String description, Date releaseYear,
                 byte languageId, byte rentalDuration,
-                BigDecimal rentalRate, short length, BigDecimal replacementCost,
+                BigDecimal rentalRate, int length, BigDecimal replacementCost,
                 String rating, String specialFeatures, Timestamp lastUpdate,
                 Collection<Actor> actor) {
         this.filmId = filmId;
@@ -83,6 +91,14 @@ public class Film {
 
     }
 
+    public Collection<Category> getCategory() {
+        return category;
+    }
+
+    public void setCategory(Collection<Category> category) {
+        this.category = category;
+    }
+
     public Collection<Actor> getActor() {
         return actor;
     }
@@ -91,15 +107,15 @@ public class Film {
         this.actor = actor;
     }
 
-    public short getFilmId() {
+    public int getFilmId() {
         return filmId;
     }
 
-    public void setFilmId(short filmId) {
+    public void setFilmId(int filmId) {
         this.filmId = filmId;
     }
 
-    public void setLength(short length) {
+    public void setLength(int length) {
         this.length = length;
     }
 
@@ -119,7 +135,7 @@ public class Film {
         this.description = description;
     }
 
-    public short getLanguageId() {
+    public Byte getLanguageId() {
         return languageId;
     }
 
@@ -206,5 +222,26 @@ public class Film {
     @Override
     public int hashCode() {
         return Objects.hash(filmId, title, description, releaseYear, languageId, originalLanguageId, rentalDuration, rentalRate, length, replacementCost, rating, specialFeatures, lastUpdate);
+    }
+
+    @Override
+    public String toString() {
+        return "Film{" +
+                "filmId=" + filmId +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", releaseYear=" + releaseYear +
+                ", languageId=" + languageId +
+                ", originalLanguageId=" + originalLanguageId +
+                ", rentalDuration=" + rentalDuration +
+                ", rentalRate=" + rentalRate +
+                ", length=" + length +
+                ", replacementCost=" + replacementCost +
+                ", rating='" + rating + '\'' +
+                ", specialFeatures='" + specialFeatures + '\'' +
+                ", lastUpdate=" + lastUpdate +
+                ", actor=" + actor +
+                ", category=" + category +
+                '}';
     }
 }

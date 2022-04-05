@@ -2,6 +2,8 @@ package Business;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
@@ -20,10 +22,8 @@ public class Actor {
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
-    @Override
-    public String toString() {
-        return firstName +" " +lastName;
-    }
+    @ManyToMany(mappedBy = "actor", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Collection<Film> film = new ArrayList<Film>();
 
     public String toStringHeavy() {
         return actorId +
@@ -32,14 +32,34 @@ public class Actor {
                 ", " + lastUpdate;
     }
 
-    public Actor(int actorId, String firstName, String lastName, Timestamp lastUpdate) {
+    @Override
+    public String toString() {
+        return "Actor{" +
+                "actorId=" + actorId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", lastUpdate=" + lastUpdate +
+                ", film=" + film +
+                '}';
+    }
+
+    public Actor(int actorId, String firstName, String lastName, Timestamp lastUpdate, Collection<Film> film) {
         this.actorId = actorId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.lastUpdate = lastUpdate;
+        this.film = film;
     }
 
     public Actor() {
+    }
+
+    public Collection<Film> getFilm() {
+        return film;
+    }
+
+    public void setFilm(Collection<Film> film) {
+        this.film = film;
     }
 
     public int getActorId() {

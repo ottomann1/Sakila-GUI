@@ -20,7 +20,8 @@ public class City {
     @Basic
     @Column(name = "last_update")
     private Timestamp lastUpdate;
-    @OneToMany(mappedBy = "cityByCityId")
+
+    @OneToMany(mappedBy = "address")
     private Collection<Address> addressesByCityId;
 
     public int getCityId() {
@@ -68,11 +69,4 @@ public class City {
         return Objects.hash(cityId, city, countryId, lastUpdate);
     }
 
-    public Collection<Address> getAddressesByCityId() {
-        return addressesByCityId;
-    }
-
-    public void setAddressesByCityId(Collection<Address> addressesByCityId) {
-        this.addressesByCityId = addressesByCityId;
-    }
 }

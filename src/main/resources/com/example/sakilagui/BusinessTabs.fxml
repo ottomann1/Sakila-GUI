@@ -7,85 +7,86 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="ap" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="524.0" prefWidth="1114.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sakilagui.HelloController">
+<AnchorPane fx:id="ap" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="524.0" prefWidth="1114.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sakilagui.BusinessTabs">
    <children>
-      <TabPane layoutX="9.0" layoutY="87.0" prefHeight="352.0" prefWidth="1096.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutY="49.0" prefHeight="397.0" prefWidth="1114.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="Film">
+          <Tab fx:id="filmTab" onSelectionChanged="#filmTabClick" text="Film">
                <content>
-                  <TableView prefHeight="458.0" prefWidth="913.0">
+                  <TableView fx:id="filmTable" prefHeight="458.0" prefWidth="913.0">
                     <columns>
-                      <TableColumn prefWidth="274.244197845459" text="Title" />
-                      <TableColumn prefWidth="253.7558135986328" text="Description" />
-                        <TableColumn minWidth="0.0" prefWidth="106.562744140625" text="Relese Year" />
-                        <TableColumn minWidth="1.875396728515625" prefWidth="180.818115234375" text="Language" />
-                        <TableColumn minWidth="0.0" prefWidth="125.79901123046875" text="Length" />
+                      <TableColumn fx:id="title" prefWidth="274.244197845459" text="Title" />
+                      <TableColumn fx:id="Description" prefWidth="253.7558135986328" text="Description" />
+                        <TableColumn fx:id="releaseYear" minWidth="0.0" prefWidth="106.562744140625" text="Relese Year" />
+                        <TableColumn fx:id="Language" minWidth="1.875396728515625" prefWidth="180.818115234375" text="Language" />
+                        <TableColumn fx:id="Length" minWidth="0.0" prefWidth="125.79901123046875" text="Length" />
                     </columns>
                   </TableView>
                </content>
           </Tab>
-            <Tab text="Actors">
+            <Tab fx:id="actorTab" onSelectionChanged="#actorTabClick" text="Actors">
                <content>
-                  <TableView prefHeight="200.0" prefWidth="200.0">
+                  <TableView fx:id="actorTable" prefHeight="200.0" prefWidth="200.0">
                      <columns>
-                        <TableColumn prefWidth="204.79600143432617" text="First Name" />
-                        <TableColumn prefWidth="222.5487518310547" text="Last Name" />
+                        <TableColumn fx:id="actorFirstName" prefWidth="204.79600143432617" text="First Name" />
+                        <TableColumn fx:id="actorLastName" prefWidth="222.5487518310547" text="Last Name" />
                      </columns>
                   </TableView>
                </content>
             </Tab>
-            <Tab text="Store">
+            <Tab fx:id="storeTab" onSelectionChanged="#storeTabClick" text="Store">
                <content>
-                  <TableView prefHeight="200.0" prefWidth="200.0">
+                  <TableView fx:id="storeTable" prefHeight="200.0" prefWidth="200.0">
                      <columns>
-                        <TableColumn prefWidth="75.0" text="Adress" />
-                        <TableColumn prefWidth="75.0" text="Staff" />
+                        <TableColumn fx:id="storeAddress" prefWidth="362.0" text="Adress" />
+                        <TableColumn fx:id="Staff" minWidth="0.0" prefWidth="389.0" text="Staff" />
                      </columns>
                   </TableView>
                </content>
             </Tab>
-            <Tab text="Staff">
+            <Tab fx:id="staffTab" onSelectionChanged="#staffTabClick" text="Staff">
                <content>
-                  <TableView prefHeight="200.0" prefWidth="200.0">
+                  <TableView fx:id="staffTable" prefHeight="200.0" prefWidth="200.0">
                      <columns>
-                        <TableColumn prefWidth="75.0" text="Store ID" />
-                        <TableColumn prefWidth="248.42540740966797" text="First Name" />
-                        <TableColumn prefWidth="225.5745849609375" text="Last Name" />
-                        <TableColumn prefWidth="206.64056396484375" text="E-Mail" />
-                        <TableColumn prefWidth="187.31280517578125" text="Adress" />
+                        <TableColumn fx:id="Store ID" prefWidth="75.0" text="Store ID" />
+                        <TableColumn fx:id="staffFirstName" prefWidth="248.42540740966797" text="First Name" />
+                        <TableColumn fx:id="staffLastName" prefWidth="225.5745849609375" text="Last Name" />
+                        <TableColumn fx:id="staffEmail" prefWidth="206.64056396484375" text="E-Mail" />
+                        <TableColumn fx:id="Address" prefWidth="187.31280517578125" text="Address" />
                      </columns>
                   </TableView>
                </content>
             </Tab>
-            <Tab text="Customer">
+            <Tab fx:id="customerTab" onSelectionChanged="#customerTabClick" text="Customer">
                <content>
-                  <TableView prefHeight="200.0" prefWidth="200.0">
+                  <TableView fx:id="customerTable" prefHeight="200.0" prefWidth="200.0">
                      <columns>
-                        <TableColumn prefWidth="75.0" text="First Name" />
-                        <TableColumn prefWidth="75.0" text="Last Name" />
-                        <TableColumn prefWidth="75.0" text="E-Main" />
-                        <TableColumn prefWidth="75.0" text="Adress" />
+                        <TableColumn fx:id="customerFirstName" prefWidth="75.0" text="First Name" />
+                        <TableColumn fx:id="customerLastName" prefWidth="75.0" text="Last Name" />
+                        <TableColumn fx:id="customerEmail" prefWidth="75.0" text="E-Mail" />
+                        <TableColumn fx:id="customerAddress" prefWidth="75.0" text="Address" />
                      </columns>
                   </TableView>
                </content>
             </Tab>
-            <Tab text="adress">
+            <Tab fx:id="addressTab" onSelectionChanged="#addressTabClick" text="Address">
                <content>
-                  <TableView prefHeight="371.0" prefWidth="939.0">
+                  <TableView fx:id="addressTable" prefHeight="371.0" prefWidth="939.0">
                      <columns>
-                        <TableColumn prefWidth="75.0" text="Adress" />
-                        <TableColumn prefWidth="75.0" text="City" />
-                        <TableColumn prefWidth="414.9533386230469" text="Postal Code" />
-                        <TableColumn prefWidth="375.0467224121094" text="Phone" />
+                        <TableColumn fx:id="addressAddress" prefWidth="75.0" text="Address" />
+                        <TableColumn fx:id="addressCity" prefWidth="75.0" text="City" />
+                        <TableColumn fx:id="addressPostal" prefWidth="414.9533386230469" text="Postal Code" />
+                        <TableColumn fx:id="addressPhone" prefWidth="375.0467224121094" text="Phone" />
                      </columns>
                   </TableView>
                </content>
             </Tab>
         </tabs>
       </TabPane>
-      <Button layoutX="39.0" layoutY="458.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="117.0" text="CREATE" />
-      <Button layoutX="165.0" layoutY="458.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="117.0" text="READ" />
-      <Button layoutX="291.0" layoutY="458.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="117.0" text="UPDATE" />
-      <Button layoutX="417.0" layoutY="458.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="117.0" text="DELETE" />
+      <Button layoutX="39.0" layoutY="458.0" mnemonicParsing="false" onAction="#createClick" prefHeight="43.0" prefWidth="117.0" text="CREATE" />
+      <Button layoutX="165.0" layoutY="458.0" mnemonicParsing="false" onAction="#readClick" prefHeight="43.0" prefWidth="117.0" text="READ" />
+      <Button layoutX="291.0" layoutY="458.0" mnemonicParsing="false" onAction="#updateClick" prefHeight="43.0" prefWidth="117.0" text="UPDATE" />
+      <Button layoutX="417.0" layoutY="458.0" mnemonicParsing="false" onAction="#deleteClick" prefHeight="43.0" prefWidth="117.0" text="DELETE" />
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backClick" text="Go back" />
    </children>
 </AnchorPane>

@@ -30,12 +30,16 @@ public class Address {
     private String phone;
     @Basic
     @Column(name = "location")
-    private Object location;
+    private String location;
     @Basic
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
-    public Address(int addressId, String address, String address2, String district, int cityId, String postalCode, String phone, Object location, Timestamp lastUpdate) {
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    @JoinColumn(name = "city_id")
+    private City cityByCity;
+
+    public Address(int addressId, String address, String address2, String district, int cityId, String postalCode, String phone, String location, Timestamp lastUpdate) {
         this.addressId = addressId;
         this.address = address;
         this.address2 = address2;
@@ -106,11 +110,11 @@ public class Address {
         this.phone = phone;
     }
 
-    public Object getLocation() {
+    public String getLocation() {
         return location;
     }
 
-    public void setLocation(Object location) {
+    public void setLocation(String location) {
         this.location = location;
     }
 

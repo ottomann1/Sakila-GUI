@@ -16,7 +16,7 @@ public class FilmDAO implements DAO {
     @Override
     public Optional read(long id) throws IOException, ClassNotFoundException {
         Data data = new Data();
-        Optional<Film> film = Optional.ofNullable((Film) data.getData(Film.class, (int) id));
+        Optional<Film> film = Optional.ofNullable((Film) data.getData(Film.class, (short) id));
         return film;
     }
 

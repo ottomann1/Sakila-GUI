@@ -13,7 +13,7 @@ public class StaffDAO implements DAO {
     @Override
     public Optional read(long id) throws IOException, ClassNotFoundException {
         Data data = new Data();
-        Optional<Staff> staff = Optional.ofNullable((Staff) data.getData(Staff.class, (int) id));
+        Optional<Staff> staff = Optional.ofNullable((Staff) data.getData(Staff.class, (short) id));
         return staff;
 
     }

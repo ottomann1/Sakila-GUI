@@ -14,7 +14,7 @@ public class CustomerDAO implements DAO {
     @Override
     public Optional read(long id) throws IOException, ClassNotFoundException {
         Data data = new Data();
-        Optional<Customer> customer = Optional.ofNullable((Customer) data.getData(Customer.class, (int) id));
+        Optional<Customer> customer = Optional.ofNullable((Customer) data.getData(Customer.class, (short) id));
         return customer;
     }
 

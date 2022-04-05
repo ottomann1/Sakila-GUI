@@ -14,7 +14,7 @@ public class AddressDAO implements DAO {
     @Override
     public Optional read(long id) throws IOException, ClassNotFoundException {
         Data data = new Data();
-        Optional<Address> address = Optional.ofNullable((Address) data.getData(Address.class, (int) id));
+        Optional<Address> address = Optional.ofNullable((Address) data.getData(Address.class, (short) id));
         return address;
     }
 

@@ -9,7 +9,7 @@ public class Country {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "country_id")
-    private int countryId;
+    private short countryId;
     @Basic
     @Column(name = "country")
     private String country;
@@ -17,7 +17,7 @@ public class Country {
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
-    public Country(int countryId, String country, Timestamp lastUpdate) {
+    public Country(short countryId, String country, Timestamp lastUpdate) {
         this.countryId = countryId;
         this.country = country;
         this.lastUpdate = lastUpdate;
@@ -26,11 +26,11 @@ public class Country {
     public Country() {
     }
 
-    public int getCountryId() {
+    public short getCountryId() {
         return countryId;
     }
 
-    public void setCountryId(int countryId) {
+    public void setCountryId(short countryId) {
         this.countryId = countryId;
     }
 
@@ -61,5 +61,14 @@ public class Country {
     @Override
     public int hashCode() {
         return Objects.hash(countryId, country, lastUpdate);
+    }
+
+    @Override
+    public String toString() {
+        return "Country{" +
+                "countryId=" + countryId +
+                ", country='" + country + '\'' +
+                ", lastUpdate=" + lastUpdate +
+                '}';
     }
 }

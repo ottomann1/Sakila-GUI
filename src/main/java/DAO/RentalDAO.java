@@ -13,7 +13,7 @@ public class RentalDAO implements DAO {
     @Override
     public Optional read(long id) throws IOException, ClassNotFoundException {
         Data data = new Data();
-        Optional<Rental> rental = Optional.ofNullable((Rental) data.getData(Rental.class, (int) id));
+        Optional<Rental> rental = Optional.ofNullable((Rental) data.getData(Rental.class, (short) id));
         return rental;
     }
 

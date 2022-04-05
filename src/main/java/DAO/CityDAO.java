@@ -1,7 +1,7 @@
 package DAO;
 
-import Business.Address;
 import Business.City;
+import Business.Country;
 import Database.Data;
 
 import java.io.IOException;
@@ -10,27 +10,26 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class AddressDAO implements DAO {
+public class CityDAO implements DAO {
     @Override
     public Optional read(long id) throws IOException, ClassNotFoundException {
         Data data = new Data();
-        Optional<Address> address = Optional.ofNullable((Address) data.getData(Address.class, (short) id));
-        return address;
+        Optional<City> city = Optional.ofNullable((City) data.getData(City.class, (short) id));
+        return city;
     }
 
     @Override
-    public List readAll() throws IOException, ClassNotFoundException {
+    public List readAll() throws IOException, ClassNotFoundException{
         Data data = new Data();
-        List<Object[]> addressObjects = data.getDataListQuery("SELECT * FROM address");
-        List<Address> addresss = new ArrayList<Address>();
-        for (Object[] o : addressObjects) {
-            Address address = new Address((short) o[0], o[1].toString(),
-                    o[3].toString(), (City) (data.getData(City.class, (short) o[4])), o[5].toString(),
-                    o[6].toString(), o[7].toString(), (Timestamp) o[8]);
-            addresss.add(address);
+        List<Object[]> cityObjects = data.getDataListQuery("SELECT * FROM city");
+        List<City> citys = new ArrayList<City>();
+        for (Object[] o : cityObjects) {
+            City city = new City((short) o[0], o[1].toString(), (short) o[2], (Timestamp) o[3]);
+            citys.add(city);
         }
-        return addresss;
+        return citys;
     }
+
 
     @Override
     public void create(Object o) throws IOException, ClassNotFoundException {
@@ -49,8 +48,8 @@ public class AddressDAO implements DAO {
     @Override
     public void delete(Object o) throws IOException {
         Data data = new Data();
-        Address address = (Address) o;
-        data.deleteEm(Address.class, address.getAddressId());
+        City city = (City) o;
+        data.deleteEm(City.class, city.getCityId());
 
 
     }

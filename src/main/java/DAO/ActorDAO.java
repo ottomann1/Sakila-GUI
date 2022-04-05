@@ -13,7 +13,7 @@ public class ActorDAO implements DAO{
     @Override
     public Optional read(long id) throws IOException, ClassNotFoundException {
         Data data = new Data();
-        Optional<Actor> actor = Optional.ofNullable((Actor) data.getData(Actor.class, (int) id));
+        Optional<Actor> actor = Optional.ofNullable((Actor) data.getData(Actor.class, (short) id));
         return actor;
     }
 

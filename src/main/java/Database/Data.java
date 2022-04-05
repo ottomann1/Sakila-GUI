@@ -43,7 +43,7 @@ public class Data {
         }
     }
 
-    public Object getData(Class tableClass, int id) {
+    public Object getData(Class tableClass, short id) {
         EntityManager em = ENTITY_MANAGER_FACTORY.createEntityManager();
         EntityTransaction transaction = null;
         Object tempObject = null;

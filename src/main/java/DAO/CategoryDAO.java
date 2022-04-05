@@ -13,7 +13,7 @@ public class CategoryDAO implements DAO {
     @Override
     public Optional read(long id) throws IOException, ClassNotFoundException {
         Data data = new Data();
-        Optional<Category> category = Optional.ofNullable((Category) data.getData(Category.class, (int) id));
+        Optional<Category> category = Optional.ofNullable((Category) data.getData(Category.class, (short) id));
         return category;
     }
 

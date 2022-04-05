@@ -1,11 +1,17 @@
 package com.example.sakilagui;
 
+import Business.Category;
+import Business.Film;
+import DAO.FilmCategory;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
 
 public class HelloApplication extends Application {
     @Override
@@ -17,7 +23,8 @@ public class HelloApplication extends Application {
         stage.show();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
         launch();
+
     }
 }

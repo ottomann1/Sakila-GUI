@@ -9,7 +9,7 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "category_id")
-    private int categoryId;
+    private short categoryId;
     @Basic
     @Column(name = "name")
     private String name;
@@ -17,7 +17,7 @@ public class Category {
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
-    public Category(int categoryId, String name, Timestamp lastUpdate) {
+    public Category(short categoryId, String name, Timestamp lastUpdate) {
         this.categoryId = categoryId;
         this.name = name;
         this.lastUpdate = lastUpdate;
@@ -30,7 +30,7 @@ public class Category {
         return categoryId;
     }
 
-    public void setCategoryId(int categoryId) {
+    public void setCategoryId(short categoryId) {
         this.categoryId = categoryId;
     }
 

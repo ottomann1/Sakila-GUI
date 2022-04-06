@@ -73,6 +73,7 @@ public class film {
         Collection<Actor> actors = actorDAO.readAll();
         ObservableList<Actor> observableActors = FXCollections.observableArrayList(actors);
         selectActorDropDown.setItems(observableActors);
+        String[] ratings = {"G", "PG", "PG-13", "R", "NC-17"};
 
 //        FilmDAO filmDAO = new FilmDAO();
 //        Collection<Film> rating = filmDAO.readAll();

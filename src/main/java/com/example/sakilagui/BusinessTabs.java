@@ -234,22 +234,24 @@ public class BusinessTabs {
 
     @FXML
     void readClick(ActionEvent event) {
+        if(actorTab.isSelected()){
 
+        }
     }
 
     @FXML
     void updateClick(ActionEvent event) throws IOException {
         if(actorTab.isSelected()){
-            if(actorTable.isFocused()){
+            if(!(actorTable.getSelectionModel().getSelectedItem()==null)){
                 Actor actor = actorTable.getSelectionModel().getSelectedItem();
-            Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/actor.fxml"));
-            Scene scene = new Scene(loader.load());
-            upActor updateactor =loader.getController();
-            updateactor.setFields(actor);
-            thisStage.setScene(scene);
-            thisStage.show();
-        }
+                Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/upactor.fxml"));
+                Scene scene = new Scene(loader.load());
+                upActor updateactor = loader.getController();
+                updateactor.setFields(actor);
+                thisStage.setScene(scene);
+                thisStage.show();
+            }
         }
     }
 

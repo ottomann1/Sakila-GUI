@@ -5,6 +5,7 @@ import Business.Category;
 import Business.Customer;
 import Business.Film;
 import DAO.ActorDAO;
+import DAO.CategoryDAO;
 import DAO.FilmDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -66,6 +67,7 @@ public class film {
     private TextField specialFeatureField;
 
     private Collection<Actor> actors = new ArrayList<>();
+    private Collection<Category> categories = new ArrayList<>();
 //    private Collection<Film> film = new ArrayList<>();
     
 
@@ -81,6 +83,13 @@ public class film {
         Collection<Actor> actors = actorDAO.readAll();
         ObservableList<Actor> observableActors = FXCollections.observableArrayList(actors);
         selectActorDropDown.setItems(observableActors);
+
+        CategoryDAO categoryDAO = new CategoryDAO();
+        Collection<Category> categories = categoryDAO.readAll();
+        ObservableList<Category> observableCategory = FXCollections.observableArrayList(categories);
+        categoryDropDown.setItems(observableCategory);
+
+
 // secenSwapChanges
         FXMLLoader loader1 = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/actor.fxml"));
         Scene sceneActor = new Scene(loader1.load());
@@ -89,6 +98,9 @@ public class film {
         actorStage.initModality(Modality.APPLICATION_MODAL);
 
         String[] ratings = {"G", "PG", "PG-13", "R", "NC-17"};
+        ObservableList<String> rating = FXCollections.observableArrayList(ratings);
+        ratingDropDown.setItems(rating);
+
 
 //        FilmDAO filmDAO = new FilmDAO();
 //        Collection<Film> rating = filmDAO.readAll();

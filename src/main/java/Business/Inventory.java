@@ -12,13 +12,23 @@ public class Inventory {
     private int inventoryId;
     @Basic
     @Column(name = "film_id")
-    private short filmId;
+    private int filmId;
     @Basic
     @Column(name = "store_id")
-    private byte storeId;
+    private int storeId;
     @Basic
     @Column(name = "last_update")
     private Timestamp lastUpdate;
+
+    public Inventory(int inventoryId, int filmId, int storeId, Timestamp lastUpdate) {
+        this.inventoryId = inventoryId;
+        this.filmId = filmId;
+        this.storeId = storeId;
+        this.lastUpdate = lastUpdate;
+    }
+
+    public Inventory() {
+    }
 
     //ska nog inte se ut såhär men
 
@@ -29,16 +39,6 @@ public class Inventory {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "store_by_store_id_store_id")
     private Store storeByStoreId;
-
-    public Inventory(int inventoryId, short filmId, byte storeId, Timestamp lastUpdate) {
-        this.inventoryId = inventoryId;
-        this.filmId = filmId;
-        this.storeId = storeId;
-        this.lastUpdate = lastUpdate;
-    }
-
-    public Inventory() {
-    }
 
     public Store getStoreByStoreId() {
         return storeByStoreId;
@@ -64,28 +64,28 @@ public class Inventory {
         this.inventoryId = inventoryId;
     }
 
+    public int getFilmId() {
+        return filmId;
+    }
+
+    public void setFilmId(int filmId) {
+        this.filmId = filmId;
+    }
+
+    public int getStoreId() {
+        return storeId;
+    }
+
+    public void setStoreId(int storeId) {
+        this.storeId = storeId;
+    }
+
     public Timestamp getLastUpdate() {
         return lastUpdate;
     }
 
     public void setLastUpdate(Timestamp lastUpdate) {
         this.lastUpdate = lastUpdate;
-    }
-
-    public short getFilmId() {
-        return filmId;
-    }
-
-    public void setFilmId(short filmId) {
-        this.filmId = filmId;
-    }
-
-    public byte getStoreId() {
-        return storeId;
-    }
-
-    public void setStoreId(byte storeId) {
-        this.storeId = storeId;
     }
 
     @Override

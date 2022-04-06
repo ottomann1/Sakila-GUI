@@ -36,6 +36,19 @@ public class Customer {
     @JoinColumn(name = "address_id")
     private Address address;
 
+    public String toStringHeavy() {
+        return "Customer{" +
+                "customerId=" + customerId +
+                ", storeId=" + storeId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", active=" + active +
+                ", createDate=" + createDate +
+                ", lastUpdate=" + lastUpdate +
+                ", address=" + address +
+                '}';
+    }
 
     public Customer(short customerId, byte storeId, String firstName, String lastName, String email, boolean active, Timestamp createDate, Timestamp lastUpdate, Address address) {
         this.customerId = customerId;

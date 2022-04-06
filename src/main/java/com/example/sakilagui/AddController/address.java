@@ -5,6 +5,9 @@ import Business.Address;
 import Business.City;
 import DAO.ActorDAO;
 import DAO.AddressDAO;
+import DAO.CityDAO;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +18,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
 
 public class address {
 
@@ -33,6 +38,17 @@ public class address {
 
     @FXML
     private TextField postalCodeField;
+
+    private Collection<City> city = new ArrayList<>();
+
+    @FXML
+    void initialize() throws IOException, ClassNotFoundException {
+        CityDAO cityDAO = new CityDAO();
+        Collection<City> city = cityDAO.readAll();
+        ObservableList<City> observableCity = FXCollections.observableArrayList(city);
+        cityDropDown.setItems(observableCity);
+
+    }
 
     @FXML
     void addAddressOnClick(ActionEvent event) throws IOException, ClassNotFoundException {

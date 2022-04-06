@@ -5,3 +5,17 @@
         xxxTitle.setCellValueFactory(new PropertyValueFactory<>(""));
         xxxTable.setItems(observableXXXs);
         xxxTable.getColumns().setAll();
+
+
+                //        if(xxxTab.isSelected()){
+        //            if(!(xxxTable.getSelectionModel().getSelectedItem()==null)){
+        //                XXX xxx = xxxTable.getSelectionModel().getSelectedItem();
+        //                Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        //                FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/TextField.fxml"));
+        //                Scene scene = new Scene(loader.load());
+        //                Read read = loader.getController();
+        //                read.setText(xxx.toStringHeavy());
+        //                thisStage.setScene(scene);
+        //                thisStage.show();
+        //            }
+        //        }

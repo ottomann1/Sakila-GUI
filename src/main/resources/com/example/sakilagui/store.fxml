@@ -2,16 +2,15 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 
 
+
 <AnchorPane prefHeight="241.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sakilagui.AddController.store">
+
    <children>
       <Button layoutX="531.0" layoutY="196.0" mnemonicParsing="false" onAction="#addStoreOnClick" text="Button" />
       <ComboBox fx:id="addressDropDown" layoutX="21.0" layoutY="61.0" prefHeight="25.0" prefWidth="184.0" promptText="Address" />
-      <TextArea fx:id="staffListField" layoutX="219.0" layoutY="103.0" prefHeight="124.0" prefWidth="297.0" />
-      <ComboBox fx:id="staffDropDown" layoutX="219.0" layoutY="61.0" prefHeight="25.0" prefWidth="199.0" promptText="Staff" />
-      <Button layoutX="431.0" layoutY="61.0" mnemonicParsing="false" onAction="#addStaffOnClick" prefHeight="25.0" prefWidth="84.0" text="Add Staff" />
+      <ComboBox fx:id="managerDropDown" layoutX="219.0" layoutY="61.0" prefHeight="25.0" prefWidth="199.0" promptText="Manager" />
    </children>
 </AnchorPane>

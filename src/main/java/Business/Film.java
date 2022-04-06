@@ -59,6 +59,25 @@ public class Film {
     )
     private Collection<Actor> actor = new ArrayList<Actor>();
 
+    public String toStringHeavy() {
+        return "Film{" +
+                "filmId=" + filmId +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", releaseYear=" + releaseYear +
+                ", languageId=" + languageId +
+                ", originalLanguageId=" + originalLanguageId +
+                ", rentalDuration=" + rentalDuration +
+                ", rentalRate=" + rentalRate +
+                ", length=" + length +
+                ", replacementCost=" + replacementCost +
+                ", rating='" + rating + '\'' +
+                ", specialFeatures='" + specialFeatures + '\'' +
+                ", lastUpdate=" + lastUpdate +
+                ", actor=" + actor +
+                '}';
+    }
+
     public Film(short filmId, String title, String description, Date releaseYear,
                 byte languageId, byte rentalDuration,
                 BigDecimal rentalRate, short length, BigDecimal replacementCost,

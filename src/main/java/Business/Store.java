@@ -1,6 +1,13 @@
 package Business;
 
+import DAO.ActorDAO;
+import DAO.StaffDAO;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+
 import javax.persistence.*;
+import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.Collection;
 import java.util.Objects;
@@ -20,13 +27,22 @@ public class Store {
     @Basic
     @Column(name = "last_update")
     private Timestamp lastUpdate;
+
     @OneToMany(mappedBy = "storeByStoreId")
     private Collection<Inventory> inventoriesByStoreId;
 
-    public Store(byte storeId, byte managerStaffId, short addressId, Timestamp lastUpdate) {
+    @OneToOne
+    @JoinColumn(name = "address")
+    private Address address;
+
+    @OneToOne
+    @JoinColumn(name = "manager_staff")
+    private Staff staff;
+
+    public Store(byte storeId, Staff staff, Address address, Timestamp lastUpdate) {
         this.storeId = storeId;
-        this.managerStaffId = managerStaffId;
-        this.addressId = addressId;
+        this.staff = staff;
+        this.address = address;
         this.lastUpdate = lastUpdate;
     }
 
@@ -55,6 +71,21 @@ public class Store {
 
     public void setAddressId(short addressId) {
         this.addressId = addressId;
+    }
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public Staff getStaff() {
+        return staff;
+    }
+
+    public void setStaff(Staff staff) {
+        this.staff = staff;
     }
 
     public Timestamp getLastUpdate() {

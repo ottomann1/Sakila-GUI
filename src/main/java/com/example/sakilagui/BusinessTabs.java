@@ -15,11 +15,11 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public class BusinessTabs {
@@ -259,28 +259,118 @@ public class BusinessTabs {
     }
 
     @FXML
-    void deleteClick(ActionEvent event) {
-
+    void deleteClick(ActionEvent event) throws IOException {
+        if(actorTab.isSelected()){
+            if(!(actorTable.getSelectionModel().getSelectedItem()==null)){
+                ActorDAO actorDAO = new ActorDAO();
+                actorDAO.delete(actorTable.getSelectionModel().getSelectedItem());
+            }
+        }
+        if(filmTab.isSelected()){
+            if(!(filmTable.getSelectionModel().getSelectedItem()==null)){
+                FilmDAO filmDAO = new FilmDAO();
+                filmDAO.delete(filmTable.getSelectionModel().getSelectedItem());
+            }
+        }
+        if(staffTab.isSelected()){
+            if(!(staffTable.getSelectionModel().getSelectedItem()==null)){
+                StaffDAO staffDAO = new StaffDAO();
+                staffDAO.delete(staffTable.getSelectionModel().getSelectedItem());
+            }
+        }
+        if(customerTab.isSelected()){
+            if(!(customerTable.getSelectionModel().getSelectedItem()==null)){
+                CustomerDAO customerDAO = new CustomerDAO();
+                customerDAO.delete(customerTable.getSelectionModel().getSelectedItem());
+            }
+        }
+        if(addressTab.isSelected()){
+            if(!(addressTable.getSelectionModel().getSelectedItem()==null)){
+                AddressDAO addressDAO = new AddressDAO();
+                addressDAO.delete(addressTable.getSelectionModel().getSelectedItem());
+            }
+        }
     }
 
     @FXML
-    void readClick(ActionEvent event) {
-
+    void readClick(ActionEvent event) throws IOException {
+        if(actorTab.isSelected()){
+            if(!(actorTable.getSelectionModel().getSelectedItem()==null)){
+                Actor actor = actorTable.getSelectionModel().getSelectedItem();
+                Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/TextField.fxml"));
+                Scene scene = new Scene(loader.load());
+                Read read = loader.getController();
+                read.setText(actor.toStringHeavy());
+                thisStage.setScene(scene);
+                thisStage.setScene(scene);
+                thisStage.show();
+            }
+        }
+                if(filmTab.isSelected()){
+            if(!(filmTable.getSelectionModel().getSelectedItem()==null)){
+                Film film = filmTable.getSelectionModel().getSelectedItem();
+                Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/TextField.fxml"));
+                Scene scene = new Scene(loader.load());
+                Read read = loader.getController();
+                read.setText(film.toStringHeavy());
+                thisStage.setScene(scene);
+                thisStage.show();
+            }
+        }
+                if(staffTab.isSelected()){
+            if(!(staffTable.getSelectionModel().getSelectedItem()==null)){
+                Staff staff = staffTable.getSelectionModel().getSelectedItem();
+                Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/TextField.fxml"));
+                Scene scene = new Scene(loader.load());
+                Read read = loader.getController();
+                read.setText(staff.toStringHeavy());
+                thisStage.setScene(scene);
+                thisStage.show();
+            }
+        }
+                if(customerTab.isSelected()){
+            if(!(customerTable.getSelectionModel().getSelectedItem()==null)){
+                Customer customer = customerTable.getSelectionModel().getSelectedItem();
+                Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/TextField.fxml"));
+                Scene scene = new Scene(loader.load());
+                Read read = loader.getController();
+                read.setText(customer.toStringHeavy());
+                thisStage.setScene(scene);
+                thisStage.show();
+            }
+        }
+                if(addressTab.isSelected()){
+            if(!(addressTable.getSelectionModel().getSelectedItem()==null)){
+                Address address = addressTable.getSelectionModel().getSelectedItem();
+                Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/TextField.fxml"));
+                Scene scene = new Scene(loader.load());
+                Read read = loader.getController();
+                read.setText(address.toStringHeavy());
+                thisStage.setScene(scene);
+                thisStage.show();
+            }
+        }
     }
 
     @FXML
     void updateClick(ActionEvent event) throws IOException {
         if(actorTab.isSelected()){
-            if(actorTable.isFocused()){
+            if(!(actorTable.getSelectionModel().getSelectedItem()==null)){
                 Actor actor = actorTable.getSelectionModel().getSelectedItem();
-            Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/actor.fxml"));
-            Scene scene = new Scene(loader.load());
-            upActor updateactor =loader.getController();
-            updateactor.setFields(actor);
-            thisStage.setScene(scene);
-            thisStage.show();
-        }}
+                Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/upactor.fxml"));
+                Scene scene = new Scene(loader.load());
+                upActor updateactor = loader.getController();
+                updateactor.setFields(actor);
+                thisStage.setScene(scene);
+                thisStage.show();
+            }
+        }
     }
 
 }

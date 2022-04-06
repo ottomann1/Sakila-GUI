@@ -2,6 +2,7 @@ package com.example.sakilagui.AddController;
 
 import Business.Actor;
 import Business.Category;
+import Business.Customer;
 import Business.Film;
 import DAO.ActorDAO;
 import DAO.FilmDAO;
@@ -13,22 +14,23 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-
-import java.awt.*;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.Collection;
 
 public class film {
 
+
     @FXML
-    private TextArea actorListField;
+    private ListView<Actor> actorList;
 
     @FXML
     private ChoiceBox<Category> categoryDropDown;
@@ -63,6 +65,10 @@ public class film {
     @FXML
     private TextField specialFeatureField;
 
+    private Collection<Actor> actors = new ArrayList<>();
+//    private Collection<Film> film = new ArrayList<>();
+    
+
     @FXML
     private Button addActorButton;
 
@@ -75,21 +81,36 @@ public class film {
         Collection<Actor> actors = actorDAO.readAll();
         ObservableList<Actor> observableActors = FXCollections.observableArrayList(actors);
         selectActorDropDown.setItems(observableActors);
+// secenSwapChanges
         FXMLLoader loader1 = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/actor.fxml"));
         Scene sceneActor = new Scene(loader1.load());
 //        Stage actorStage = new Stage();
         actorStage.setScene(sceneActor);
         actorStage.initModality(Modality.APPLICATION_MODAL);
+
+        String[] ratings = {"G", "PG", "PG-13", "R", "NC-17"};
+
+//        FilmDAO filmDAO = new FilmDAO();
+//        Collection<Film> rating = filmDAO.readAll();
+//        ObservableList<Film> observableFilm = FXCollections.observableArrayList(film);
+//        ratingDropDown.setItems(observableFilm);
+// master
     }
 
     @FXML
     void addActorOnClick(ActionEvent event) {
+// secenSwapChanges
 //        if(event.getTarget() == addActor){
 //            actorStage.close();
 //        }
 //        else{
             actorStage.showAndWait();
 //        }
+
+        actors.add(selectActorDropDown.getValue());
+        ObservableList<Actor> observableActors = FXCollections.observableArrayList(actors);
+        actorList.setItems(observableActors);
+// master
     }
 
     @FXML
@@ -105,6 +126,7 @@ public class film {
         film.setReplacementCost(BigDecimal.valueOf(Long.parseLong(replacementCostField.getText())));
         film.setSpecialFeatures(specialFeatureField.getText());
         film.setDescription(filmDescriptionField.getText());
+        film.setActor(actorList.itemsProperty().getValue());
         FilmDAO filmDAO = new FilmDAO();
         filmDAO.create(film);
         Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -112,6 +134,7 @@ public class film {
         Scene scene = new Scene(loader.load());
         thisStage.setScene(scene);
         thisStage.show();
+
 
     }
 

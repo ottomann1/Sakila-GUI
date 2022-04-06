@@ -96,16 +96,19 @@ public class film {
 //        ratingDropDown.setItems(observableFilm);
 // master
     }
-
     @FXML
-    void addActorOnClick(ActionEvent event) {
-// secenSwapChanges
+    void newActorOnClick(ActionEvent event){
+        // secenSwapChanges
 //        if(event.getTarget() == addActor){
 //            actorStage.close();
 //        }
 //        else{
-            actorStage.showAndWait();
+        actorStage.showAndWait();
 //        }
+    }
+    @FXML
+    void addActorOnClick(ActionEvent event) {
+
 
         actors.add(selectActorDropDown.getValue());
         ObservableList<Actor> observableActors = FXCollections.observableArrayList(actors);

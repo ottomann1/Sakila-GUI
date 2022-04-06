@@ -10,29 +10,36 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="ap" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="524.0" prefWidth="1114.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sakilagui.HelloController">
+<AnchorPane fx:id="ap" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="524.0" prefWidth="1114.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sakilagui.HelloController">
    <children>
+      <ImageView fitHeight="218.0" fitWidth="515.0" layoutX="-93.0" layoutY="-13.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Sakila.png" />
+         </image>
+      </ImageView>
       <Button fx:id="readCusButton" layoutX="506.0" layoutY="547.0" mnemonicParsing="false" onAction="#ReadCusClick" prefHeight="39.0" prefWidth="117.0" text="Read Ticket" visible="false" />
-      <TabPane fx:id="tabPanex" layoutX="16.0" layoutY="108.0" prefHeight="338.0" prefWidth="752.0" style="-fx-background-color: #DCC4F3;" tabClosingPolicy="UNAVAILABLE">
+      <TabPane fx:id="tabPanex" layoutY="79.0" prefHeight="362.0" prefWidth="770.0" style="-fx-background-color: black; -fx-border-color: black;" tabClosingPolicy="UNAVAILABLE">
          <tabs>
-            <Tab fx:id="filmTab" text="Film">
+            <Tab fx:id="filmTab" text="FILM                    ">
                <content>
-                  <TableView fx:id="filmTable" prefHeight="358.0" prefWidth="762.0">
+                  <TableView fx:id="filmTable" prefHeight="307.0" prefWidth="768.0">
                      <columns>
                         <TableColumn fx:id="filmTableTitle" prefWidth="235.89240741729736" text="Title" />
                         <TableColumn fx:id="filmTabLength" prefWidth="198.13552856445312" text="Length" />
                         <TableColumn fx:id="filmTabLanguage" prefWidth="159.65093994140625" text="language" />
-                        <TableColumn fx:id="filmTabRating" prefWidth="112.26373291015625" text="rating" />
+                        <TableColumn fx:id="filmTabRating" prefWidth="175.0" text="rating" />
                      </columns>
                   </TableView>
                </content>
             </Tab>
-            <Tab fx:id="actorTab" text="Actor">
+            <Tab fx:id="actorTab" text="ACTOR                    ">
                <content>
                   <TableView fx:id="actorTable" prefHeight="315.0" prefWidth="800.0">
                      <columns>
@@ -46,21 +53,27 @@
             </Tab>
          </tabs>
       </TabPane>
-      <ComboBox fx:id="comboBoxRating" layoutX="832.0" layoutY="138.0" prefHeight="26.0" prefWidth="237.0" promptText="Rating" />
-      <Text layoutX="834.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sort By Rating">
+      <ComboBox fx:id="comboBoxRating" layoutX="790.0" layoutY="138.0" prefHeight="26.0" prefWidth="306.0" promptText="Rating" />
+      <Text fill="WHITE" layoutX="791.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sort By Rating">
          <font>
-            <Font size="20.0" />
+            <Font name="Helvetica" size="20.0" />
          </font>
       </Text>
-      <MenuButton fx:id="menuButtonSearchBy" layoutX="843.0" layoutY="220.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="227.0" text=" Search By:">
+      <MenuButton fx:id="menuButtonSearchBy" layoutX="793.0" layoutY="220.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="301.0" text=" Search By:">
          <items>
             <MenuItem fx:id="menuItemMovieTitle" mnemonicParsing="false" text="Movie Title" />
             <MenuItem fx:id="menuItemActor" mnemonicParsing="false" text="Actor Last Name" />
          </items>
       </MenuButton>
-      <TextField fx:id="searchTextField" layoutX="844.0" layoutY="252.0" prefHeight="25.0" prefWidth="229.0" />
-      <Button layoutX="190.0" layoutY="474.0" mnemonicParsing="false" onAction="#moreInfoButtonClick" prefHeight="25.0" prefWidth="166.0" text="More Info" />
-      <Button layoutX="923.0" layoutY="434.0" mnemonicParsing="false" onAction="#backButtonClick" text="Back" />
+      <TextField fx:id="searchTextField" layoutX="794.0" layoutY="252.0" prefHeight="25.0" prefWidth="298.0" />
+      <Button layoutX="24.0" layoutY="458.0" mnemonicParsing="false" onAction="#moreInfoButtonClick" prefHeight="43.0" prefWidth="155.0" text="MORE INFO">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
+      <Button layoutX="984.0" layoutY="458.0" mnemonicParsing="false" onAction="#backButtonClick" prefHeight="43.0" prefWidth="111.0" text="MAIN MENU">
+         <font>
+            <Font name="Helvetica" size="15.0" />
+         </font></Button>
       <Pane fx:id="moreInfoPane" layoutX="310.0" layoutY="20.0" prefHeight="489.0" prefWidth="479.0" style="-fx-background-color: white; -fx-border-color: black;" visible="false">
          <children>
             <Label fx:id="moreInfoTitlePane" layoutX="28.0" layoutY="24.0" text="MOVIE TITLE">

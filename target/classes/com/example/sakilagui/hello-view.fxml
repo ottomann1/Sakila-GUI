@@ -19,9 +19,14 @@
 
 <AnchorPane fx:id="ap" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="524.0" prefWidth="1114.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sakilagui.HelloController">
    <children>
-      <ImageView fitHeight="218.0" fitWidth="515.0" layoutX="-93.0" layoutY="-13.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="218.0" fitWidth="515.0" layoutX="-103.0" layoutY="-23.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Sakila.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="189.0" fitWidth="407.0" layoutX="264.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@movieRentalpng.png" />
          </image>
       </ImageView>
       <Button fx:id="readCusButton" layoutX="506.0" layoutY="547.0" mnemonicParsing="false" onAction="#ReadCusClick" prefHeight="39.0" prefWidth="117.0" text="Read Ticket" visible="false" />

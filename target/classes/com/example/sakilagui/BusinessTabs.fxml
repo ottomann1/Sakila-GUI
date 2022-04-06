@@ -16,6 +16,11 @@
             <Image url="@Sakila.png" />
          </image>
       </ImageView>
+      <ImageView fitHeight="189.0" fitWidth="407.0" layoutX="274.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@business.png" />
+         </image>
+      </ImageView>
       <TabPane layoutY="79.0" prefHeight="362.0" prefWidth="1114.0" style="-fx-background-color: black;" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab fx:id="filmTab" text="FILM           ">

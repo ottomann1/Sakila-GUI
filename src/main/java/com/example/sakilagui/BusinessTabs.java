@@ -221,11 +221,17 @@ public class BusinessTabs {
     @FXML
     void createClick(ActionEvent event) throws IOException {
         if(actorTab.isSelected()){
-            Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/actor.fxml"));
-            Scene scene = new Scene(loader.load());
-            thisStage.setScene(scene);
-            thisStage.show();
+//            Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/actor.fxml"));
+//            Scene scene = new Scene(loader.load());
+//            thisStage.setScene(scene);
+//            thisStage.show();
+            FXMLLoader loader1 = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/actor.fxml"));
+            Scene sceneActor = new Scene(loader1.load());
+            Stage actorStage = new Stage();
+            actorStage.setScene(sceneActor);
+            actorStage.initModality(Modality.APPLICATION_MODAL);
+            actorStage.showAndWait();
         }
            else if(filmTab.isSelected()){
             Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();

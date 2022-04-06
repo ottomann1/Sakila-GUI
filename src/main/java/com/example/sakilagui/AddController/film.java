@@ -64,6 +64,8 @@ public class film {
     private TextField specialFeatureField;
 
     private Collection<Actor> actors = new ArrayList<>();
+//    private Collection<Film> film = new ArrayList<>();
+    
 
     @FXML
     void initialize() throws IOException, ClassNotFoundException {
@@ -71,6 +73,11 @@ public class film {
         Collection<Actor> actors = actorDAO.readAll();
         ObservableList<Actor> observableActors = FXCollections.observableArrayList(actors);
         selectActorDropDown.setItems(observableActors);
+
+//        FilmDAO filmDAO = new FilmDAO();
+//        Collection<Film> rating = filmDAO.readAll();
+//        ObservableList<Film> observableFilm = FXCollections.observableArrayList(film);
+//        ratingDropDown.setItems(observableFilm);
     }
 
     @FXML
@@ -101,6 +108,7 @@ public class film {
         Scene scene = new Scene(loader.load());
         thisStage.setScene(scene);
         thisStage.show();
+
 
     }
 

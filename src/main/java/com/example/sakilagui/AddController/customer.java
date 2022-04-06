@@ -2,7 +2,10 @@ package com.example.sakilagui.AddController;
 
 import Business.Address;
 import Business.Customer;
+import DAO.AddressDAO;
 import DAO.CustomerDAO;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +16,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
 
 public class customer {
 
@@ -27,6 +32,17 @@ public class customer {
 
     @FXML
     private TextField lastNameField;
+
+    private Collection<Address> address = new ArrayList<>();
+
+    @FXML
+    void initialize() throws IOException, ClassNotFoundException {
+        AddressDAO addressDAO = new AddressDAO();
+        Collection<Address> address = addressDAO.readAll();
+        ObservableList<Address> observableAddress = FXCollections.observableArrayList(address);
+        addressDropDown.setItems(observableAddress);
+
+    }
 
     @FXML
     void addCustomerOnClick(ActionEvent event) throws IOException, ClassNotFoundException {

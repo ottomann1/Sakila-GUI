@@ -57,7 +57,20 @@ public class Film {
             joinColumns = {@JoinColumn(name = "actor_id")},
             inverseJoinColumns = {@JoinColumn(name = "film_id")}
     )
+
     private Collection<Actor> actor = new ArrayList<Actor>();
+
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id")
+    private Category category;
+
+//    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    @JoinTable(
+//            name = "film_category",
+//            joinColumns = {@JoinColumn(name = "category_id")},
+//            inverseJoinColumns = {@JoinColumn(name = "film_id")})
+//
+//    private Collection<Category> category = new ArrayList<Category>();
 
     public String toStringHeavy() {
         return "Film{" +
@@ -82,7 +95,7 @@ public class Film {
                 byte languageId, byte rentalDuration,
                 BigDecimal rentalRate, short length, BigDecimal replacementCost,
                 String rating, String specialFeatures, Timestamp lastUpdate,
-                Collection<Actor> actor) {
+                Collection<Actor> actor, Category category) {
         this.filmId = filmId;
         this.title = title;
         this.description = description;
@@ -96,10 +109,19 @@ public class Film {
         this.specialFeatures = specialFeatures;
         this.lastUpdate = lastUpdate;
         this.actor = actor;
+        this.category = category;
     }
 
     public Film(){
 
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public Collection<Actor> getActor() {

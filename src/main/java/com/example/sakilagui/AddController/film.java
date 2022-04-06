@@ -2,7 +2,6 @@ package com.example.sakilagui.AddController;
 
 import Business.Actor;
 import Business.Category;
-import Business.Customer;
 import Business.Film;
 import DAO.ActorDAO;
 import DAO.CategoryDAO;
@@ -135,7 +134,7 @@ public class film {
         film.setReleaseYear(Date.valueOf(releaseYearField.getText()));
         film.setLength(Short.parseShort(filmLengthField.getText()));
         film.setRating(ratingDropDown.getValue());
-      //  film.setCategory(categoryDropDownDropDown.getValue());
+        film.setCategory(categoryDropDown.getValue());
         film.setRentalRate(BigDecimal.valueOf(Long.parseLong(rentalRateField.getText())));
         film.setRentalDuration(Byte.parseByte(rentalDurationField.getText()));
         film.setReplacementCost(BigDecimal.valueOf(Long.parseLong(replacementCostField.getText())));

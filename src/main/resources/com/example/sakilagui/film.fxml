@@ -7,7 +7,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="464.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sakilagui.Business">
+<AnchorPane prefHeight="464.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sakilagui.AddController.film">
    <children>
       <TextField fx:id="filmTitleField" layoutX="80.0" layoutY="44.0" prefHeight="25.0" prefWidth="131.0" />
       <TextField fx:id="releaseYearField" layoutX="221.0" layoutY="44.0" prefHeight="25.0" prefWidth="131.0" />

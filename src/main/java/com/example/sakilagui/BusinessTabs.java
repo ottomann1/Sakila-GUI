@@ -18,8 +18,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public class BusinessTabs {
@@ -251,7 +249,8 @@ public class BusinessTabs {
             updateactor.setFields(actor);
             thisStage.setScene(scene);
             thisStage.show();
-        }}
+        }
+        }
     }
 
 }

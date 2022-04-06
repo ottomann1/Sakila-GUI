@@ -21,6 +21,7 @@ import java.awt.*;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.Collection;
 
 public class film {
@@ -61,6 +62,8 @@ public class film {
     @FXML
     private TextField specialFeatureField;
 
+    private Collection<Actor> actors = new ArrayList<Actor>();
+
     @FXML
     void initialize() throws IOException, ClassNotFoundException {
         ActorDAO actorDAO = new ActorDAO();
@@ -71,7 +74,8 @@ public class film {
 
     @FXML
     void addActorOnClick(ActionEvent event) {
-
+        actors.add(selectActorDropDown.getValue());
+        actorListField.setText(actors.toString()+"\n");
     }
 
     @FXML

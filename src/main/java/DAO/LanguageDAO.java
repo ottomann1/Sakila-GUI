@@ -1,9 +1,11 @@
 package DAO;
 
+import Business.Language;
 import Database.Data;
 
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,17 +14,17 @@ public class LanguageDAO implements DAO{
     @Override
     public Optional read(long id) throws IOException, ClassNotFoundException {
         Data data = new Data();
-    Optional<Language> language = Optional.ofNullable((Language) data.getData(Language.class, (int) id));
+    Optional<Language> language = Optional.ofNullable((Language) data.getData(Language.class, (short) id));
     return language;
     }
 
     @Override
     public List readAll() throws IOException, ClassNotFoundException {
         Data data = new Data();
-        List<Object[]> languageObjects = data.getDataListQuery("SELECT * FROM language", Language.class);
+        List<Object[]> languageObjects = data.getDataListQuery("SELECT * FROM language");
         List<Language> languages = new ArrayList<Language>();
         for (Object[] o : languageObjects) {
-            Language language = new Language((Integer) o[0], o[1] String, (Timestamp) o[2]);
+            Language language = new Language((Integer) o[0], o[1].toString(), (Timestamp) o[2]);
             languages.add(language);
         }
         return languages;

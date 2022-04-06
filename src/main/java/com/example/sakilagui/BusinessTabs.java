@@ -131,11 +131,11 @@ public class BusinessTabs {
 
     @FXML
     void initialize() throws IOException, ClassNotFoundException {
-//        filmLoad();
-//        customerLoad();
-//        actorLoad();
+        filmLoad();
+        customerLoad();
+        actorLoad();
         staffLoad();
-//        addressLoad();
+        addressLoad();
     }
 
     void filmLoad() throws IOException, ClassNotFoundException {

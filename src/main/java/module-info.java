@@ -19,4 +19,5 @@ module com.example.sakilagui {
     exports com.example.sakilagui;
     exports com.example.sakilagui.AddController;
     exports com.example.sakilagui.UpdateController;
+    opens DAO.kopplingstabeller to com.example.sakilagui, java.base, javafx.base, javafx.fxml, org.hibernate.orm.core;
 }

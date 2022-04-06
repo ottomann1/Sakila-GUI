@@ -1,9 +1,11 @@
 package DAO;
 
+import Business.Country;
 import Database.Data;
 
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,17 +14,17 @@ public class CountryDAO implements DAO{
     @Override
     public Optional read(long id) throws IOException, ClassNotFoundException {
         Data data = new Data();
-   Optional<Country> country = Optional.ofNullable((Country) data.getData(Country.class, (int) id));
+   Optional<Country> country = Optional.ofNullable((Country) data.getData(Country.class, (short) id));
     return country;
     }
 
     @Override
     public List readAll() throws IOException, ClassNotFoundException {
         Data data = new Data();
-  List<Object[]> countryObjects = data.getDataListQuery("SELECT * FROM country", Country.class);
+  List<Object[]> countryObjects = data.getDataListQuery("SELECT * FROM country");
     List<Country> countrys = new ArrayList<Country>();
        for (Object[] o : countryObjects) {
-       Country country = new Country((Integer) o[0], o[1] String, (Timestamp) o [2]);
+       Country country = new Country((Integer) o[0], o[1].toString(), (Timestamp) o [2]);
         countrys.add(country);
    }
         return countrys;

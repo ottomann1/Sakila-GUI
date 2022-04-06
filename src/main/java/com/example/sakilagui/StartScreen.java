@@ -26,8 +26,13 @@ public class StartScreen {
     }
 
     @FXML
-    void rentClick(ActionEvent event) {
-
+    void rentClick(ActionEvent event) throws IOException {
+        Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("mainmenu.fxml"));
+        Scene scene = new Scene(loader.load());
+        BusinessTabs businessTabs = loader.getController();
+        thisStage.setScene(scene);
+        thisStage.show();
     }
 
 }

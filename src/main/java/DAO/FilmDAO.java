@@ -1,6 +1,7 @@
 package DAO;
 
 import Business.Film;
+import DAO.kopplingstabeller.FilmActor;
 import Database.Data;
 
 import java.io.IOException;
@@ -25,7 +26,7 @@ public class FilmDAO implements DAO {
         Data data = new Data();
         List<Object[]> filmObjects = data.getDataListQuery("SELECT * FROM film");
         List<Film> films = new ArrayList<Film>();
-        filmActor filmActor = new filmActor();
+        FilmActor filmActor = new FilmActor();
         for (Object[] o : filmObjects) {
             Film film = new Film((Short) o[0], o[1].toString(), o[2].toString(), (Date) o[3], (Byte) o[4],
                     (Byte) o[6], (BigDecimal) o[7], (Short) o[8], (BigDecimal) o[9],

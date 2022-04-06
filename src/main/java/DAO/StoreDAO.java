@@ -1,8 +1,10 @@
 package DAO;
 
+import Business.Store;
 import Database.Data;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -10,14 +12,14 @@ public class StoreDAO implements DAO{
     @Override
     public Optional read(long id) throws IOException, ClassNotFoundException {
         Data data = new Data();
-  Optional<Store> store = Optional.ofNullable((Store) data.getData(Store.class, (int) id));
+  Optional<Store> store = Optional.ofNullable((Store) data.getData(Store.class, (short) id));
    return store;
     }
 
     @Override
     public List readAll() throws IOException, ClassNotFoundException {
         Data data = new Data();
-   List<Object[]> storeObjects = data.getDataListQuery("SELECT * FROM store", Store.class);
+   List<Object[]> storeObjects = data.getDataListQuery("SELECT * FROM store");
     List<Store> stores = new ArrayList<Store>();
         for (Object[] o : storeObjects) {
         Store store = new Store();

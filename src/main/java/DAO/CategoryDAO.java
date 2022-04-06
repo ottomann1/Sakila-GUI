@@ -23,7 +23,7 @@ public class CategoryDAO implements DAO {
         List<Object[]> categoryObjects = data.getDataListQuery("SELECT * FROM category");
         List<Category> categorys = new ArrayList<Category>();
         for (Object[] o : categoryObjects) {
-            Category category = new Category((Integer) o[0], o[1].toString(), (Timestamp) o[2]);
+            Category category = new Category((byte) o[0], o[1].toString(), (Timestamp) o[2]);
             categorys.add(category);
         }
         return categorys;

@@ -1,15 +1,16 @@
-package DAO;
+package DAO.kopplingstabeller;
 
 import Business.Actor;
 import Business.Film;
+import DAO.ActorDAO;
+import DAO.FilmDAO;
 import Database.Data;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
-public class filmActor {
+public class FilmActor {
     public List<Actor> getActorsByFilmId(short id) throws IOException, ClassNotFoundException {
         Data data = new Data();
         ActorDAO actorDAO = new ActorDAO();

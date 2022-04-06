@@ -2,6 +2,7 @@ package DAO;
 
 import Business.Film;
 import DAO.kopplingstabeller.FilmActor;
+import DAO.kopplingstabeller.FilmCategory;
 import Database.Data;
 
 import java.io.IOException;

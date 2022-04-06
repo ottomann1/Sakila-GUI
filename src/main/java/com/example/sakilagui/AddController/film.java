@@ -134,7 +134,7 @@ public class film {
         film.setReleaseYear(Date.valueOf(releaseYearField.getText()));
         film.setLength(Short.parseShort(filmLengthField.getText()));
         film.setRating(ratingDropDown.getValue());
-        film.setCategory(categoryDropDown.getValue());
+        //film.setCategory(categoryDropDown.getValue());
         film.setRentalRate(BigDecimal.valueOf(Long.parseLong(rentalRateField.getText())));
         film.setRentalDuration(Byte.parseByte(rentalDurationField.getText()));
         film.setReplacementCost(BigDecimal.valueOf(Long.parseLong(replacementCostField.getText())));

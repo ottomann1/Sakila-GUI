@@ -44,6 +44,20 @@ public class Address {
         return address;
     }
 
+    public String toStringHeavy() {
+        return "Address{" +
+                "addressId=" + addressId +
+                ", address='" + address + '\'' +
+                ", address2='" + address2 + '\'' +
+                ", district='" + district + '\'' +
+                ", postalCode='" + postalCode + '\'' +
+                ", phone='" + phone + '\'' +
+                ", location='" + location + '\'' +
+                ", lastUpdate=" + lastUpdate +
+                ", city=" + city +
+                '}';
+    }
+
     public Address(short addressId, String address, String district, City city, String postalCode, String phone, String location, Timestamp lastUpdate) {
         this.addressId = addressId;
         this.address = address;

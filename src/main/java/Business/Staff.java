@@ -47,6 +47,24 @@ public class Staff {
     @OneToMany(mappedBy = "rentalsByStaffId")
     private Collection<Rental> rentalsByStaffId;
 
+    public String toStringHeavy() {
+        return "Staff{" +
+                "staffId=" + staffId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", address=" + address +
+                ", picture=" + Arrays.toString(picture) +
+                ", email='" + email + '\'' +
+                ", storeId=" + storeId +
+                ", active=" + active +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", lastUpdate=" + lastUpdate +
+                ", paymentsByStaffId=" + paymentsByStaffId +
+                ", rentalsByStaffId=" + rentalsByStaffId +
+                '}';
+    }
+
     public Staff(byte staffId, String firstName, String lastName, Address address, byte[] picture, String email, byte storeId, boolean active, String username, String password, Timestamp lastUpdate, Collection<Payment> paymentsByStaffId, Collection<Rental> rentalsByStaffId) {
         this.staffId = staffId;
         this.firstName = firstName;

@@ -24,7 +24,7 @@ public class CountryDAO implements DAO{
   List<Object[]> countryObjects = data.getDataListQuery("SELECT * FROM country");
     List<Country> countrys = new ArrayList<Country>();
        for (Object[] o : countryObjects) {
-       Country country = new Country((Integer) o[0], o[1].toString(), (Timestamp) o [2]);
+       Country country = new Country((short) o[0], o[1].toString(), (Timestamp) o [2]);
         countrys.add(country);
    }
         return countrys;

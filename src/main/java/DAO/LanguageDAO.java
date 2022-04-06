@@ -24,7 +24,7 @@ public class LanguageDAO implements DAO{
         List<Object[]> languageObjects = data.getDataListQuery("SELECT * FROM language");
         List<Language> languages = new ArrayList<Language>();
         for (Object[] o : languageObjects) {
-            Language language = new Language((Integer) o[0], o[1].toString(), (Timestamp) o[2]);
+            Language language = new Language((byte) o[0], o[1].toString(), (Timestamp) o[2]);
             languages.add(language);
         }
         return languages;

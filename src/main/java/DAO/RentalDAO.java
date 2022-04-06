@@ -23,7 +23,7 @@ public class RentalDAO implements DAO {
         List<Object[]> rentalObjects = data.getDataListQuery("SELECT * FROM rental");
         List<Rental> rentals = new ArrayList<Rental>();
         for (Object[] o : rentalObjects) {
-            Rental rental = new Rental((Integer) o[0], (Timestamp) o[1], (int) o[2], (int) o[3], (Timestamp) o[4], (int) o[5], (Timestamp) o[6]);
+            Rental rental = new Rental((Integer) o[0], (Timestamp) o[1], (int) o[2], (short) o[3], (Timestamp) o[4], (byte) o[5], (Timestamp) o[6]);
             rentals.add(rental);
         }
         return rentals;

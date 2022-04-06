@@ -15,6 +15,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Button;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.awt.*;
@@ -62,16 +64,32 @@ public class film {
     private TextField specialFeatureField;
 
     @FXML
+    private Button addActorButton;
+
+    Stage actorStage = new Stage();
+
+
+    @FXML
     void initialize() throws IOException, ClassNotFoundException {
         ActorDAO actorDAO = new ActorDAO();
         Collection<Actor> actors = actorDAO.readAll();
         ObservableList<Actor> observableActors = FXCollections.observableArrayList(actors);
         selectActorDropDown.setItems(observableActors);
+        FXMLLoader loader1 = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/actor.fxml"));
+        Scene sceneActor = new Scene(loader1.load());
+//        Stage actorStage = new Stage();
+        actorStage.setScene(sceneActor);
+        actorStage.initModality(Modality.APPLICATION_MODAL);
     }
 
     @FXML
     void addActorOnClick(ActionEvent event) {
-
+//        if(event.getTarget() == addActor){
+//            actorStage.close();
+//        }
+//        else{
+            actorStage.showAndWait();
+//        }
     }
 
     @FXML

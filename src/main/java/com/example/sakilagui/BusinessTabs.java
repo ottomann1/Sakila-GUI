@@ -227,6 +227,35 @@ public class BusinessTabs {
             thisStage.setScene(scene);
             thisStage.show();
         }
+           else if(filmTab.isSelected()){
+            Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/film.fxml"));
+            Scene scene = new Scene(loader.load());
+            thisStage.setScene(scene);
+            thisStage.show();
+        }
+           else if (addressTab.isSelected()){
+            Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/addresser.fxml"));
+            Scene scene = new Scene(loader.load());
+            thisStage.setScene(scene);
+            thisStage.show();
+        }
+           else if (customerTab.isSelected()){
+            Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/customer.fxml"));
+            Scene scene = new Scene(loader.load());
+            thisStage.setScene(scene);
+            thisStage.show();
+        }
+           else if(storeTab.isSelected()){
+            Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/store.fxml"));
+            Scene scene = new Scene(loader.load());
+            thisStage.setScene(scene);
+            thisStage.show();
+
+        }
     }
 
     @FXML

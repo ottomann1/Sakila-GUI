@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane prefHeight="241.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sakilagui.Store">
+<AnchorPane prefHeight="241.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sakilagui.AddController.store">
    <children>
       <Button layoutX="531.0" layoutY="196.0" mnemonicParsing="false" onAction="#addStoreOnClick" text="Button" />
       <ComboBox fx:id="addressDropDown" layoutX="21.0" layoutY="61.0" prefHeight="25.0" prefWidth="184.0" promptText="Address" />

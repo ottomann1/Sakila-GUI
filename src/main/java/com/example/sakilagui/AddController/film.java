@@ -13,11 +13,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
-import java.awt.*;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.Date;
@@ -25,8 +24,9 @@ import java.util.Collection;
 
 public class film {
 
+
     @FXML
-    private TextArea actorListField;
+    private ListView<Actor> actorList;
 
     @FXML
     private ChoiceBox<Category> categoryDropDown;
@@ -72,6 +72,7 @@ public class film {
     @FXML
     void addActorOnClick(ActionEvent event) {
 
+
     }
 
     @FXML
@@ -87,6 +88,7 @@ public class film {
         film.setReplacementCost(BigDecimal.valueOf(Long.parseLong(replacementCostField.getText())));
         film.setSpecialFeatures(specialFeatureField.getText());
         film.setDescription(filmDescriptionField.getText());
+        film.setActor(actorList.itemsProperty().getValue());
         FilmDAO filmDAO = new FilmDAO();
         filmDAO.create(film);
         Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();

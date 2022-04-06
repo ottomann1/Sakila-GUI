@@ -2,6 +2,7 @@ package com.example.sakilagui.AddController;
 
 import Business.Actor;
 import Business.Category;
+import Business.Customer;
 import Business.Film;
 import DAO.ActorDAO;
 import DAO.FilmDAO;
@@ -20,6 +21,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.Collection;
 
 public class film {
@@ -61,6 +63,8 @@ public class film {
     @FXML
     private TextField specialFeatureField;
 
+    private Collection<Actor> actors = new ArrayList<>();
+
     @FXML
     void initialize() throws IOException, ClassNotFoundException {
         ActorDAO actorDAO = new ActorDAO();
@@ -71,8 +75,9 @@ public class film {
 
     @FXML
     void addActorOnClick(ActionEvent event) {
-
-
+        actors.add(selectActorDropDown.getValue());
+        ObservableList<Actor> observableActors = FXCollections.observableArrayList(actors);
+        actorList.setItems(observableActors);
     }
 
     @FXML

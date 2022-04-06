@@ -32,11 +32,11 @@ public class Store {
     private Collection<Inventory> inventoriesByStoreId;
 
     @OneToOne
-    @JoinColumn(name = "address_id")
+    @JoinColumn(name = "address")
     private Address address;
 
     @OneToOne
-    @JoinColumn(name = "manager_staff_id")
+    @JoinColumn(name = "manager_staff")
     private Staff staff;
 
     public Store(byte storeId, Staff staff, Address address, Timestamp lastUpdate) {

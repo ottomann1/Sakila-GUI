@@ -8,7 +8,5 @@ public class Read {
     @FXML
     private TextArea textField;
 
-    void setText(String text){
-        textField.setText(text);
-    }
+    void setText(String text){textField.setText(text);}
 }

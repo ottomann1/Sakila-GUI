@@ -131,11 +131,16 @@ public class upfilm {
     public void setFields(Film filmx) {
         film = filmx;
         filmTitleField.setText(film.getTitle());
-        releaseYearField.setText(Date.valueOf(film.getReleaseYear()));
+        releaseYearField.setText(String.valueOf(film.getReleaseYear()));
         filmLengthField.setText(String.valueOf(film.getLength()));
         ratingDropDown.setValue(film.getRating());
-        addressDropDown.setValue(customer.getAddress());
-        emailField.setText(customer.getEmail());
+        categoryDropDown.setValue((Category) film.getCategory());
+        rentalRateField.setText(String.valueOf(film.getRentalRate()));
+        rentalDurationField.setText(String.valueOf(film.getRentalDuration()));
+        replacementCostField.setText(String.valueOf(film.getReplacementCost()));
+        specialFeatureField.setText();
+
+
     }
 
     @FXML
@@ -145,7 +150,7 @@ public class upfilm {
         film.setReleaseYear(Date.valueOf(releaseYearField.getText()));
         film.setLength(Short.parseShort(filmLengthField.getText()));
         film.setRating(ratingDropDown.getValue());
-        //upfilm.setCategory(categoryDropDown.getValue());
+        film.setCategory(categoryDropDown.getValue());
         film.setRentalRate(BigDecimal.valueOf(Long.parseLong(rentalRateField.getText())));
         film.setRentalDuration(Byte.parseByte(rentalDurationField.getText()));
         film.setReplacementCost(BigDecimal.valueOf(Long.parseLong(replacementCostField.getText())));

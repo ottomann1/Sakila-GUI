@@ -36,6 +36,11 @@ public class Customer {
     @JoinColumn(name = "address_id")
     private Address address;
 
+    @Override
+    public String toString() {
+        return firstName + lastName;
+    }
+
     public String toStringHeavy() {
         return
                 "Customer: " + firstName  + lastName + "\n" +

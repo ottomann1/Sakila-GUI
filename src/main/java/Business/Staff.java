@@ -46,6 +46,11 @@ public class Staff {
     @OneToMany(mappedBy = "rentalsByStaffId")
     private Collection<Rental> rentalsByStaffId;
 
+    @Override
+    public String toString() {
+        return firstName + lastName;
+    }
+
     public String toStringHeavy() {
         return
                 "Staff Member: " + firstName + lastName + "\n" +

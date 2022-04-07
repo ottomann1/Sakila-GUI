@@ -22,8 +22,8 @@ public class Store {
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
-    @OneToMany(mappedBy = "store")
-    private Collection<Inventory> inventoriesByStoreId;
+//    @OneToMany(mappedBy = "store")
+//    private Collection<Inventory> inventoriesByStoreId;
 
     @OneToOne
     @JoinColumn(name = "address_id")
@@ -38,16 +38,16 @@ public class Store {
         return  "Store ID: " + storeId + "\n" +
                 "Manager: " + staff + "\n" +
                 "Address: " + address + "\n" +
-                "Inventories by upstore ID=" + inventoriesByStoreId + "\n" +
+//                "Inventories by upstore ID=" + inventoriesByStoreId + "\n" +
                 "Store last updated: " + lastUpdate;
     }
 
-    public Store(byte storeId, Staff staff, Address address, Timestamp lastUpdate) {
-        this.storeId = storeId;
-        this.staff = staff;
-        this.address = address;
-        this.lastUpdate = lastUpdate;
-    }
+//    public Store(byte storeId, Staff staff, Address address, Timestamp lastUpdate) {
+//        this.storeId = storeId;
+//        this.staff = staff;
+//        this.address = address;
+//        this.lastUpdate = lastUpdate;
+//    }
 
     public Store() {
     }
@@ -84,11 +84,20 @@ public class Store {
         this.lastUpdate = lastUpdate;
     }
 
-    public Collection<Inventory> getInventoriesByStoreId() {
-        return inventoriesByStoreId;
+//    public Collection<Inventory> getInventoriesByStoreId() {
+//        return inventoriesByStoreId;
+//    }
+//
+//    public void setInventoriesByStoreId(Collection<Inventory> inventoriesByStoreId) {
+//        this.inventoriesByStoreId = inventoriesByStoreId;
+//    }
+
+    public Store(byte storeId, Staff staff, Address address, Timestamp lastUpdate) {
+        this.storeId = storeId;
+        this.staff = staff;
+        this.address = address;
+        this.lastUpdate = lastUpdate;
+//        this.inventoriesByStoreId = inventoriesByStoreId;
     }
 
-    public void setInventoriesByStoreId(Collection<Inventory> inventoriesByStoreId) {
-        this.inventoriesByStoreId = inventoriesByStoreId;
-    }
 }

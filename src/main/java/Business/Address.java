@@ -31,7 +31,7 @@ public class Address {
     private String phone;
     @Basic
     @Column(name = "location")
-    private String location;
+    private byte[] location;
     @Basic
     @Column(name = "last_update")
     private Timestamp lastUpdate;
@@ -54,7 +54,7 @@ public class Address {
                 "Address last updated: " + lastUpdate;
     }
 
-    public Address(short addressId, String address, String district, City city, String postalCode, String phone, String location, Timestamp lastUpdate) {
+    public Address(short addressId, String address, String district, City city, String postalCode, String phone, byte[] location, Timestamp lastUpdate) {
         this.addressId = addressId;
         this.address = address;
         this.district = district;
@@ -134,11 +134,11 @@ public class Address {
         this.phone = phone;
     }
 
-    public String getLocation() {
+    public byte[] getLocation() {
         return location;
     }
 
-    public void setLocation(String location) {
+    public void setLocation(byte[] location) {
         this.location = location;
     }
 

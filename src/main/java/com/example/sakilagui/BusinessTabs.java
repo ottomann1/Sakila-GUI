@@ -133,6 +133,7 @@ public class BusinessTabs {
         filmLoad();
         customerLoad();
         actorLoad();
+        storeLoad();
         staffLoad();
         addressLoad();
     }
@@ -269,7 +270,7 @@ public class BusinessTabs {
 //            thisStage.setScene(scene);
 //            thisStage.show();
         }
-           else if(storeTab.isSelected()){
+           else if(storeTab.isSelected()) {
 //            Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/store.fxml"));
             Scene sceneStore = new Scene(loader.load());
@@ -277,11 +278,19 @@ public class BusinessTabs {
             storeStage.setScene(sceneStore);
             storeStage.showAndWait();
             storeLoad();
+        }
+            if(staffTab.isSelected()){
+                FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/staff.fxml"));
+                Scene sceneStaff = new Scene(loader.load());
+                Stage staffStage = new Stage();
+                staffStage.setScene(sceneStaff);
+                staffStage.showAndWait();
+                staffLoad();
+            }
 //            Scene scene = new Scene(loader.load());
 //            thisStage.setScene(scene);
 //            thisStage.show();
 
-        }
     }
 
     @FXML

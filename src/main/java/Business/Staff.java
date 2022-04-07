@@ -19,6 +19,7 @@ public class Staff {
     @Column(name = "last_name")
     private String lastName;
     @OneToOne
+    @JoinColumn(name = "address_id")
     private Address address;
     @Basic
     @Column(name = "picture")
@@ -26,9 +27,9 @@ public class Staff {
     @Basic
     @Column(name = "email")
     private String email;
-    @Basic
-    @Column(name = "store_id")
-    private byte storeId;
+    @OneToOne
+    @JoinColumn(name = "store_id")
+    private Store store;
     @Basic
     @Column(name = "active")
     private boolean active;
@@ -41,58 +42,53 @@ public class Staff {
     @Basic
     @Column(name = "last_update")
     private Timestamp lastUpdate;
-    @OneToMany(mappedBy = "paymentsByStaffId")
-    private Collection<Payment> paymentsByStaffId;
-    @OneToMany(mappedBy = "rentalsByStaffId")
-    private Collection<Rental> rentalsByStaffId;
-
-    @Override
-    public String toString() { return firstName + " " + lastName;
-    }
+//    @OneToMany(mappedBy = "paymentsByStaffId")
+//    private Collection<Payment> paymentsByStaffId;
+//    @OneToMany(mappedBy = "rentalsByStaffId")
+//    private Collection<Rental> rentalsByStaffId;
 
     public String toStringHeavy() {
         return
                 "Staff Member: " + firstName + lastName + "\n" +
-                "Address: " + address + "\n" +
-                "Email: " + email + "\n" +
-                "Store: " + storeId + "\n" +
-                "Staff member last updated: " + lastUpdate;
+                        "Address: " + address + "\n" +
+                        "Email: " + email + "\n" +
+                        "Store: " + store + "\n" +
+                        "Staff member last updated: " + lastUpdate;
     }
 
-    public Staff(byte staffId, String firstName, String lastName, Address address, byte[] picture, String email, byte storeId, boolean active, String username, String password, Timestamp lastUpdate, Collection<Payment> paymentsByStaffId, Collection<Rental> rentalsByStaffId) {
+    public Staff(byte staffId, String firstName, String lastName, Address address, byte[] picture, String email, Store store, boolean active, String username, String password, Timestamp lastUpdate) {
         this.staffId = staffId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
         this.picture = picture;
         this.email = email;
-        this.storeId = storeId;
+        this.store = store;
         this.active = active;
         this.username = username;
         this.password = password;
         this.lastUpdate = lastUpdate;
-        this.paymentsByStaffId = paymentsByStaffId;
-        this.rentalsByStaffId = rentalsByStaffId;
     }
-
-    public Staff(byte staffId, String firstName, String lastName, Address address, byte[] picture, String email, byte storeId, boolean active, String username, Timestamp lastUpdate) {
+    public Staff(byte staffId, String firstName, String lastName, Address address, byte[] picture, String email, Store store, boolean active, String username, Timestamp lastUpdate) {
         this.staffId = staffId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
         this.picture = picture;
         this.email = email;
-        this.storeId = storeId;
+        this.store = store;
         this.active = active;
         this.username = username;
         this.lastUpdate = lastUpdate;
     }
 
     public Staff() {
-
     }
 
-
+    @Override
+    public String toString() {
+        return firstName + " " + lastName;
+    }
 
     public byte getStaffId() {
         return staffId;
@@ -142,12 +138,12 @@ public class Staff {
         this.email = email;
     }
 
-    public byte getStoreId() {
-        return storeId;
+    public Store getStore() {
+        return store;
     }
 
-    public void setStoreId(byte storeId) {
-        this.storeId = storeId;
+    public void setStore(Store store) {
+        this.store = store;
     }
 
     public boolean isActive() {
@@ -180,21 +176,5 @@ public class Staff {
 
     public void setLastUpdate(Timestamp lastUpdate) {
         this.lastUpdate = lastUpdate;
-    }
-
-    public Collection<Payment> getPaymentsByStaffId() {
-        return paymentsByStaffId;
-    }
-
-    public void setPaymentsByStaffId(Collection<Payment> paymentsByStaffId) {
-        this.paymentsByStaffId = paymentsByStaffId;
-    }
-
-    public Collection<Rental> getRentalsByStaffId() {
-        return rentalsByStaffId;
-    }
-
-    public void setRentalsByStaffId(Collection<Rental> rentalsByStaffId) {
-        this.rentalsByStaffId = rentalsByStaffId;
     }
 }

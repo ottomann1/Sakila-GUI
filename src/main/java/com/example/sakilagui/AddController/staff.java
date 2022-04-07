@@ -3,7 +3,11 @@ package com.example.sakilagui.AddController;
 import Business.Address;
 import Business.Staff;
 import Business.Store;
+import DAO.AddressDAO;
 import DAO.StaffDAO;
+import DAO.StoreDAO;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +19,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.util.Collection;
 
 public class staff {
     @FXML
@@ -31,6 +36,18 @@ public class staff {
 
     @FXML
     private TextField staffLastNameField;
+
+    @FXML
+    void initialize() throws IOException, ClassNotFoundException {
+        AddressDAO addressDAO = new AddressDAO();
+        StoreDAO storeDAO = new StoreDAO();
+        Collection<Address> address = addressDAO.readAll();
+        ObservableList<Address> observableAddress = FXCollections.observableArrayList(address);
+        Collection<Store> store = storeDAO.readAll();
+        ObservableList<Store> observableStore = FXCollections.observableArrayList(store);
+        StoreDropDown.setItems(observableStore);
+        addressDropDown.setItems(observableAddress);
+    }
 
     @FXML
     void addStaffOnClick(ActionEvent event) throws IOException, ClassNotFoundException {

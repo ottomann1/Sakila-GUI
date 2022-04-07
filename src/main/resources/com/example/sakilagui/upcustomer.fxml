@@ -4,19 +4,30 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="186.0" prefWidth="585.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sakilagui.UpdateController.upcustomer">
    <children>
-      <TextField fx:id="firstNameField" layoutX="70.0" layoutY="44.0" />
-      <TextField fx:id="lastNameField" layoutX="229.0" layoutY="44.0" />
-      <TextField fx:id="emailField" layoutX="395.0" layoutY="44.0" />
-      <ChoiceBox fx:id="addressDropDown" layoutX="75.0" layoutY="102.0" prefWidth="150.0" />
-      <Label layoutX="14.0" layoutY="48.0" text="Customer" />
-      <Label layoutX="117.0" layoutY="27.0" text="First name" />
-      <Label layoutX="277.0" layoutY="27.0" text="Last name" />
-      <Label layoutX="455.0" layoutY="27.0" text="Email" />
-      <Label layoutX="128.0" layoutY="87.0" text="Address" />
-      <Button layoutX="444.0" layoutY="132.0" mnemonicParsing="false" onAction="#addCustomerOnClick" text="Button" />
+      <TextField fx:id="firstNameField" layoutX="140.0" layoutY="44.0" />
+      <TextField fx:id="lastNameField" layoutX="308.0" layoutY="44.0" />
+      <TextField fx:id="emailField" layoutX="476.0" layoutY="44.0" />
+      <ChoiceBox fx:id="addressDropDown" layoutX="141.0" layoutY="104.0" prefHeight="25.0" prefWidth="160.0" />
+      <Label layoutX="7.0" layoutY="41.0" text="CUSTOMER" textFill="#e50914">
+         <font>
+            <Font size="23.0" />
+         </font></Label>
+      <Label layoutX="189.0" layoutY="27.0" text="First name" textFill="WHITE" />
+      <Label layoutX="357.0" layoutY="27.0" text="Last name" textFill="WHITE" />
+      <Label layoutX="542.0" layoutY="27.0" text="Email" textFill="WHITE" />
+      <Label layoutX="194.0" layoutY="87.0" text="Address" textFill="WHITE" />
+      <Button layoutX="520.0" layoutY="103.0" mnemonicParsing="false" onAction="#addCustomerOnClick" prefHeight="43.0" prefWidth="117.0" style="-fx-background-color: #e50914#e50914;" text="SAVE" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <effect>
+            <InnerShadow />
+         </effect></Button>
    </children>
 </AnchorPane>

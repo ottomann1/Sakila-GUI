@@ -37,5 +37,4 @@ public class actor {
 //        thisStage.show();
 
     }
-
 }

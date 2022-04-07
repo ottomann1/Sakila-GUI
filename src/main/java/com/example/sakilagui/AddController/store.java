@@ -51,7 +51,8 @@ public class store {
         Store store = new Store();
         store.setAddress(addressDropDown.getValue());
         store.setStaff(managerDropDown.getValue());
-        store.setLastUpdate(new Timestamp(System.currentTimeMillis()));
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        store.setLastUpdate(timestamp);
         StoreDAO storeDAO = new StoreDAO();
         storeDAO.create(store);
 //        Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();

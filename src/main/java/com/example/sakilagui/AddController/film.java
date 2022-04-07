@@ -23,6 +23,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -146,6 +147,8 @@ public class film {
         film.setSpecialFeatures(specialFeatureField.getText());
         film.setDescription(filmDescriptionField.getText());
         film.setActor(actorList.itemsProperty().getValue());
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        film.setLastUpdate(timestamp);
         FilmDAO filmDAO = new FilmDAO();
         filmDAO.create(film);
         Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();

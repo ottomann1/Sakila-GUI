@@ -16,7 +16,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
-import javafx.stage.Popup;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -146,7 +145,7 @@ public class BusinessTabs {
         filmTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
         filmDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
         filmReleaseYear.setCellValueFactory(new PropertyValueFactory<>("releaseYear"));
-        filmLanguage.setCellValueFactory(new PropertyValueFactory<>("languageId"));
+        filmLanguage.setCellValueFactory(new PropertyValueFactory<>("language"));
         filmLength.setCellValueFactory(new PropertyValueFactory<>("length"));
         filmTable.setItems(observableFilms);
         filmTable.getColumns().setAll(filmTitle, filmDescription, filmReleaseYear, filmLanguage, filmLength);
@@ -163,16 +162,17 @@ public class BusinessTabs {
         actorTable.getColumns().setAll(actorFirstName, actorLastName);
     }
 
-    void storeLoad(){
+    void storeLoad() throws IOException, ClassNotFoundException {
 //        no DAO for it check if needed
 //
-//        StoreDAO storeDAO = new StoreDAO();
-//        List<Store> upstore = storeDAO.readAll();
-//        ObservableList<Store> observableStores = FXCollections.observableArrayList(upstore);
-//        storeTable.setItems(observableStores);
-//        storeTitle.setCellValueFactory(new PropertyValueFactory<>(""));
-//        storeTable.setItems(observableStores);
-//        storeTable.getColumns().setAll(storeTitle,);
+        StoreDAO storeDAO = new StoreDAO();
+        List<Store> store = storeDAO.readAll();
+        ObservableList<Store> observableStores = FXCollections.observableArrayList(store);
+        storeTable.setItems(observableStores);
+        storeAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
+        storeStaff.setCellValueFactory(new PropertyValueFactory<>("staff"));
+        storeTable.setItems(observableStores);
+        storeTable.getColumns().setAll(storeAddress, storeStaff);
     }
 
     void staffLoad() throws IOException, ClassNotFoundException {
@@ -324,7 +324,7 @@ public class BusinessTabs {
             if(!(actorTable.getSelectionModel().getSelectedItem()==null)){
                 Actor actor = actorTable.getSelectionModel().getSelectedItem();
                 Stage thisStage = new Stage();
-                FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/TextField.fxml"));
+                FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/FieldOfText.fxml"));
                 Scene scene = new Scene(loader.load());
                 Read read = loader.getController();
                 read.setText(actor.toStringHeavy());
@@ -337,7 +337,7 @@ public class BusinessTabs {
             if(!(filmTable.getSelectionModel().getSelectedItem()==null)){
                 Film film = filmTable.getSelectionModel().getSelectedItem();
                 Stage thisStage = new Stage();
-                FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/TextField.fxml"));
+                FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/FieldOfText.fxml"));
                 Scene scene = new Scene(loader.load());
                 Read read = loader.getController();
                 read.setText(film.toStringHeavy());
@@ -350,7 +350,7 @@ public class BusinessTabs {
             if(!(staffTable.getSelectionModel().getSelectedItem()==null)){
                 Staff staff = staffTable.getSelectionModel().getSelectedItem();
                 Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/TextField.fxml"));
+                FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/FieldOfText.fxml"));
                 Scene scene = new Scene(loader.load());
                 Read read = loader.getController();
                 read.setText(staff.toStringHeavy());
@@ -363,7 +363,7 @@ public class BusinessTabs {
             if(!(customerTable.getSelectionModel().getSelectedItem()==null)){
                 Customer customer = customerTable.getSelectionModel().getSelectedItem();
                 Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/TextField.fxml"));
+                FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/FieldOfText.fxml"));
                 Scene scene = new Scene(loader.load());
                 Read read = loader.getController();
                 read.setText(customer.toStringHeavy());
@@ -376,7 +376,7 @@ public class BusinessTabs {
             if(!(addressTable.getSelectionModel().getSelectedItem()==null)){
                 Address address = addressTable.getSelectionModel().getSelectedItem();
                 Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/TextField.fxml"));
+                FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/FieldOfText.fxml"));
                 Scene scene = new Scene(loader.load());
                 Read read = loader.getController();
                 read.setText(address.toStringHeavy());

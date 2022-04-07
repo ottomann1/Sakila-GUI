@@ -25,7 +25,7 @@ public class FilmDAO implements DAO {
     @Override
     public List readAll() throws IOException, ClassNotFoundException {
         Data data = new Data();
-        List<Object[]> filmObjects = data.getDataListQuery("SELECT * FROM film");
+        List<Object[]> filmObjects = data.getDataListQuery("SELECT * FROM upfilm");
         List<Film> films = new ArrayList<Film>();
         FilmActor filmActor = new FilmActor();
         FilmCategory filmCategory = new FilmCategory();

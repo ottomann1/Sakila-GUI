@@ -14,7 +14,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.sql.Timestamp;
 
 public class staff {
     @FXML
@@ -39,7 +38,6 @@ public class staff {
         staff.setLastName(staffLastNameField.getText());
         staff.setEmail(staffEmailField.getText());
        // staff.setAddress(addressDropDown.getValue());
-        staff.setLastUpdate(new Timestamp(System.currentTimeMillis()));
         StaffDAO staffDAO = new StaffDAO();
         staffDAO.create(staff);
         Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();

@@ -21,7 +21,7 @@ public class AddressDAO implements DAO {
     @Override
     public List readAll() throws IOException, ClassNotFoundException {
         Data data = new Data();
-        List<Object[]> addressObjects = data.getDataListQuery("SELECT * FROM address");
+        List<Object[]> addressObjects = data.getDataListQuery("SELECT * FROM upaddress");
         List<Address> addresss = new ArrayList<Address>();
         for (Object[] o : addressObjects) {
             Address address = new Address((short) o[0], o[1].toString(),

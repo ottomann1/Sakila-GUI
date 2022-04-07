@@ -21,7 +21,7 @@ public class CustomerDAO implements DAO {
     @Override
     public List readAll() throws IOException, ClassNotFoundException {
         Data data = new Data();
-        List<Object[]> customerObjects = data.getDataListQuery("SELECT * FROM upcustomer");
+        List<Object[]> customerObjects = data.getDataListQuery("SELECT * FROM customer");
         List<Customer> customers = new ArrayList<Customer>();
         for (Object[] o : customerObjects) {
             Customer customer = new Customer((short) o[0], (Byte) o[1], o[2].toString(),

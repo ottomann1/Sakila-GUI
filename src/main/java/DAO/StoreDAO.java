@@ -19,7 +19,7 @@ public class StoreDAO implements DAO{
     @Override
     public List readAll() throws IOException, ClassNotFoundException {
         Data data = new Data();
-   List<Object[]> storeObjects = data.getDataListQuery("SELECT * FROM upstore");
+   List<Object[]> storeObjects = data.getDataListQuery("SELECT * FROM store");
     List<Store> stores = new ArrayList<Store>();
         for (Object[] o : storeObjects) {
         Store store = new Store();

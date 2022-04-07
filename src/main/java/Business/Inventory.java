@@ -12,11 +12,11 @@ public class Inventory {
     private int inventoryId;
 
     @ManyToOne
-    @Column(name = "film_id")
+    @JoinColumn(name = "film_id")
     private Film film;
 
     @ManyToOne
-    @Column(name = "store_id")
+    @JoinColumn(name = "store_id")
     private Store store;
 
     @Basic

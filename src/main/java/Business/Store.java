@@ -32,7 +32,7 @@ public class Store {
     private Collection<Inventory> inventoriesByStoreId;
 
     @OneToOne
-    @JoinColumn(name = "upaddress")
+    @JoinColumn(name = "address")
     private Address address;
 
     @OneToOne

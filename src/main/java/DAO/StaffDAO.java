@@ -22,7 +22,7 @@ public class StaffDAO implements DAO {
     @Override
     public List readAll() throws IOException, ClassNotFoundException {
         Data data = new Data();
-        List<Object[]> staffObjects = data.getDataListQuery("SELECT * FROM upstaff");
+        List<Object[]> staffObjects = data.getDataListQuery("SELECT * FROM staff");
         List<Staff> staffs = new ArrayList<Staff>();
         for (Object[] o : staffObjects) {
             Staff staff = new Staff((byte) o[0], o[1].toString(), o[2].toString(), (Address) (data.getData(Address.class, (short) o[3])), (byte[]) o[4], o[5].toString(),

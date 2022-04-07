@@ -184,7 +184,7 @@ public class BusinessTabs {
         staffFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         staffLastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
         staffEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
-        staffAddress.setCellValueFactory(new PropertyValueFactory<>("upaddress")); // change to upaddress with OneToOne
+        staffAddress.setCellValueFactory(new PropertyValueFactory<>("address")); // change to upaddress with OneToOne
         staffTable.setItems(observableStaffs);
         staffTable.getColumns().setAll(staffStoreId, staffFirstName, staffLastName, staffEmail, staffAddress);
     }
@@ -196,7 +196,7 @@ public class BusinessTabs {
         customerFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         customerLastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
         customerEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
-        customerAddress.setCellValueFactory(new PropertyValueFactory<>("upaddress")); // change to upaddress with OneToOne
+        customerAddress.setCellValueFactory(new PropertyValueFactory<>("address")); // change to upaddress with OneToOne
         customerTable.setItems(observableCustomers);
         customerTable.getColumns().setAll(customerFirstName, customerLastName, customerEmail, customerAddress);
     }
@@ -205,7 +205,7 @@ public class BusinessTabs {
         List<Address> address = addressDAO.readAll();
         ObservableList<Address> observableAddresss = FXCollections.observableArrayList(address);
         addressTable.setItems(observableAddresss);
-        addressAddress.setCellValueFactory(new PropertyValueFactory<>("upaddress"));
+        addressAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
         addressCity.setCellValueFactory(new PropertyValueFactory<>("city")); // change to city with OneToOne
         addressPostal.setCellValueFactory(new PropertyValueFactory<>("postalCode"));
         addressPhone.setCellValueFactory(new PropertyValueFactory<>("phone"));

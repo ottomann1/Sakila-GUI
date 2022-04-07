@@ -5,14 +5,14 @@ import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
-@Table(name = "upaddress")
+@Table(name = "address")
 public class Address {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "address_id")
     private short addressId;
     @Basic
-    @Column(name = "upaddress")
+    @Column(name = "address")
     private String address;
     @Basic
     @Column(name = "address2")

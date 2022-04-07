@@ -47,8 +47,7 @@ public class Staff {
     private Collection<Rental> rentalsByStaffId;
 
     @Override
-    public String toString() {
-        return firstName + lastName;
+    public String toString() { return firstName + " " + lastName;
     }
 
     public String toStringHeavy() {

@@ -37,8 +37,7 @@ public class Customer {
     private Address address;
 
     @Override
-    public String toString() {
-        return firstName + lastName;
+    public String toString() {return firstName + " " + lastName;
     }
 
     public String toStringHeavy() {

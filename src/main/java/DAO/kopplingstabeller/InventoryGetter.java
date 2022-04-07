@@ -37,9 +37,9 @@ public class InventoryGetter {
         FilmDAO filmDAO = new FilmDAO();
         List<Film> films = new ArrayList<Film>();
         Data data = new Data();
-        List<Object[]> x = data.getDataListQuery("SELECT * FROM inventory WHERE film_id = "+inventory.getFilmId());
+        List<Object[]> x = data.getDataListQuery("SELECT * FROM inventory WHERE film_id = "+inventory.getFilm().getFilmId());
         for (int i = 0; i < x.size(); i++) {
-            films.add((Film) filmDAO.read(inventory.getFilmId()).get());
+            films.add((Film) filmDAO.read(inventory.getFilm().getFilmId()).get());
         }
         return films;
     }

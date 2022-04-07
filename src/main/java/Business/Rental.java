@@ -20,13 +20,13 @@ public class Rental {
     private int inventoryId;
     @Basic
     @Column(name = "customer_id")
-    private int customerId;
+    private short customerId;
     @Basic
     @Column(name = "return_date")
     private Timestamp returnDate;
     @Basic
     @Column(name = "staff_id")
-    private int staffId;
+    private byte staffId;
     @Basic
     @Column(name = "last_update")
     private Timestamp lastUpdate;
@@ -60,7 +60,7 @@ public class Rental {
         this.rentalsByStaffId = rentalsByStaffId;
     }
 
-    public Rental(int rentalId, Timestamp rentalDate, int inventoryId, int customerId, Timestamp returnDate, int staffId, Timestamp lastUpdate) {
+    public Rental(int rentalId, Timestamp rentalDate, int inventoryId, short customerId, Timestamp returnDate, byte staffId, Timestamp lastUpdate) {
         this.rentalId = rentalId;
         this.rentalDate = rentalDate;
         this.inventoryId = inventoryId;
@@ -99,11 +99,11 @@ public class Rental {
         this.inventoryId = inventoryId;
     }
 
-    public int getCustomerId() {
+    public short getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(int customerId) {
+    public void setCustomerId(short customerId) {
         this.customerId = customerId;
     }
 
@@ -115,11 +115,11 @@ public class Rental {
         this.returnDate = returnDate;
     }
 
-    public int getStaffId() {
+    public byte getStaffId() {
         return staffId;
     }
 
-    public void setStaffId(int staffId) {
+    public void setStaffId(byte staffId) {
         this.staffId = staffId;
     }
 

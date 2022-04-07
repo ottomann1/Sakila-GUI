@@ -19,39 +19,39 @@ public class upaddress {
 
 
     @FXML
-    private TextField upAddressField;
+    private TextField AddressField;
 
     @FXML
-    private ComboBox<City> upCityDropDown;
+    private ComboBox<City> CityDropDown;
 
     @FXML
-    private TextField upDistrictField;
+    private TextField DistrictField;
 
     @FXML
-    private TextField upPhoneField;
+    private TextField PhoneField;
 
     @FXML
-    private TextField upPostalCodeField;
+    private TextField PostalCodeField;
 
     private Address address;
 
     public void setFields(Address addressx){
         address = addressx;
-        upAddressField.setText(address.getAddress());
-        upDistrictField.setText(address.getDistrict());
-        upCityDropDown.setValue(address.getCity());
-        upPhoneField.setText(address.getPhone());
-        upPostalCodeField.setText(address.getPostalCode());
+        AddressField.setText(address.getAddress());
+        DistrictField.setText(address.getDistrict());
+        CityDropDown.setValue(address.getCity());
+        PhoneField.setText(address.getPhone());
+        PostalCodeField.setText(address.getPostalCode());
     }
 
        @FXML
-       void updateAddressOnClick(ActionEvent event)  throws IOException, ClassNotFoundException {
+       void addAddressOnClick(ActionEvent event)  throws IOException, ClassNotFoundException {
         AddressDAO addressDAO = new AddressDAO();
-        address.setAddress(upAddressField.getText());
-        address.setDistrict(upDistrictField.getText());
-        address.setPhone(upPhoneField.getText());
-        address.setCity(upCityDropDown.getValue());
-        address.setPostalCode(upPostalCodeField.getText());
+        address.setAddress(AddressField.getText());
+        address.setDistrict(DistrictField.getText());
+        address.setPhone(PhoneField.getText());
+        address.setCity(CityDropDown.getValue());
+        address.setPostalCode(PostalCodeField.getText());
         address.setLastUpdate(new Timestamp(System.currentTimeMillis()));
         addressDAO.update(address, new upaddress());
         Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();

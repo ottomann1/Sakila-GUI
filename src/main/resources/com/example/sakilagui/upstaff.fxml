@@ -4,21 +4,32 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="186.0" prefWidth="585.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sakilagui.UpdateController.upstaff">
    <children>
-      <TextField fx:id="staffFirstNameField" layoutX="55.0" layoutY="44.0" />
-      <TextField fx:id="staffLastNameField" layoutX="217.0" layoutY="44.0" />
-      <TextField fx:id="staffEmailField" layoutX="380.0" layoutY="44.0" />
-      <ChoiceBox fx:id="StoreDropDown" layoutX="55.0" layoutY="132.0" prefWidth="150.0" />
-      <ChoiceBox fx:id="addressDropDown" layoutX="217.0" layoutY="132.0" prefWidth="150.0" />
-      <Label layoutX="14.0" layoutY="48.0" text="Staff" />
-      <Label layoutX="103.0" layoutY="27.0" text="First name" />
-      <Label layoutX="265.0" layoutY="27.0" text="Last name" />
-      <Label layoutX="440.0" layoutY="27.0" text="Email" />
-      <Label layoutX="116.0" layoutY="117.0" text="Store" />
-      <Label layoutX="270.0" layoutY="117.0" text="Address" />
-      <Button layoutX="429.0" layoutY="132.0" mnemonicParsing="false" onAction="#addStaffOnClick" text="Button" />
+      <TextField fx:id="staffFirstNameField" layoutX="93.0" layoutY="44.0" />
+      <TextField fx:id="staffLastNameField" layoutX="265.0" layoutY="44.0" />
+      <TextField fx:id="staffEmailField" layoutX="438.0" layoutY="44.0" />
+      <ChoiceBox fx:id="StoreDropDown" layoutX="83.0" layoutY="104.0" prefHeight="25.0" prefWidth="171.0" />
+      <ChoiceBox fx:id="addressDropDown" layoutX="264.0" layoutY="104.0" prefHeight="25.0" prefWidth="162.0" />
+      <Label layoutX="14.0" layoutY="42.0" text="STAFF" textFill="#e50914">
+         <font>
+            <Font size="23.0" />
+         </font></Label>
+      <Label layoutX="145.0" layoutY="27.0" text="First name" textFill="WHITE" />
+      <Label layoutX="318.0" layoutY="27.0" text="Last name" textFill="WHITE" />
+      <Label layoutX="502.0" layoutY="27.0" text="Email" textFill="WHITE" />
+      <Label layoutX="155.0" layoutY="86.0" text="Store" textFill="WHITE" />
+      <Label layoutX="324.0" layoutY="85.0" text="Address" textFill="WHITE" />
+      <Button layoutX="481.0" layoutY="104.0" mnemonicParsing="false" onAction="#addStaffOnClick" prefHeight="43.0" prefWidth="117.0" style="-fx-background-color: #e50914#e50914;" text="SAVE" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <effect>
+            <InnerShadow />
+         </effect></Button>
    </children>
 </AnchorPane>

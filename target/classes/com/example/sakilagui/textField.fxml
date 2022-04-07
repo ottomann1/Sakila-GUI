@@ -5,6 +5,7 @@
 
 <AnchorPane prefHeight="683.0" prefWidth="737.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sakilagui.Read">
    <children>
+
       <TextArea fx:id="textField" layoutX="14.0" layoutY="14.0" prefHeight="652.0" prefWidth="713.0" />
    </children>
 </AnchorPane>

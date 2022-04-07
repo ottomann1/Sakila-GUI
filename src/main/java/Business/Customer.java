@@ -37,17 +37,11 @@ public class Customer {
     private Address address;
 
     public String toStringHeavy() {
-        return "Customer{" +
-                "customerId=" + customerId +
-                ", storeId=" + storeId +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", active=" + active +
-                ", createDate=" + createDate +
-                ", lastUpdate=" + lastUpdate +
-                ", address=" + address +
-                '}';
+        return
+                "Customer: " + firstName  + lastName + "\n" +
+                "Email: " + email + "\n" +
+                "Address: " + address + "\n" +
+                "Customer last updated: " + lastUpdate;
     }
 
     public Customer(short customerId, byte storeId, String firstName, String lastName, String email, boolean active, Timestamp createDate, Timestamp lastUpdate, Address address) {

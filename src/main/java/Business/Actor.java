@@ -20,6 +20,8 @@ public class Actor {
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
+
+
     @Override
     public String toString() {
         return firstName +" " +lastName;
@@ -27,9 +29,8 @@ public class Actor {
 
     public String toStringHeavy() {
         return actorId +
-                ", " + firstName + '\n' +
-                ", " + lastName + '\n' +
-                ", " + lastUpdate;
+                firstName + " " + lastName + "\n" +
+                "Actor profile last updated: " + lastUpdate;
     }
 
     public Actor(short actorId, String firstName, String lastName, Timestamp lastUpdate) {

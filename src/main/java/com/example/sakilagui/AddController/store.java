@@ -55,7 +55,7 @@ public class store {
         StoreDAO storeDAO = new StoreDAO();
         storeDAO.create(store);
         Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/BusinessTabs.fxml"));
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/businessTabs.fxml"));
         Scene scene = new Scene(loader.load());
         thisStage.setScene(scene);
         thisStage.show();

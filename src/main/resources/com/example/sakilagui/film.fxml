@@ -36,7 +36,7 @@
          </font></Label>
       <TextArea fx:id="filmDescriptionField" layoutX="80.0" layoutY="150.0" prefHeight="228.0" prefWidth="413.0" />
       <ChoiceBox fx:id="selectActorDropDown" layoutX="503.0" layoutY="197.0" prefHeight="25.0" prefWidth="245.0" />
-      <Button fx:id="addActorButton" layoutX="505.0" layoutY="233.0" mnemonicParsing="false" onAction="#addActorOnClick" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: #e50914;" text="Add Actor" textFill="WHITE">
+      <Button layoutX="505.0" layoutY="233.0" mnemonicParsing="false" onAction="#addActorOnClick" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: #e50914;" text="Add Actor" textFill="WHITE">
          <font>
             <Font name="Helvetica Neue" size="13.0" />
          </font>
@@ -58,7 +58,7 @@
          <effect>
             <InnerShadow />
          </effect></Button>
-      <Button fx:id="addActorButton1" layoutX="581.0" layoutY="386.0" mnemonicParsing="false" onAction="#addActorOnClick" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: e50914;" text="Remove Actor" textFill="WHITE">
+      <Button layoutX="581.0" layoutY="386.0" mnemonicParsing="false" onAction="#removeActorsClick" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: e50914;" text="Remove Actor" textFill="WHITE">
          <effect>
             <InnerShadow />
          </effect></Button>

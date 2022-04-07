@@ -32,10 +32,10 @@ public class FilmDAO implements DAO {
         LanguageDAO languageDAO = new LanguageDAO();
         FilmCategory filmCategory = new FilmCategory();
         for (Object[] o : filmObjects) {
-            Film film = new Film((Short) o[0], o[1].toString(), o[2].toString(), (Date) o[3],
+            Film film = new Film((short) o[0], o[1].toString(), o[2].toString(), (Date) o[3],
                     (Language) languageDAO.read((byte)o[4]).get(),
                     (Byte) o[6], (BigDecimal) o[7], (Short) o[8], (BigDecimal) o[9],
-                    o[10].toString(), o[11].toString(), (Timestamp) o[12], filmActor.getActorsByFilmId((Short)o[0]),
+                    o[10].toString(), (Timestamp) o[12], filmActor.getActorsByFilmId((Short)o[0]),
                     filmCategory.getCategoriesByFilmId((Short) o[0]));
             films.add(film);
         }
@@ -48,10 +48,18 @@ public class FilmDAO implements DAO {
         data.setData(o);
     }
 
+    public short createFilm(Film film) throws IOException, ClassNotFoundException {
+        Data data = new Data();
+        short x = data.setDataFilm(film);
+        return x;
+    }
+
     @Override
     public void update(Object newT, Object oldT) throws IOException {
         Data data = new Data();
-        data.updateData(newT);
+        Film film = (Film) newT;
+        film.setLastUpdate(new Timestamp(System.currentTimeMillis()));
+        data.updateData(film);
     }
 
     @Override

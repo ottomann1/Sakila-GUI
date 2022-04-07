@@ -1,6 +1,8 @@
 package DAO;
 
+import Business.Film;
 import Business.Inventory;
+import Business.Store;
 import Database.Data;
 
 import java.io.IOException;
@@ -24,8 +26,10 @@ public class InventoryDAO implements DAO{
         Data data = new Data();
     List<Object[]> inventoryObjects = data.getDataListQuery("SELECT * FROM inventory");
     List<Inventory> inventorys = new ArrayList<Inventory>();
+        FilmDAO filmDAO = new FilmDAO();
+        StoreDAO storeDAO = new StoreDAO();
        for (Object[] o : inventoryObjects) {
-       Inventory inventory = new Inventory((int) o[0], (short) o[1],(byte) o[2], (Timestamp) o[3]);
+       Inventory inventory = new Inventory((int) o[0], (Film) filmDAO.read((byte)o[1]).get(), (Store) storeDAO.read((byte) o[2]).get(), (Timestamp) o[3]);
         inventorys.add(inventory);
     }
         return inventorys;

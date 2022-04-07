@@ -6,6 +6,7 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -38,16 +39,29 @@
       <Button fx:id="addActorButton" layoutX="505.0" layoutY="186.0" mnemonicParsing="false" onAction="#addActorOnClick" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: #e50914;" text="Add Actor" textFill="WHITE">
          <font>
             <Font name="Helvetica Neue" size="13.0" />
-         </font></Button>
+         </font>
+         <effect>
+            <InnerShadow />
+         </effect></Button>
       <Label layoutX="608.0" layoutY="132.0" prefHeight="17.0" prefWidth="37.0" text="Actor" textFill="WHITE" />
       <Label layoutX="80.0" layoutY="133.0" prefHeight="17.0" prefWidth="106.0" text="Description" textFill="WHITE" />
       <Label layoutX="600.0" layoutY="218.0" prefHeight="17.0" prefWidth="52.0" text="Actor list" textFill="WHITE" />
-      <Button layoutX="80.0" layoutY="380.0" mnemonicParsing="false" onAction="#addFilmOnClick" prefHeight="64.0" prefWidth="244.0" text="SAVE">
+      <Button layoutX="80.0" layoutY="391.0" mnemonicParsing="false" onAction="#addFilmOnClick" prefHeight="43.0" prefWidth="117.0" style="-fx-background-color: #e50914#e50914;" text="SAVE" textFill="WHITE">
          <font>
-            <Font size="33.0" />
-         </font></Button>
+            <Font size="20.0" />
+         </font>
+         <effect>
+            <InnerShadow />
+         </effect></Button>
       <ListView fx:id="actorList" layoutX="505.0" layoutY="238.0" prefHeight="92.0" prefWidth="242.0" />
-      <Button layoutX="652.0" layoutY="186.0" mnemonicParsing="false" onAction="#newActorOnClick" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: #e50914;" text="New Actor" textFill="WHITE" />
-      <Button fx:id="addActorButton1" layoutX="581.0" layoutY="339.0" mnemonicParsing="false" onAction="#addActorOnClick" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: e50914;" text="Remove Actor" textFill="WHITE" />
+      <Button layoutX="652.0" layoutY="186.0" mnemonicParsing="false" onAction="#newActorOnClick" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: #e50914;" text="New Actor" textFill="WHITE">
+         <effect>
+            <InnerShadow />
+         </effect></Button>
+      <Button fx:id="addActorButton1" layoutX="581.0" layoutY="339.0" mnemonicParsing="false" onAction="#addActorOnClick" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: e50914;" text="Remove Actor" textFill="WHITE">
+         <effect>
+            <InnerShadow />
+         </effect></Button>
    </children>
 </AnchorPane>
+

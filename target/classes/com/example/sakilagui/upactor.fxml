@@ -5,13 +5,24 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.text.Font?>
 <AnchorPane prefHeight="110.0" prefWidth="577.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sakilagui.UpdateController.upActor">
    <children>
-      <TextField fx:id="actorFirstNameField" layoutX="74.0" layoutY="45.0" />
-      <TextField fx:id="actorLAstNameField" layoutX="242.0" layoutY="45.0" />
-      <Label layoutX="25.0" layoutY="49.0" text="Actor" />
-      <Label layoutX="121.0" layoutY="28.0" text="First name" />
-      <Label layoutX="290.0" layoutY="28.0" text="Last name" />
-      <Button layoutX="449.0" layoutY="45.0" mnemonicParsing="false" onAction="#addActorOnClick" text="Button" />
+      <TextField fx:id="actorFirstNameField" layoutX="104.0" layoutY="45.0" />
+      <TextField fx:id="actorLAstNameField" layoutX="272.0" layoutY="45.0" />
+      <Label layoutX="11.0" layoutY="44.0" text="ACTOR" textFill="#e50914">
+         <font>
+            <Font size="23.0" />
+         </font></Label>
+      <Label layoutX="156.0" layoutY="28.0" text="First name" textFill="WHITE" />
+      <Label layoutX="320.0" layoutY="28.0" text="Last name" textFill="WHITE" />
+      <Button layoutX="445.0" layoutY="36.0" mnemonicParsing="false" onAction="#addActorOnClick" prefHeight="43.0" prefWidth="117.0" style="-fx-background-color: #e50914#e50914;" text="SAVE" textFill="WHITE">
+         <effect>
+            <InnerShadow />
+         </effect>
+         <font>
+            <Font size="20.0" />
+         </font></Button>
    </children>
 </AnchorPane>

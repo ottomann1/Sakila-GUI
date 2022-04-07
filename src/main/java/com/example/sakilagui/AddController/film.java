@@ -3,9 +3,11 @@ package com.example.sakilagui.AddController;
 import Business.Actor;
 import Business.Category;
 import Business.Film;
+import Business.Language;
 import DAO.ActorDAO;
 import DAO.CategoryDAO;
 import DAO.FilmDAO;
+import DAO.LanguageDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -49,6 +51,9 @@ public class film {
     private ChoiceBox<String> ratingDropDown;
 
     @FXML
+    private ChoiceBox<Language> selectLanuageDropDown;
+
+    @FXML
     private TextField releaseYearField;
 
     @FXML
@@ -68,8 +73,7 @@ public class film {
 
     private Collection<Actor> actors = new ArrayList<>();
     private Collection<Category> categories = new ArrayList<>();
-//    private Collection<Film> film = new ArrayList<>();
-    
+    private Collection<Language> languages = new ArrayList<>();
 
     @FXML
     private Button addActorButton;
@@ -89,6 +93,14 @@ public class film {
         ObservableList<Category> observableCategory = FXCollections.observableArrayList(categories);
         categoryDropDown.setItems(observableCategory);
 
+        LanguageDAO languageDAO = new LanguageDAO();
+        Collection<Language> language = languageDAO.readAll();
+        ObservableList<Language> observableLanguages = FXCollections.observableArrayList(language);
+        selectLanuageDropDown.setItems(observableLanguages);
+
+        String[] ratings = {"G", "PG", "PG-13", "R", "NC-17"};
+        ObservableList<String> rating = FXCollections.observableArrayList(ratings);
+        ratingDropDown.setItems(rating);
 
 // secenSwapChanges
         FXMLLoader loader1 = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/actor.fxml"));
@@ -97,15 +109,6 @@ public class film {
         actorStage.setScene(sceneActor);
         actorStage.initModality(Modality.APPLICATION_MODAL);
 
-        String[] ratings = {"G", "PG", "PG-13", "R", "NC-17"};
-        ObservableList<String> rating = FXCollections.observableArrayList(ratings);
-        ratingDropDown.setItems(rating);
-
-
-//        FilmDAO filmDAO = new FilmDAO();
-//        Collection<Film> rating = filmDAO.readAll();
-//        ObservableList<Film> observableFilm = FXCollections.observableArrayList(film);
-//        ratingDropDown.setItems(observableFilm);
 // master
     }
     @FXML
@@ -126,7 +129,6 @@ public class film {
     @FXML
     void addActorOnClick(ActionEvent event) {
 
-
         actors.add(selectActorDropDown.getValue());
         ObservableList<Actor> observableActors = FXCollections.observableArrayList(actors);
         actorList.setItems(observableActors);
@@ -140,7 +142,8 @@ public class film {
         film.setReleaseYear(Date.valueOf(releaseYearField.getText()));
         film.setLength(Short.parseShort(filmLengthField.getText()));
         film.setRating(ratingDropDown.getValue());
-        //film.setCategory(categoryDropDown.getValue());
+        film.setLanguage(selectLanuageDropDown.getValue());
+        film.setCategory(categoryDropDown.getValue());
         film.setRentalRate(BigDecimal.valueOf(Long.parseLong(rentalRateField.getText())));
         film.setRentalDuration(Byte.parseByte(rentalDurationField.getText()));
         film.setReplacementCost(BigDecimal.valueOf(Long.parseLong(replacementCostField.getText())));

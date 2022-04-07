@@ -18,6 +18,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -58,6 +59,8 @@ public class address {
         address.setPhone(phoneField.getText());
         address.setCity(cityDropDown.getValue());
         address.setPostalCode(postalCodeField.getText());
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        address.setLastUpdate(timestamp);
         AddressDAO addressDAO = new AddressDAO();
         addressDAO.create(address);
         Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();

@@ -16,6 +16,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -50,6 +51,7 @@ public class store {
         Store store = new Store();
         store.setAddress(addressDropDown.getValue());
         store.setStaff(managerDropDown.getValue());
+        store.setLastUpdate(new Timestamp(System.currentTimeMillis()));
         StoreDAO storeDAO = new StoreDAO();
         storeDAO.create(store);
         Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();

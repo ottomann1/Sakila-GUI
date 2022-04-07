@@ -28,9 +28,11 @@ public class FilmCategory {
         Data data = new Data();
         CategoryDAO categoryDAO = new CategoryDAO();
         List<Category> categories = new ArrayList<Category>();
+        FilmDAO filmDAO = new FilmDAO();
         List<Object[]> objects = data.getDataListQuery("SELECT * FROM film_category WHERE film_id = "+ id);
         for(Object[] o:objects){
-            categories.add((Category) categoryDAO.read((short)o[1]).get());
+            Category category = (Category) categoryDAO.read((byte) o[1]).get();
+            categories.add(category);
         }
         return categories;
     }
@@ -40,6 +42,4 @@ public class FilmCategory {
         Optional<Category> category = Optional.ofNullable((Category) data.getData(Category.class, id));
         return category;
     }
-
-
 }

@@ -230,7 +230,6 @@ public class BusinessTabs {
             Scene sceneActor = new Scene(loader1.load());
             Stage actorStage = new Stage();
             actorStage.setScene(sceneActor);
-            actorStage.initModality(Modality.APPLICATION_MODAL);
             actorStage.showAndWait();
         }
            else if(filmTab.isSelected()){
@@ -322,6 +321,7 @@ public class BusinessTabs {
                 Read read = loader.getController();
                 read.setText(film.toStringHeavy());
                 thisStage.setScene(scene);
+                thisStage.setScene(scene);
                 thisStage.show();
             }
         }
@@ -333,6 +333,7 @@ public class BusinessTabs {
                 Scene scene = new Scene(loader.load());
                 Read read = loader.getController();
                 read.setText(staff.toStringHeavy());
+                thisStage.setScene(scene);
                 thisStage.setScene(scene);
                 thisStage.show();
             }
@@ -346,6 +347,7 @@ public class BusinessTabs {
                 Read read = loader.getController();
                 read.setText(customer.toStringHeavy());
                 thisStage.setScene(scene);
+                thisStage.setScene(scene);
                 thisStage.show();
             }
         }
@@ -357,6 +359,7 @@ public class BusinessTabs {
                 Scene scene = new Scene(loader.load());
                 Read read = loader.getController();
                 read.setText(address.toStringHeavy());
+                thisStage.setScene(scene);
                 thisStage.setScene(scene);
                 thisStage.show();
             }

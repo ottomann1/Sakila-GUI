@@ -27,8 +27,8 @@ public class Actor {
 
     public String toStringHeavy() {
         return actorId +
-                ", " + firstName + '\'' +
-                ", " + lastName + '\'' +
+                ", " + firstName + '\n' +
+                ", " + lastName + '\n' +
                 ", " + lastUpdate;
     }
 

@@ -52,7 +52,8 @@ public class customer {
         customer.setLastName(lastNameField.getText());
         customer.setEmail(emailField.getText());
         customer.setAddress(addressDropDown.getValue());
-        customer.setLastUpdate(new Timestamp(System.currentTimeMillis()));
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        customer.setLastUpdate(timestamp);
         CustomerDAO customerDAO = new CustomerDAO();
         customerDAO.create(customer);
 //        Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();

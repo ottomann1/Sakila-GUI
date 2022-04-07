@@ -6,7 +6,7 @@
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="Hibernate" />
         <datasource-mapping>
-          <factory-entry name="hibernate" value="a41cb250-e0f5-4089-a7be-c79455dcdd07" />
+          <factory-entry name="hibernate" />
         </datasource-mapping>
         <naming-strategy-map />
         <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/main/resources/META-INF/persistence.xml" />
@@ -57,3 +57,15 @@
     <orderEntry type="library" scope="TEST" name="Maven: org.junit.platform:junit-platform-engine:1.8.1" level="project" />
   </component>
 </module>
+© 2022 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About

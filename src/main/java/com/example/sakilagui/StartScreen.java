@@ -18,7 +18,7 @@ public class StartScreen {
     @FXML
     void businessClick(ActionEvent event) throws IOException {
         Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("BusinessTabs.fxml"));
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("businessTabs.fxml"));
         Scene scene = new Scene(loader.load());
         BusinessTabs businessTabs = loader.getController();
         thisStage.setScene(scene);

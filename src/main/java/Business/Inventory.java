@@ -35,30 +35,6 @@ public class Inventory {
 
     //ska nog inte se ut såhär men
 
-    @ManyToOne
-    @JoinColumn(name = "store_by_stored_id_store_id")
-    private Store storeByStoredId;
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "store_by_store_id_store_id")
-    private Store storeByStoreId;
-
-    public Store getStoreByStoreId() {
-        return storeByStoreId;
-    }
-
-    public void setStoreByStoreId(Store storeByStoreId) {
-        this.storeByStoreId = storeByStoreId;
-    }
-
-    public Store getStoreByStoredId() {
-        return storeByStoredId;
-    }
-
-    public void setStoreByStoredId(Store storeByStoredId) {
-        this.storeByStoredId = storeByStoredId;
-    }
-
     public int getInventoryId() {
         return inventoryId;
     }

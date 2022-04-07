@@ -1,5 +1,7 @@
 package Database;
 
+import Business.Actor;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -102,6 +104,7 @@ public class Data {
         }
         return Objects;
     }
+
 
     public void deleteDataQuery(String query){
         EntityManager em = ENTITY_MANAGER_FACTORY.createEntityManager();

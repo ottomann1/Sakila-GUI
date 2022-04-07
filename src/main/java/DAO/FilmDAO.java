@@ -1,6 +1,7 @@
 package DAO;
 
 import Business.Film;
+import Business.Language;
 import DAO.kopplingstabeller.FilmActor;
 import DAO.kopplingstabeller.FilmCategory;
 import Database.Data;
@@ -28,9 +29,11 @@ public class FilmDAO implements DAO {
         List<Object[]> filmObjects = data.getDataListQuery("SELECT * FROM film");
         List<Film> films = new ArrayList<Film>();
         FilmActor filmActor = new FilmActor();
+        LanguageDAO languageDAO = new LanguageDAO();
         FilmCategory filmCategory = new FilmCategory();
         for (Object[] o : filmObjects) {
-            Film film = new Film((Short) o[0], o[1].toString(), o[2].toString(), (Date) o[3], (Byte) o[4],
+            Film film = new Film((Short) o[0], o[1].toString(), o[2].toString(), (Date) o[3],
+                    (Language) languageDAO.read((byte)o[4]).get(),
                     (Byte) o[6], (BigDecimal) o[7], (Short) o[8], (BigDecimal) o[9],
                     o[10].toString(), o[11].toString(), (Timestamp) o[12], filmActor.getActorsByFilmId((Short)o[0]),
                     filmCategory.getCategoriesByFilmId((Short) o[0]));

@@ -23,9 +23,10 @@ public class Film {
     @Basic
     @Column(name = "release_year")
     private Date releaseYear;
-    @Basic
-    @Column(name = "language_id")
-    private Byte languageId;
+
+    @ManyToOne
+    @JoinColumn(name = "language_id")
+    private Language language;
     @Basic
     @Column(name = "original_language_id")
     private Byte originalLanguageId;
@@ -69,7 +70,7 @@ public class Film {
         return     title + "\n" +
                 "Actors: " + actor + "\n" +
                 "Release Year: " + releaseYear + "\n" +
-                "Language: " + languageId + "\n" +
+                "Language: " + language + "\n" +
                 "Length: " + length + "\n" +
                 "Rating: " + rating + "\n" +
                 "Description \n" + description + "\n" + "\n" +
@@ -81,7 +82,7 @@ public class Film {
     }
 
     public Film(short filmId, String title, String description, Date releaseYear,
-                byte languageId, byte rentalDuration,
+                Language language, byte rentalDuration,
                 BigDecimal rentalRate, short length, BigDecimal replacementCost,
                 String rating, String specialFeatures, Timestamp lastUpdate,
                 Collection<Actor> actor, Collection<Category> category) {
@@ -89,7 +90,7 @@ public class Film {
         this.title = title;
         this.description = description;
         this.releaseYear = releaseYear;
-        this.languageId = languageId;
+        this.language = language;
         this.rentalDuration = rentalDuration;
         this.rentalRate = rentalRate;
         this.length = length;
@@ -102,7 +103,7 @@ public class Film {
     }
 
     public Film(short filmId, String title, String description, Date releaseYear,
-                byte languageId, byte rentalDuration,
+                Language language, byte rentalDuration,
                 BigDecimal rentalRate, short length, BigDecimal replacementCost,
                 String rating, String specialFeatures, Timestamp lastUpdate,
                 Collection<Actor> actor, Category category) {
@@ -110,7 +111,7 @@ public class Film {
         this.title = title;
         this.description = description;
         this.releaseYear = releaseYear;
-        this.languageId = languageId;
+        this.language = language;
         this.rentalDuration = rentalDuration;
         this.rentalRate = rentalRate;
         this.length = length;
@@ -173,12 +174,12 @@ public class Film {
         this.description = description;
     }
 
-    public short getLanguageId() {
-        return languageId;
+    public Language getLanguage() {
+        return language;
     }
 
-    public void setLanguageId(Byte languageId) {
-        this.languageId = languageId;
+    public void setLanguage(Language language) {
+        this.language = language;
     }
 
     public Byte getOriginalLanguageId() {
@@ -249,16 +250,4 @@ public class Film {
         this.specialFeatures = specialFeatures;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Film film = (Film) o;
-        return filmId == film.filmId && languageId == film.languageId && originalLanguageId == film.originalLanguageId && Objects.equals(title, film.title) && Objects.equals(description, film.description) && Objects.equals(releaseYear, film.releaseYear) && Objects.equals(rentalDuration, film.rentalDuration) && Objects.equals(rentalRate, film.rentalRate) && Objects.equals(length, film.length) && Objects.equals(replacementCost, film.replacementCost) && Objects.equals(rating, film.rating) && Objects.equals(specialFeatures, film.specialFeatures) && Objects.equals(lastUpdate, film.lastUpdate);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(filmId, title, description, releaseYear, languageId, originalLanguageId, rentalDuration, rentalRate, length, replacementCost, rating, specialFeatures, lastUpdate);
-    }
 }

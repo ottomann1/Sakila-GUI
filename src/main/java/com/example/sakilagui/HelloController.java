@@ -111,7 +111,7 @@ public class HelloController {
         filmTableTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
         filmTabLength.setCellValueFactory(new PropertyValueFactory<>("length"));
         filmTabRating.setCellValueFactory(new PropertyValueFactory<>("rating"));
-        filmTabLanguage.setCellValueFactory(new PropertyValueFactory<>("languageId"));
+        filmTabLanguage.setCellValueFactory(new PropertyValueFactory<>("language"));
         filmTable.setItems(observableFilms);
         filmTable.getColumns().setAll(filmTableTitle, filmTabLength, filmTabLanguage, filmTabRating);
     }

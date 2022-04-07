@@ -19,31 +19,25 @@ public class Store {
     @Column(name = "store_id")
     private byte storeId;
     @Basic
-    @Column(name = "manager_staff_id")
-    private byte managerStaffId;
-    @Basic
-    @Column(name = "address_id")
-    private short addressId;
-    @Basic
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
-    @OneToMany(mappedBy = "storeByStoreId")
+    @OneToMany(mappedBy = "store")
     private Collection<Inventory> inventoriesByStoreId;
 
     @OneToOne
-    @JoinColumn(name = "address")
+    @JoinColumn(name = "address_id")
     private Address address;
 
     @OneToOne
-    @JoinColumn(name = "manager_staff")
+    @JoinColumn(name = "manager_staff_id")
     private Staff staff;
 
     @Override
     public String toString() {
         return  "Store ID: " + storeId + "\n" +
-                "Manager: " + managerStaffId + "\n" +
-                "Address: " + addressId + "\n" +
+                "Manager: " + staff + "\n" +
+                "Address: " + address + "\n" +
                 "Inventories by upstore ID=" + inventoriesByStoreId + "\n" +
                 "Store last updated: " + lastUpdate;
     }
@@ -66,21 +60,6 @@ public class Store {
         this.storeId = storeId;
     }
 
-    public byte getManagerStaffId() {
-        return managerStaffId;
-    }
-
-    public void setManagerStaffId(byte managerStaffId) {
-        this.managerStaffId = managerStaffId;
-    }
-
-    public short getAddressId() {
-        return addressId;
-    }
-
-    public void setAddressId(short addressId) {
-        this.addressId = addressId;
-    }
     public Address getAddress() {
         return address;
     }

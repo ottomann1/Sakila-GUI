@@ -53,7 +53,7 @@ public class upaddress {
         address.setCity(upCityDropDown.getValue());
         address.setPostalCode(upPostalCodeField.getText());
         address.setLastUpdate(new Timestamp(System.currentTimeMillis()));
-        addressDAO.update(address, new address());
+        addressDAO.update(address, new upaddress());
         Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/businessTabs.fxml"));
         Scene scene = new Scene(loader.load());

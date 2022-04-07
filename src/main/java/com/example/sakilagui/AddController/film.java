@@ -2,7 +2,6 @@ package com.example.sakilagui.AddController;
 
 import Business.Actor;
 import Business.Category;
-import Business.Customer;
 import Business.Film;
 import DAO.ActorDAO;
 import DAO.CategoryDAO;
@@ -24,6 +23,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -135,17 +135,18 @@ public class film {
         film.setReleaseYear(Date.valueOf(releaseYearField.getText()));
         film.setLength(Short.parseShort(filmLengthField.getText()));
         film.setRating(ratingDropDown.getValue());
-      //  film.setCategory(categoryDropDownDropDown.getValue());
+        film.setCategory(categoryDropDown.getValue());
         film.setRentalRate(BigDecimal.valueOf(Long.parseLong(rentalRateField.getText())));
         film.setRentalDuration(Byte.parseByte(rentalDurationField.getText()));
         film.setReplacementCost(BigDecimal.valueOf(Long.parseLong(replacementCostField.getText())));
         film.setSpecialFeatures(specialFeatureField.getText());
         film.setDescription(filmDescriptionField.getText());
         film.setActor(actorList.itemsProperty().getValue());
+        film.setLastUpdate(new Timestamp(System.currentTimeMillis()));
         FilmDAO filmDAO = new FilmDAO();
         filmDAO.create(film);
         Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/BusinessTabs.fxml"));
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/businessTabs.fxml"));
         Scene scene = new Scene(loader.load());
         thisStage.setScene(scene);
         thisStage.show();

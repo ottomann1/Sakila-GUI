@@ -5,26 +5,39 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="ap" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="524.0" prefWidth="1114.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sakilagui.BusinessTabs">
+<AnchorPane fx:id="ap" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="524.0" prefWidth="1114.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sakilagui.BusinessTabs">
    <children>
-      <TabPane layoutY="49.0" prefHeight="397.0" prefWidth="1114.0" tabClosingPolicy="UNAVAILABLE">
+      <ImageView fitHeight="218.0" fitWidth="515.0" layoutX="-103.0" layoutY="-23.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Sakila.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="189.0" fitWidth="407.0" layoutX="274.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@business.png" />
+         </image>
+      </ImageView>
+      <TabPane layoutY="79.0" prefHeight="362.0" prefWidth="1114.0" style="-fx-background-color: black;" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab fx:id="filmTab" text="Film">
+          <Tab fx:id="filmTab" text="FILM           ">
                <content>
-                  <TableView fx:id="filmTable" prefHeight="458.0" prefWidth="913.0">
+                  <TableView fx:id="filmTable" prefHeight="330.0" prefWidth="1114.0">
                     <columns>
                       <TableColumn fx:id="filmTitle" prefWidth="274.244197845459" text="Title" />
-                      <TableColumn fx:id="filmDescription" prefWidth="253.7558135986328" text="Description" />
-                        <TableColumn fx:id="filmReleaseYear" minWidth="0.0" prefWidth="106.562744140625" text="Relese Year" />
-                        <TableColumn fx:id="filmLanguage" minWidth="1.875396728515625" prefWidth="180.818115234375" text="Language" />
-                        <TableColumn fx:id="filmLength" minWidth="0.0" prefWidth="125.79901123046875" text="Length" />
+                        <TableColumn fx:id="filmCategory" prefWidth="156.0" text="Category" />
+                      <TableColumn fx:id="filmDescription" prefWidth="409.0" text="Description" />
+                        <TableColumn fx:id="filmReleaseYear" minWidth="0.0" prefWidth="108.0" text="Relese Year" />
+                        <TableColumn fx:id="filmLanguage" minWidth="1.875396728515625" prefWidth="118.0" text="Language" />
+                        <TableColumn fx:id="filmLength" minWidth="0.0" prefWidth="48.0" text="Length" />
                     </columns>
                   </TableView>
                </content>
           </Tab>
-            <Tab fx:id="actorTab" text="Actors">
+            <Tab fx:id="actorTab" text="ACTORS          ">
                <content>
                   <TableView fx:id="actorTable" prefHeight="200.0" prefWidth="200.0">
                      <columns>
@@ -34,7 +47,7 @@
                   </TableView>
                </content>
             </Tab>
-            <Tab fx:id="storeTab" text="Store">
+            <Tab fx:id="storeTab" text="STORE          ">
                <content>
                   <TableView fx:id="storeTable" prefHeight="200.0" prefWidth="200.0">
                      <columns>
@@ -44,7 +57,7 @@
                   </TableView>
                </content>
             </Tab>
-            <Tab fx:id="staffTab" text="Staff">
+            <Tab fx:id="staffTab" text="STAFF          ">
                <content>
                   <TableView fx:id="staffTable" prefHeight="200.0" prefWidth="200.0">
                      <columns>
@@ -57,7 +70,7 @@
                   </TableView>
                </content>
             </Tab>
-            <Tab fx:id="customerTab" text="Customer">
+            <Tab fx:id="customerTab" text="CUSTOMER          ">
                <content>
                   <TableView fx:id="customerTable" prefHeight="200.0" prefWidth="200.0">
                      <columns>
@@ -69,7 +82,7 @@
                   </TableView>
                </content>
             </Tab>
-            <Tab fx:id="addressTab" text="Address">
+            <Tab fx:id="addressTab" text="ADDRESS          ">
                <content>
                   <TableView fx:id="addressTable" prefHeight="371.0" prefWidth="939.0">
                      <columns>
@@ -83,10 +96,10 @@
             </Tab>
         </tabs>
       </TabPane>
-      <Button layoutX="39.0" layoutY="458.0" mnemonicParsing="false" onAction="#createClick" prefHeight="43.0" prefWidth="117.0" text="CREATE" />
-      <Button layoutX="165.0" layoutY="458.0" mnemonicParsing="false" onAction="#readClick" prefHeight="43.0" prefWidth="117.0" text="READ" />
-      <Button layoutX="291.0" layoutY="458.0" mnemonicParsing="false" onAction="#updateClick" prefHeight="43.0" prefWidth="117.0" text="UPDATE" />
-      <Button layoutX="417.0" layoutY="458.0" mnemonicParsing="false" onAction="#deleteClick" prefHeight="43.0" prefWidth="117.0" text="DELETE" />
-      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backClick" text="Go back" />
+      <Button layoutX="19.0" layoutY="458.0" mnemonicParsing="false" onAction="#createClick" prefHeight="43.0" prefWidth="117.0" text="CREATE" />
+      <Button layoutX="145.0" layoutY="458.0" mnemonicParsing="false" onAction="#readClick" prefHeight="43.0" prefWidth="117.0" text="READ" />
+      <Button layoutX="271.0" layoutY="458.0" mnemonicParsing="false" onAction="#updateClick" prefHeight="43.0" prefWidth="117.0" text="UPDATE" />
+      <Button layoutX="397.0" layoutY="458.0" mnemonicParsing="false" onAction="#deleteClick" prefHeight="43.0" prefWidth="117.0" text="DELETE" />
+      <Button layoutX="984.0" layoutY="458.0" mnemonicParsing="false" onAction="#backClick" prefHeight="43.0" prefWidth="111.0" text="MAIN MENU" />
    </children>
 </AnchorPane>

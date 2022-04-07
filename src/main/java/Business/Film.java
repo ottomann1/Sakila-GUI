@@ -1,6 +1,7 @@
 package Business;
 
 import javax.persistence.*;
+import java.awt.*;
 import java.math.BigDecimal;
 import java.sql.Date;
 import java.sql.Timestamp;
@@ -57,32 +58,34 @@ public class Film {
             joinColumns = {@JoinColumn(name = "actor_id")},
             inverseJoinColumns = {@JoinColumn(name = "film_id")}
     )
+
     private Collection<Actor> actor = new ArrayList<Actor>();
 
+    @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id")
+    private Collection<Category> category;
+
+
     public String toStringHeavy() {
-        return "Film{" +
-                "filmId=" + filmId +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", releaseYear=" + releaseYear +
-                ", languageId=" + languageId +
-                ", originalLanguageId=" + originalLanguageId +
-                ", rentalDuration=" + rentalDuration +
-                ", rentalRate=" + rentalRate +
-                ", length=" + length +
-                ", replacementCost=" + replacementCost +
-                ", rating='" + rating + '\'' +
-                ", specialFeatures='" + specialFeatures + '\'' +
-                ", lastUpdate=" + lastUpdate +
-                ", actor=" + actor +
-                '}';
+        return     title + "\n" +
+                "Actors: " + actor + "\n" +
+                "Release Year: " + releaseYear + "\n" +
+                "Language: " + languageId + "\n" +
+                "Length: " + length + "\n" +
+                "Rating: " + rating + "\n" +
+                "Description \n" + description + "\n" + "\n" +
+                "Rental Duration: " + rentalDuration + "\n" +
+                "Rental Rate: " + rentalRate + "\n" +
+                "Replacement Cost: " + replacementCost + "\n" +
+                "Special Features: " + specialFeatures + "\n" +
+                "Film last updated: " + lastUpdate;
     }
 
     public Film(short filmId, String title, String description, Date releaseYear,
                 byte languageId, byte rentalDuration,
                 BigDecimal rentalRate, short length, BigDecimal replacementCost,
                 String rating, String specialFeatures, Timestamp lastUpdate,
-                Collection<Actor> actor) {
+                Collection<Actor> actor, Collection<Category> category) {
         this.filmId = filmId;
         this.title = title;
         this.description = description;
@@ -96,10 +99,43 @@ public class Film {
         this.specialFeatures = specialFeatures;
         this.lastUpdate = lastUpdate;
         this.actor = actor;
+        this.category = category;
+    }
+
+    public Film(short filmId, String title, String description, Date releaseYear,
+                byte languageId, byte rentalDuration,
+                BigDecimal rentalRate, short length, BigDecimal replacementCost,
+                String rating, String specialFeatures, Timestamp lastUpdate,
+                Collection<Actor> actor, Category category) {
+        this.filmId = filmId;
+        this.title = title;
+        this.description = description;
+        this.releaseYear = releaseYear;
+        this.languageId = languageId;
+        this.rentalDuration = rentalDuration;
+        this.rentalRate = rentalRate;
+        this.length = length;
+        this.replacementCost = replacementCost;
+        this.rating = rating;
+        this.specialFeatures = specialFeatures;
+        this.lastUpdate = lastUpdate;
+        this.actor = actor;
+        this.category.add(category);
     }
 
     public Film(){
 
+    }
+
+    public Collection<Category> getCategory() {
+        return category;
+    }
+
+    public void setCategory(Collection<Category> category) {
+        this.category = category;
+    }
+    public void setCategory(Category category) {
+        this.category.add(category);
     }
 
     public Collection<Actor> getActor() {

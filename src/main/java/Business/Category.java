@@ -9,7 +9,7 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "category_id")
-    private int categoryId;
+    private byte categoryId;
     @Basic
     @Column(name = "name")
     private String name;
@@ -18,9 +18,9 @@ public class Category {
     private Timestamp lastUpdate;
 
     @Override
-    public String toString() {
-        return name;
+    public String toString() {return name;
     }
+
 
     public Category(byte categoryId, String name, Timestamp lastUpdate) {
         this.categoryId = categoryId;
@@ -31,13 +31,11 @@ public class Category {
 
     }
 
-    public int getCategoryId() {
+    public byte getCategoryId() {
         return categoryId;
     }
 
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
-    }
+    public void setCategoryId(byte categoryId) {this.categoryId = categoryId;}
 
     public String getName() {
         return name;

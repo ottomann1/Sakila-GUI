@@ -45,17 +45,12 @@ public class Address {
     }
 
     public String toStringHeavy() {
-        return "Address{" +
-                "addressId=" + addressId +
-                ", address='" + address + '\'' +
-                ", address2='" + address2 + '\'' +
-                ", district='" + district + '\'' +
-                ", postalCode='" + postalCode + '\'' +
-                ", phone='" + phone + '\'' +
-                ", location='" + location + '\'' +
-                ", lastUpdate=" + lastUpdate +
-                ", city=" + city +
-                '}';
+        return "Address: " + address + "\n" +
+                "District: " + district + "\n" +
+                "PostalCode: " + postalCode + "\n" +
+                "Phone: " + phone + "\n" +
+                "City: " + city + "\n" +
+                "Address last updated: " + lastUpdate;
     }
 
     public Address(short addressId, String address, String district, City city, String postalCode, String phone, String location, Timestamp lastUpdate) {

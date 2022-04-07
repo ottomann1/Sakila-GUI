@@ -1,9 +1,7 @@
 package com.example.sakilagui.AddController;
 
-import Business.Actor;
 import Business.Address;
 import Business.City;
-import DAO.ActorDAO;
 import DAO.AddressDAO;
 import DAO.CityDAO;
 import javafx.collections.FXCollections;
@@ -18,6 +16,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -58,10 +57,12 @@ public class address {
         address.setPhone(phoneField.getText());
         address.setCity(cityDropDown.getValue());
         address.setPostalCode(postalCodeField.getText());
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        address.setLastUpdate(timestamp);
         AddressDAO addressDAO = new AddressDAO();
         addressDAO.create(address);
         Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/BusinessTabs.fxml"));
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/businessTabs.fxml"));
         Scene scene = new Scene(loader.load());
         thisStage.setScene(scene);
         thisStage.show();

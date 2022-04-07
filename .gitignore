@@ -128,3 +128,5 @@ fabric.properties
 .idea/workspace.xml
 
 .idea/
+
+src/main/resources/META-INF

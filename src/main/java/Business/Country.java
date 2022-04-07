@@ -17,6 +17,10 @@ public class Country {
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
+    @Override
+    public String toString() { return country;
+    }
+
     public Country(int countryId, String country, Timestamp lastUpdate) {
         this.countryId = countryId;
         this.country = country;

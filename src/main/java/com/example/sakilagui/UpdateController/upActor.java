@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.Timestamp;
 
 public class upActor {
 
@@ -33,9 +34,10 @@ public class upActor {
         ActorDAO actorDAO = new ActorDAO();
         actor.setFirstName(actorFirstNameField.getText());
         actor.setLastName(actorLAstNameField.getText());
+        actor.setLastUpdate(new Timestamp(System.currentTimeMillis()));
         actorDAO.update(actor, new Actor());
         Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/BusinessTabs.fxml"));
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/businessTabs.fxml"));
         Scene scene = new Scene(loader.load());
         thisStage.setScene(scene);
         thisStage.show();

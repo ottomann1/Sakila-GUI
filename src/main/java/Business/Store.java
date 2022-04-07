@@ -39,6 +39,15 @@ public class Store {
     @JoinColumn(name = "manager_staff")
     private Staff staff;
 
+    @Override
+    public String toString() {
+        return  "Store ID: " + storeId + "\n" +
+                "Manager: " + managerStaffId + "\n" +
+                "Address: " + addressId + "\n" +
+                "Inventories by store ID=" + inventoriesByStoreId + "\n" +
+                "Store last updated: " + lastUpdate;
+    }
+
     public Store(byte storeId, Staff staff, Address address, Timestamp lastUpdate) {
         this.storeId = storeId;
         this.staff = staff;

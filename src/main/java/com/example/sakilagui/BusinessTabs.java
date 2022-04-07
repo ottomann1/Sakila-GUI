@@ -3,6 +3,9 @@ package com.example.sakilagui;
 import Business.*;
 import DAO.*;
 import com.example.sakilagui.UpdateController.upActor;
+import com.example.sakilagui.UpdateController.upaddress;
+import com.example.sakilagui.UpdateController.upcustomer;
+import com.example.sakilagui.UpdateController.upfilm;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -282,6 +285,14 @@ public class BusinessTabs {
 //            thisStage.show();
 
         }
+           else if(staffTab.isSelected()){
+            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/staff.fxml"));
+            Scene sceneStaff = new Scene(loader.load());
+            Stage staffStage = new Stage();
+            staffStage.setScene(sceneStaff);
+            staffStage.showAndWait();
+            storeLoad();
+        }
     }
 
     @FXML
@@ -388,19 +399,68 @@ public class BusinessTabs {
     }
 
     @FXML
-    void updateClick(ActionEvent event) throws IOException {
+    void updateClick(ActionEvent event) throws IOException, ClassNotFoundException {
         if(actorTab.isSelected()){
             if(!(actorTable.getSelectionModel().getSelectedItem()==null)){
                 Actor actor = actorTable.getSelectionModel().getSelectedItem();
-                Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//                Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/upactor.fxml"));
                 Scene scene = new Scene(loader.load());
+                Stage actorStage = new Stage();
                 upActor updateactor = loader.getController();
                 updateactor.setFields(actor);
-                thisStage.setScene(scene);
-                thisStage.show();
+                actorStage.initModality(Modality.APPLICATION_MODAL);
+                actorStage.setScene(scene);
+                actorStage.showAndWait();
+                actorLoad();
             }
         }
+        if(filmTab.isSelected()){
+            if(!(filmTable.getSelectionModel().getSelectedItem()==null)){
+                Film film = filmTable.getSelectionModel().getSelectedItem();
+//                Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/upfilm.fxml"));
+                Scene filmScene = new Scene(loader.load());
+                Stage filmStage = new Stage();
+                upfilm upFilm = loader.getController();
+                upFilm.setFields(film);
+                filmStage.initModality(Modality.APPLICATION_MODAL);
+                filmStage.setScene(filmScene);
+                filmStage.showAndWait();
+                filmLoad();
+            }
+        }
+        if(addressTab.isSelected()){
+            if(!(addressTable.getSelectionModel().getSelectedItem()==null)){
+                Address address = addressTable.getSelectionModel().getSelectedItem();
+//                Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/upaddresser.fxml"));
+                Scene addressScene = new Scene(loader.load());
+                Stage addressStage = new Stage();
+                upaddress upAddress = loader.getController();
+                upAddress.setFields(address);
+                addressStage.initModality(Modality.APPLICATION_MODAL);
+                addressStage.setScene(addressScene);
+                addressStage.showAndWait();
+                filmLoad();
+            }
+        }
+        if(customerTab.isSelected()){
+            if(!(customerTable.getSelectionModel().getSelectedItem()==null)){
+                Customer customer = customerTable.getSelectionModel().getSelectedItem();
+//                Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/upcustomer.fxml"));
+                Scene customerScene = new Scene(loader.load());
+                Stage customerStage = new Stage();
+                upcustomer upCustomer = loader.getController();
+                upCustomer.setFields(customer);
+                customerStage.initModality(Modality.APPLICATION_MODAL);
+                customerStage.setScene(customerScene);
+                customerStage.showAndWait();
+                filmLoad();
+            }
+        }
+
     }
 
 }

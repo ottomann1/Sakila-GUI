@@ -5,9 +5,11 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="ap" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="524.0" prefWidth="1114.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sakilagui.BusinessTabs">
    <children>
@@ -96,10 +98,40 @@
             </Tab>
         </tabs>
       </TabPane>
-      <Button layoutX="19.0" layoutY="458.0" mnemonicParsing="false" onAction="#createClick" prefHeight="43.0" prefWidth="117.0" text="CREATE" />
-      <Button layoutX="145.0" layoutY="458.0" mnemonicParsing="false" onAction="#readClick" prefHeight="43.0" prefWidth="117.0" text="READ" />
-      <Button layoutX="271.0" layoutY="458.0" mnemonicParsing="false" onAction="#updateClick" prefHeight="43.0" prefWidth="117.0" text="UPDATE" />
-      <Button layoutX="397.0" layoutY="458.0" mnemonicParsing="false" onAction="#deleteClick" prefHeight="43.0" prefWidth="117.0" text="DELETE" />
-      <Button layoutX="984.0" layoutY="458.0" mnemonicParsing="false" onAction="#backClick" prefHeight="43.0" prefWidth="111.0" text="MAIN MENU" />
+      <Button layoutX="19.0" layoutY="458.0" mnemonicParsing="false" onAction="#createClick" prefHeight="43.0" prefWidth="117.0" style="-fx-background-color: #e50914#e50914;" text="CREATE" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <effect>
+            <InnerShadow />
+         </effect></Button>
+      <Button layoutX="145.0" layoutY="458.0" mnemonicParsing="false" onAction="#readClick" prefHeight="43.0" prefWidth="117.0" style="-fx-background-color: #e50914#e50914;" text="READ" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <effect>
+            <InnerShadow />
+         </effect></Button>
+      <Button layoutX="271.0" layoutY="458.0" mnemonicParsing="false" onAction="#updateClick" prefHeight="43.0" prefWidth="117.0" style="-fx-background-color: #e50914#e50914;" text="UPDATE" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <effect>
+            <InnerShadow />
+         </effect></Button>
+      <Button layoutX="397.0" layoutY="458.0" mnemonicParsing="false" onAction="#deleteClick" prefHeight="43.0" prefWidth="117.0" style="-fx-background-color: #e50914#e50914;" text="DELETE" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <effect>
+            <InnerShadow />
+         </effect></Button>
+      <Button layoutX="955.0" layoutY="458.0" mnemonicParsing="false" onAction="#backClick" prefHeight="43.0" prefWidth="140.0" style="-fx-background-color: #e50914#e50914;" text="MAIN MENU" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <effect>
+            <InnerShadow />
+         </effect></Button>
    </children>
 </AnchorPane>

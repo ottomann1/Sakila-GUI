@@ -8,6 +8,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -21,6 +24,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -114,8 +118,12 @@ public class HelloController {
 
 
     @FXML
-    void backButtonClick(ActionEvent event) {
-
+    void backButtonClick(ActionEvent event) throws IOException {
+        Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/startScreen.fxml"));
+        Scene scene = new Scene(loader.load());
+        thisStage.setScene(scene);
+        thisStage.show();
     }
 
     @FXML

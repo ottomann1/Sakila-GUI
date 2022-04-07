@@ -214,46 +214,72 @@ public class BusinessTabs {
     }
 
     @FXML
-    void backClick(ActionEvent event) {
-
+    void backClick(ActionEvent event) throws IOException {
+        Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/startScreen.fxml"));
+        Scene scene = new Scene(loader.load());
+        thisStage.setScene(scene);
+        thisStage.show();
     }
 
     @FXML
-    void createClick(ActionEvent event) throws IOException {
+    void createClick(ActionEvent event) throws IOException, ClassNotFoundException {
         if(actorTab.isSelected()){
             FXMLLoader loader1 = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/actor.fxml"));
             Scene sceneActor = new Scene(loader1.load());
             Stage actorStage = new Stage();
             actorStage.setScene(sceneActor);
             actorStage.showAndWait();
+            actorLoad();
         }
            else if(filmTab.isSelected()){
-            Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//            Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/film.fxml"));
-            Scene scene = new Scene(loader.load());
-            thisStage.setScene(scene);
-            thisStage.show();
+            Scene sceneFilm = new Scene(loader.load());
+            Stage filmStage = new Stage();
+            filmStage.setScene(sceneFilm);
+            filmStage.showAndWait();
+            filmLoad();
+            actorLoad();
+//            Scene scene = new Scene(loader.load());
+//            thisStage.setScene(scene);
+//            thisStage.show();
         }
            else if (addressTab.isSelected()){
-            Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//            Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/addresser.fxml"));
-            Scene scene = new Scene(loader.load());
-            thisStage.setScene(scene);
-            thisStage.show();
+            Scene sceneAddress = new Scene(loader.load());
+            Stage addressStage = new Stage();
+            addressStage.setScene(sceneAddress);
+            addressStage.showAndWait();
+            addressLoad();
+//            Scene scene = new Scene(loader.load());
+//            thisStage.setScene(scene);
+//            thisStage.show();
         }
            else if (customerTab.isSelected()){
-            Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//            Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/customer.fxml"));
-            Scene scene = new Scene(loader.load());
-            thisStage.setScene(scene);
-            thisStage.show();
+            Scene sceneCustomer = new Scene(loader.load());
+            Stage customerStage = new Stage();
+            customerStage.setScene(sceneCustomer);
+            customerStage.showAndWait();
+            customerLoad();
+//            Scene scene = new Scene(loader.load());
+//            thisStage.setScene(scene);
+//            thisStage.show();
         }
            else if(storeTab.isSelected()){
-            Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//            Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/store.fxml"));
-            Scene scene = new Scene(loader.load());
-            thisStage.setScene(scene);
-            thisStage.show();
+            Scene sceneStore = new Scene(loader.load());
+            Stage storeStage = new Stage();
+            storeStage.setScene(sceneStore);
+            storeStage.showAndWait();
+            storeLoad();
+//            Scene scene = new Scene(loader.load());
+//            thisStage.setScene(scene);
+//            thisStage.show();
 
         }
     }

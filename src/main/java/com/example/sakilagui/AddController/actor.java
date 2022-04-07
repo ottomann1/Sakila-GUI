@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.Timestamp;
 
 public class actor {
 
@@ -25,6 +26,8 @@ public class actor {
         Actor actor = new Actor();
         actor.setFirstName(actorFirstNameField.getText());
         actor.setLastName(actorLAstNameField.getText());
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        actor.setLastUpdate(timestamp);
         ActorDAO actorDAO = new ActorDAO();
         actorDAO.create(actor);
 //        Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();

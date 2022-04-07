@@ -16,6 +16,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -51,6 +52,7 @@ public class customer {
         customer.setLastName(lastNameField.getText());
         customer.setEmail(emailField.getText());
         customer.setAddress(addressDropDown.getValue());
+        customer.setLastUpdate(new Timestamp(System.currentTimeMillis()));
         CustomerDAO customerDAO = new CustomerDAO();
         customerDAO.create(customer);
         Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();

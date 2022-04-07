@@ -10,10 +10,11 @@ import java.util.List;
 import java.util.Optional;
 
 public class CategoryDAO implements DAO {
+
     @Override
     public Optional read(long id) throws IOException, ClassNotFoundException {
         Data data = new Data();
-        Optional<Category> category = Optional.ofNullable((Category) data.getData(Category.class, (short) id));
+        Optional<Category> category = Optional.ofNullable((Category) data.getData(Category.class, (byte) id));
         return category;
     }
 

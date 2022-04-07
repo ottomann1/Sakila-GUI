@@ -10,20 +10,23 @@ public class Inventory {
     @Id
     @Column(name = "inventory_id")
     private int inventoryId;
-    @Basic
+
+    @ManyToOne
     @Column(name = "film_id")
-    private int filmId;
-    @Basic
+    private Film film;
+
+    @ManyToOne
     @Column(name = "store_id")
-    private int storeId;
+    private Store store;
+
     @Basic
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
-    public Inventory(int inventoryId, int filmId, int storeId, Timestamp lastUpdate) {
+    public Inventory(int inventoryId, Film filmId, Store storeId, Timestamp lastUpdate) {
         this.inventoryId = inventoryId;
-        this.filmId = filmId;
-        this.storeId = storeId;
+        this.film = filmId;
+        this.store = storeId;
         this.lastUpdate = lastUpdate;
     }
 
@@ -64,20 +67,20 @@ public class Inventory {
         this.inventoryId = inventoryId;
     }
 
-    public int getFilmId() {
-        return filmId;
+    public Film getFilm() {
+        return film;
     }
 
-    public void setFilmId(int filmId) {
-        this.filmId = filmId;
+    public void setFilm(Film film) {
+        this.film = film;
     }
 
-    public int getStoreId() {
-        return storeId;
+    public Store getStore() {
+        return store;
     }
 
-    public void setStoreId(int storeId) {
-        this.storeId = storeId;
+    public void setStore(Store store) {
+        this.store = store;
     }
 
     public Timestamp getLastUpdate() {
@@ -86,18 +89,5 @@ public class Inventory {
 
     public void setLastUpdate(Timestamp lastUpdate) {
         this.lastUpdate = lastUpdate;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Inventory inventory = (Inventory) o;
-        return Objects.equals(inventoryId, inventory.inventoryId) && Objects.equals(filmId, inventory.filmId) && Objects.equals(storeId, inventory.storeId) && Objects.equals(lastUpdate, inventory.lastUpdate);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(inventoryId, filmId, storeId, lastUpdate);
     }
 }

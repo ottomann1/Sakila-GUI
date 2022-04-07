@@ -62,6 +62,26 @@ public class Data {
         }
         return tempObject;
     }
+    public Object getData(Class tableClass, byte id) {
+        EntityManager em = ENTITY_MANAGER_FACTORY.createEntityManager();
+        EntityTransaction transaction = null;
+        Object tempObject = null;
+        try {
+            transaction = em.getTransaction();
+            transaction.begin();
+            tempObject = em.find(tableClass, id);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            em.close();
+        }
+        return tempObject;
+    }
+
     public List<Object[]> getDataListQuery(String query) {
         EntityManager em = ENTITY_MANAGER_FACTORY.createEntityManager();
         EntityTransaction transaction = null;

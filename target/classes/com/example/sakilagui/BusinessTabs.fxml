@@ -28,10 +28,11 @@
                   <TableView fx:id="filmTable" prefHeight="330.0" prefWidth="1114.0">
                     <columns>
                       <TableColumn fx:id="filmTitle" prefWidth="274.244197845459" text="Title" />
-                      <TableColumn fx:id="filmDescription" prefWidth="253.7558135986328" text="Description" />
-                        <TableColumn fx:id="filmReleaseYear" minWidth="0.0" prefWidth="106.562744140625" text="Relese Year" />
-                        <TableColumn fx:id="filmLanguage" minWidth="1.875396728515625" prefWidth="180.818115234375" text="Language" />
-                        <TableColumn fx:id="filmLength" minWidth="0.0" prefWidth="125.79901123046875" text="Length" />
+                        <TableColumn fx:id="filmCategory" prefWidth="156.0" text="Category" />
+                      <TableColumn fx:id="filmDescription" prefWidth="409.0" text="Description" />
+                        <TableColumn fx:id="filmReleaseYear" minWidth="0.0" prefWidth="108.0" text="Relese Year" />
+                        <TableColumn fx:id="filmLanguage" minWidth="1.875396728515625" prefWidth="118.0" text="Language" />
+                        <TableColumn fx:id="filmLength" minWidth="0.0" prefWidth="48.0" text="Length" />
                     </columns>
                   </TableView>
                </content>

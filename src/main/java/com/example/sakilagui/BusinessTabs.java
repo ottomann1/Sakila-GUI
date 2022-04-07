@@ -221,11 +221,6 @@ public class BusinessTabs {
     @FXML
     void createClick(ActionEvent event) throws IOException {
         if(actorTab.isSelected()){
-//            Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/actor.fxml"));
-//            Scene scene = new Scene(loader.load());
-//            thisStage.setScene(scene);
-//            thisStage.show();
             FXMLLoader loader1 = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/actor.fxml"));
             Scene sceneActor = new Scene(loader1.load());
             Stage actorStage = new Stage();
@@ -302,12 +297,12 @@ public class BusinessTabs {
         if(actorTab.isSelected()){
             if(!(actorTable.getSelectionModel().getSelectedItem()==null)){
                 Actor actor = actorTable.getSelectionModel().getSelectedItem();
-                Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Stage thisStage = new Stage();
                 FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/TextField.fxml"));
                 Scene scene = new Scene(loader.load());
                 Read read = loader.getController();
                 read.setText(actor.toStringHeavy());
-                thisStage.setScene(scene);
+                thisStage.initModality(Modality.APPLICATION_MODAL);
                 thisStage.setScene(scene);
                 thisStage.show();
             }
@@ -315,12 +310,12 @@ public class BusinessTabs {
                 if(filmTab.isSelected()){
             if(!(filmTable.getSelectionModel().getSelectedItem()==null)){
                 Film film = filmTable.getSelectionModel().getSelectedItem();
-                Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Stage thisStage = new Stage();
                 FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/TextField.fxml"));
                 Scene scene = new Scene(loader.load());
                 Read read = loader.getController();
                 read.setText(film.toStringHeavy());
-                thisStage.setScene(scene);
+                thisStage.initModality(Modality.APPLICATION_MODAL);
                 thisStage.setScene(scene);
                 thisStage.show();
             }
@@ -333,7 +328,7 @@ public class BusinessTabs {
                 Scene scene = new Scene(loader.load());
                 Read read = loader.getController();
                 read.setText(staff.toStringHeavy());
-                thisStage.setScene(scene);
+                thisStage.initModality(Modality.APPLICATION_MODAL);
                 thisStage.setScene(scene);
                 thisStage.show();
             }
@@ -346,7 +341,7 @@ public class BusinessTabs {
                 Scene scene = new Scene(loader.load());
                 Read read = loader.getController();
                 read.setText(customer.toStringHeavy());
-                thisStage.setScene(scene);
+                thisStage.initModality(Modality.APPLICATION_MODAL);
                 thisStage.setScene(scene);
                 thisStage.show();
             }
@@ -359,7 +354,7 @@ public class BusinessTabs {
                 Scene scene = new Scene(loader.load());
                 Read read = loader.getController();
                 read.setText(address.toStringHeavy());
-                thisStage.setScene(scene);
+                thisStage.initModality(Modality.APPLICATION_MODAL);
                 thisStage.setScene(scene);
                 thisStage.show();
             }

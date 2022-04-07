@@ -61,11 +61,11 @@ public class address {
         address.setLastUpdate(timestamp);
         AddressDAO addressDAO = new AddressDAO();
         addressDAO.create(address);
-        Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/businessTabs.fxml"));
-        Scene scene = new Scene(loader.load());
-        thisStage.setScene(scene);
-        thisStage.show();
+//        Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/businessTabs.fxml"));
+//        Scene scene = new Scene(loader.load());
+//        thisStage.setScene(scene);
+//        thisStage.show();
 
     }
 

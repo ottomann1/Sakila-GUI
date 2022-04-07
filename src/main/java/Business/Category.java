@@ -18,9 +18,9 @@ public class Category {
     private Timestamp lastUpdate;
 
     @Override
-    public String toString() {
-        return name;
+    public String toString() {return name;
     }
+
 
     public Category(byte categoryId, String name, Timestamp lastUpdate) {
         this.categoryId = categoryId;

@@ -18,7 +18,6 @@ public class Staff {
     @Basic
     @Column(name = "last_name")
     private String lastName;
-
     @OneToOne
     private Address address;
     @Basic
@@ -48,21 +47,12 @@ public class Staff {
     private Collection<Rental> rentalsByStaffId;
 
     public String toStringHeavy() {
-        return "Staff{" +
-                "staffId=" + staffId +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", address=" + address +
-                ", picture=" + Arrays.toString(picture) +
-                ", email='" + email + '\'' +
-                ", storeId=" + storeId +
-                ", active=" + active +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", lastUpdate=" + lastUpdate +
-                ", paymentsByStaffId=" + paymentsByStaffId +
-                ", rentalsByStaffId=" + rentalsByStaffId +
-                '}';
+        return
+                "Staff Member: " + firstName + lastName + "\n" +
+                "Address: " + address + "\n" +
+                "Email: " + email + "\n" +
+                "Store: " + storeId + "\n" +
+                "Staff member last updated: " + lastUpdate;
     }
 
     public Staff(byte staffId, String firstName, String lastName, Address address, byte[] picture, String email, byte storeId, boolean active, String username, String password, Timestamp lastUpdate, Collection<Payment> paymentsByStaffId, Collection<Rental> rentalsByStaffId) {

@@ -66,22 +66,18 @@ public class Film {
 
 
     public String toStringHeavy() {
-        return "Film{" +
-                "filmId=" + filmId +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", releaseYear=" + releaseYear +
-                ", languageId=" + languageId +
-                ", originalLanguageId=" + originalLanguageId +
-                ", rentalDuration=" + rentalDuration +
-                ", rentalRate=" + rentalRate +
-                ", length=" + length +
-                ", replacementCost=" + replacementCost +
-                ", rating='" + rating + '\'' +
-                ", specialFeatures='" + specialFeatures + '\'' +
-                ", lastUpdate=" + lastUpdate +
-                ", actor=" + actor +
-                '}';
+        return     title + "\n" +
+                "Actors: " + actor + "\n" +
+                "Release Year: " + releaseYear + "\n" +
+                "Language: " + languageId + "\n" +
+                "Length: " + length + "\n" +
+                "Rating: " + rating + "\n" +
+                "Description \n" + description + "\n" + "\n" +
+                "Rental Duration: " + rentalDuration + "\n" +
+                "Rental Rate: " + rentalRate + "\n" +
+                "Replacement Cost: " + replacementCost + "\n" +
+                "Special Features: " + specialFeatures + "\n" +
+                "Film last updated: " + lastUpdate;
     }
 
     public Film(short filmId, String title, String description, Date releaseYear,

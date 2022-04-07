@@ -108,13 +108,18 @@ public class film {
 // master
     }
     @FXML
-    void newActorOnClick(ActionEvent event){
+    void newActorOnClick(ActionEvent event) throws IOException, ClassNotFoundException {
         // secenSwapChanges
 //        if(event.getTarget() == addActor){
 //            actorStage.close();
 //        }
 //        else{
         actorStage.showAndWait();
+        selectActorDropDown.getItems().clear();
+        ActorDAO actorDAO = new ActorDAO();
+        Collection<Actor> actors = actorDAO.readAll();
+        ObservableList<Actor> observableActors = FXCollections.observableArrayList(actors);
+        selectActorDropDown.setItems(observableActors);
 //        }
     }
     @FXML

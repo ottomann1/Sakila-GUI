@@ -55,11 +55,11 @@ public class customer {
         customer.setLastUpdate(new Timestamp(System.currentTimeMillis()));
         CustomerDAO customerDAO = new CustomerDAO();
         customerDAO.create(customer);
-        Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/businessTabs.fxml"));
-        Scene scene = new Scene(loader.load());
-        thisStage.setScene(scene);
-        thisStage.show();
+//        Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/businessTabs.fxml"));
+//        Scene scene = new Scene(loader.load());
+//        thisStage.setScene(scene);
+//        thisStage.show();
 
 
     }

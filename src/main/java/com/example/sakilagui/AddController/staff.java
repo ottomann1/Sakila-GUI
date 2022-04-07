@@ -40,11 +40,11 @@ public class staff {
        // staff.setAddress(addressDropDown.getValue());
         StaffDAO staffDAO = new StaffDAO();
         staffDAO.create(staff);
-        Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/businessTabs.fxml"));
-        Scene scene = new Scene(loader.load());
-        thisStage.setScene(scene);
-        thisStage.show();
+//        Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/businessTabs.fxml"));
+//        Scene scene = new Scene(loader.load());
+//        thisStage.setScene(scene);
+//        thisStage.show();
 
     }
 

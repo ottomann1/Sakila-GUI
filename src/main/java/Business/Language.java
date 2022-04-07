@@ -17,6 +17,10 @@ public class Language {
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
+    @Override
+    public String toString() { return name;
+    }
+
     public Language(int languageId, String name, Timestamp lastUpdate) {
         this.languageId = languageId;
         this.name = name;

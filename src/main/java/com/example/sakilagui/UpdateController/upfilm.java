@@ -138,8 +138,9 @@ public class upfilm {
         rentalRateField.setText(String.valueOf(film.getRentalRate()));
         rentalDurationField.setText(String.valueOf(film.getRentalDuration()));
         replacementCostField.setText(String.valueOf(film.getReplacementCost()));
-        specialFeatureField.setText();
-
+        specialFeatureField.setText(film.getSpecialFeatures());
+        filmDescriptionField.setText(film.getDescription());
+       // actorList.setValue(actorList.itemsProperty());
 
     }
 

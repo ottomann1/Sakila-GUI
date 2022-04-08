@@ -113,6 +113,15 @@ public class film {
         actorStage.setScene(sceneActor);
         actorStage.initModality(Modality.APPLICATION_MODAL);
 
+//        String[] ratings = {"G", "PG", "PG-13", "R", "NC-17"};
+//        ObservableList<String> rating = FXCollections.observableArrayList(ratings);
+//        ratingDropDown.setItems(rating);
+
+
+//        FilmDAO filmDAO = new FilmDAO();
+//        Collection<Film> rating = filmDAO.readAll();
+//        ObservableList<Film> observableFilm = FXCollections.observableArrayList(film);
+//        ratingDropDown.setItems(observableFilm);
 // master
     }
 
@@ -154,11 +163,13 @@ public class film {
         film.setLength(Short.parseShort(filmLengthField.getText()));
         film.setRating(ratingDropDown.getValue());
         film.setLanguage(selectLanuageDropDown.getValue());
+//        film.setCategory(categoryDropDown.getValue());
         film.setRentalRate(BigDecimal.valueOf(Long.parseLong(rentalRateField.getText())));
         film.setRentalDuration(Byte.parseByte(rentalDurationField.getText()));
         film.setReplacementCost(BigDecimal.valueOf(Long.parseLong(replacementCostField.getText())));
 //        film.setSpecialFeatures(specialFeatureField.getText());
         film.setDescription(filmDescriptionField.getText());
+        film.setActor(actorList.itemsProperty().getValue());
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         film.setLastUpdate(timestamp);
         FilmDAO filmDAO = new FilmDAO();

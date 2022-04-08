@@ -134,7 +134,7 @@ public class upfilm {
         releaseYearField.setText(String.valueOf(film.getReleaseYear()));
         filmLengthField.setText(String.valueOf(film.getLength()));
         ratingDropDown.setValue(film.getRating());
-        categoryDropDown.setValue((Category) film.getCategory());
+//        categoryDropDown.setValue((Category) film.getCategory());
         rentalRateField.setText(String.valueOf(film.getRentalRate()));
         rentalDurationField.setText(String.valueOf(film.getRentalDuration()));
         replacementCostField.setText(String.valueOf(film.getReplacementCost()));
@@ -160,11 +160,11 @@ public class upfilm {
         film.setActor(actorList.itemsProperty().getValue());
         film.setLastUpdate(new Timestamp(System.currentTimeMillis()));
         filmDAO.update(film, new upfilm());
-        Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/businessTabs.fxml"));
-        Scene scene = new Scene(loader.load());
-        thisStage.setScene(scene);
-        thisStage.show();
+//        Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/businessTabs.fxml"));
+//        Scene scene = new Scene(loader.load());
+//        thisStage.setScene(scene);
+//        thisStage.show();
 
 
     }

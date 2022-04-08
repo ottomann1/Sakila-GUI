@@ -67,11 +67,11 @@ public class upstaff {
         staff.setAddress(addressDropDown.getValue());
         staff.setLastUpdate(new Timestamp(System.currentTimeMillis()));
         staffDAO.update(staff, new upstaff());
-        Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/businessTabs.fxml"));
-        Scene scene = new Scene(loader.load());
-        thisStage.setScene(scene);
-        thisStage.show();
+//        Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/businessTabs.fxml"));
+//        Scene scene = new Scene(loader.load());
+//        thisStage.setScene(scene);
+//        thisStage.show();
 
 
     }

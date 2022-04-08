@@ -294,35 +294,47 @@ public class BusinessTabs {
     }
 
     @FXML
-    void deleteClick(ActionEvent event) throws IOException {
+    void deleteClick(ActionEvent event) throws IOException, ClassNotFoundException {
         if(actorTab.isSelected()){
             if(!(actorTable.getSelectionModel().getSelectedItem()==null)){
                 ActorDAO actorDAO = new ActorDAO();
                 actorDAO.delete(actorTable.getSelectionModel().getSelectedItem());
+                actorLoad();
             }
         }
         if(filmTab.isSelected()){
             if(!(filmTable.getSelectionModel().getSelectedItem()==null)){
                 FilmDAO filmDAO = new FilmDAO();
                 filmDAO.delete(filmTable.getSelectionModel().getSelectedItem());
+                filmLoad();
             }
         }
         if(staffTab.isSelected()){
             if(!(staffTable.getSelectionModel().getSelectedItem()==null)){
                 StaffDAO staffDAO = new StaffDAO();
                 staffDAO.delete(staffTable.getSelectionModel().getSelectedItem());
+                staffLoad();
             }
         }
         if(customerTab.isSelected()){
             if(!(customerTable.getSelectionModel().getSelectedItem()==null)){
                 CustomerDAO customerDAO = new CustomerDAO();
                 customerDAO.delete(customerTable.getSelectionModel().getSelectedItem());
+                customerLoad();
             }
         }
         if(addressTab.isSelected()){
             if(!(addressTable.getSelectionModel().getSelectedItem()==null)){
                 AddressDAO addressDAO = new AddressDAO();
                 addressDAO.delete(addressTable.getSelectionModel().getSelectedItem());
+                addressLoad();
+            }
+        }
+        if(storeTab.isSelected()){
+            if(!(storeTable.getSelectionModel().getSelectedItem()==null)){
+                StoreDAO storeDAO = new StoreDAO();
+                storeDAO.delete(storeTable.getSelectionModel().getSelectedItem());
+                storeLoad();
             }
         }
     }

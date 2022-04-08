@@ -146,7 +146,7 @@ public class Data {
             em.close();
         }
     }
-    public void deleteEm(Class tableClass, int id){
+    public void deleteEm(Class tableClass, short id){
         EntityManager em = ENTITY_MANAGER_FACTORY.createEntityManager();
         EntityTransaction transaction= null;
         Object tempObject = null;

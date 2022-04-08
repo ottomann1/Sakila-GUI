@@ -10,13 +10,13 @@ public class Payment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "payment_id")
-    private int paymentId;
+    private short paymentId;
     @Basic
     @Column(name = "customer_id")
-    private int customerId;
+    private short customerId;
     @Basic
     @Column(name = "staff_id")
-    private int staffId;
+    private short staffId;
     @Basic
     @Column(name = "rental_id")
     private Integer rentalId;
@@ -69,7 +69,7 @@ public class Payment {
         this.staffByStaffId = staffByStaffId;
     }
 
-    public Payment(int paymentId, int customerId, int staffId, Integer rentalId, BigDecimal amount, Timestamp paymentDate, Timestamp lastUpdate) {
+    public Payment(short paymentId, short customerId, short staffId, Integer rentalId, BigDecimal amount, Timestamp paymentDate, Timestamp lastUpdate) {
         this.paymentId = paymentId;
         this.customerId = customerId;
         this.staffId = staffId;
@@ -87,7 +87,7 @@ public class Payment {
         return paymentId;
     }
 
-    public void setPaymentId(int paymentId) {
+    public void setPaymentId(short paymentId) {
         this.paymentId = paymentId;
     }
 
@@ -95,7 +95,7 @@ public class Payment {
         return customerId;
     }
 
-    public void setCustomerId(int customerId) {
+    public void setCustomerId(short customerId) {
         this.customerId = customerId;
     }
 
@@ -103,7 +103,7 @@ public class Payment {
         return staffId;
     }
 
-    public void setStaffId(int staffId) {
+    public void setStaffId(short staffId) {
         this.staffId = staffId;
     }
 

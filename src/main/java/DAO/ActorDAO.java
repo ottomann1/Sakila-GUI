@@ -45,7 +45,7 @@ public class ActorDAO implements DAO{
     public void delete(Object o) throws IOException {
     Data data = new Data();
     Actor actor = (Actor) o;
-        data.deleteEm(Actor.class, actor.getActorId());
+        data.deleteEm(Actor.class, (short) actor.getActorId());
     }
 
     @Override

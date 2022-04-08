@@ -46,7 +46,7 @@ public class RentalDAO implements DAO {
     public void delete(Object o) throws IOException {
         Data data = new Data();
         Rental rental = (Rental) o;
-        data.deleteEm(Rental.class, rental.getRentalId());
+        data.deleteEm(Rental.class, (short) rental.getRentalId());
     }
 
     @Override

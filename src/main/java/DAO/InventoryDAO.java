@@ -52,7 +52,7 @@ public class InventoryDAO implements DAO{
     public void delete(Object o) throws IOException {
     Data data = new Data();
     Inventory inventory = (Inventory) o;
-        data.deleteEm(Inventory.class, inventory.getInventoryId());
+        data.deleteEm(Inventory.class, (short) inventory.getInventoryId());
     }
 
     @Override

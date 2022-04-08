@@ -26,7 +26,7 @@ public class PaymentDAO implements DAO {
         List<Object[]> paymentObjects = data.getDataListQuery("SELECT * FROM payment");
         List<Payment> payments = new ArrayList<Payment>();
         for (Object[] o : paymentObjects) {
-            Payment payment = new Payment((int) o[0], (int) o[1], (int) o[2], (Integer) o[3], (BigDecimal) o[4], (Timestamp) o[5], (Timestamp) o[6]);
+            Payment payment = new Payment((short) o[0], (short) o[1], (short) o[2], (Integer) o[3], (BigDecimal) o[4], (Timestamp) o[5], (Timestamp) o[6]);
             payments.add(payment);
         }
         return payments;
@@ -48,7 +48,7 @@ public class PaymentDAO implements DAO {
     public void delete(Object o) throws IOException {
         Data data = new Data();
         Payment payment = (Payment) o;
-        data.deleteEm(Payment.class, payment.getPaymentId());
+        data.deleteEm(Payment.class, (short) payment.getPaymentId());
     }
 
     @Override

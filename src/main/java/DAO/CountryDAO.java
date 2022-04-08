@@ -47,7 +47,7 @@ public class CountryDAO implements DAO{
     public void delete(Object o) throws IOException {
     Data data = new Data();
    Country country = (Country) o;
-        data.deleteEm(Country.class, country.getCountryId());
+        data.deleteEm(Country.class, (short) country.getCountryId());
     }
 
     @Override

@@ -2,6 +2,7 @@ package DAO;
 
 import Business.Address;
 import Business.Customer;
+import Business.Store;
 import Database.Data;
 
 import java.io.IOException;
@@ -23,8 +24,9 @@ public class CustomerDAO implements DAO {
         Data data = new Data();
         List<Object[]> customerObjects = data.getDataListQuery("SELECT * FROM customer");
         List<Customer> customers = new ArrayList<Customer>();
+        StoreDAO storeDAO = new StoreDAO();
         for (Object[] o : customerObjects) {
-            Customer customer = new Customer((short) o[0], (Byte) o[1], o[2].toString(),
+            Customer customer = new Customer((short) o[0], (Store) storeDAO.read((Byte) o[1]).get(), o[2].toString(),
                     o[3].toString(), o[4].toString(), (Address) (data.getData(Address.class, (short) o[5])),
                     (boolean) o[6], (Timestamp) o[7], (Timestamp) o[8]);
             customers.add(customer);

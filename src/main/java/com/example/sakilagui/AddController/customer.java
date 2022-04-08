@@ -2,8 +2,10 @@ package com.example.sakilagui.AddController;
 
 import Business.Address;
 import Business.Customer;
+import Business.Store;
 import DAO.AddressDAO;
 import DAO.CustomerDAO;
+import DAO.StoreDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -53,7 +55,8 @@ public class customer {
         customer.setEmail(emailField.getText());
         customer.setAddress(addressDropDown.getValue());
         customer.setActive(true);
-        customer.setStoreId((byte) 1);
+        StoreDAO storeDAO = new StoreDAO();
+        customer.setStore((Store) storeDAO.read((byte) 1).get());
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         customer.setCreateDate(timestamp);
         customer.setLastUpdate(timestamp);

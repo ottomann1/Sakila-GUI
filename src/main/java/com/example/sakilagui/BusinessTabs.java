@@ -145,11 +145,11 @@ public class BusinessTabs {
         filmTable.setItems(observableFilms);
         filmTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
         filmDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
-        filmReleaseYear.setCellValueFactory(new PropertyValueFactory<>("releaseYear"));
+//        filmReleaseYear.setCellValueFactory(new PropertyValueFactory<>("releaseYear"));
         filmLanguage.setCellValueFactory(new PropertyValueFactory<>("language"));
         filmLength.setCellValueFactory(new PropertyValueFactory<>("length"));
         filmTable.setItems(observableFilms);
-        filmTable.getColumns().setAll(filmTitle, filmDescription, filmReleaseYear, filmLanguage, filmLength);
+        filmTable.getColumns().setAll(filmTitle, filmDescription, filmLanguage, filmLength);
     }
 
     void actorLoad() throws IOException, ClassNotFoundException {

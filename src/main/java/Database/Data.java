@@ -1,13 +1,16 @@
 package Database;
 
 import Business.Actor;
+import Business.Coupling.FilmCategory;
 import Business.Film;
+import DAO.ActorDAO;
 
 import javax.persistence.*;
 import java.util.List;
 
 public class Data {
     private static final EntityManagerFactory ENTITY_MANAGER_FACTORY = Persistence.createEntityManagerFactory("hibernate");
+
     public void setData(Object o){
         EntityManager em = ENTITY_MANAGER_FACTORY.createEntityManager();
         EntityTransaction transaction= null;
@@ -28,6 +31,9 @@ public class Data {
     }
     public short setDataFilm(Film o){
         EntityManager em = ENTITY_MANAGER_FACTORY.createEntityManager();
+        ActorDAO actorDAO = new ActorDAO();
+        Film film = new Film();
+        FilmCategory filmCategory = new FilmCategory();
         EntityTransaction transaction= null;
         try{
             transaction= em.getTransaction();

@@ -2,7 +2,9 @@ package Business;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.LinkedHashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 public class Inventory {
@@ -22,6 +24,17 @@ public class Inventory {
     @Basic
     @Column(name = "last_update")
     private Timestamp lastUpdate;
+
+    @OneToMany(mappedBy = "inventory")
+    private Set<Rental> rentals = new LinkedHashSet<>();
+
+    public Set<Rental> getRentals() {
+        return rentals;
+    }
+
+    public void setRentals(Set<Rental> rentals) {
+        this.rentals = rentals;
+    }
 
     public Inventory(int inventoryId, Film filmId, Store storeId, Timestamp lastUpdate) {
         this.inventoryId = inventoryId;

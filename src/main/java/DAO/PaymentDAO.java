@@ -1,6 +1,8 @@
 package DAO;
 
+import Business.Customer;
 import Business.Payment;
+import Business.Rental;
 import Database.Data;
 
 import java.io.IOException;
@@ -25,8 +27,14 @@ public class PaymentDAO implements DAO {
         Data data = new Data();
         List<Object[]> paymentObjects = data.getDataListQuery("SELECT * FROM payment");
         List<Payment> payments = new ArrayList<Payment>();
+        CustomerDAO customerDAO = new CustomerDAO();
+        StaffDAO staffDAO = new StaffDAO();
+        RentalDAO rentalDAO = new RentalDAO();
         for (Object[] o : paymentObjects) {
-            Payment payment = new Payment((int) o[0], (int) o[1], (int) o[2], (Integer) o[3], (BigDecimal) o[4], (Timestamp) o[5], (Timestamp) o[6]);
+            Payment payment = new Payment((short) o[0], (byte) o[2], (BigDecimal) o[4],
+                    (Timestamp) o[5], (Timestamp) o[6],
+                    (Customer) customerDAO.read((short) o[1]).get(),
+                    (Rental) rentalDAO.read((Integer) o[3]).get());
             payments.add(payment);
         }
         return payments;

@@ -1,14 +1,12 @@
 package Business;
 
-import org.hibernate.mapping.Set;
+import Business.Coupling.FilmActor;
+import Business.Coupling.FilmCategory;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.sql.Date;
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Objects;
+import java.util.*;
 
 @Entity
 public class Film {
@@ -22,16 +20,6 @@ public class Film {
     @Basic
     @Column(name = "description")
     private String description;
-    @Basic
-    @Column(name = "release_year")
-    private Date releaseYear;
-
-    @ManyToOne
-    @JoinColumn(name = "language_id")
-    private Language language;
-    @Basic
-    @Column(name = "original_language_id")
-    private Byte originalLanguageId;
     @Basic
     @Column(name = "rental_duration")
     private Byte rentalDuration;
@@ -47,40 +35,106 @@ public class Film {
     @Basic
     @Column(name = "rating")
     private String rating;
-    @Transient
-    private Set specialFeatures;
     @Basic
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(
             name = "film_actor",
             joinColumns = {@JoinColumn(name = "actor_id")},
             inverseJoinColumns = {@JoinColumn(name = "film_id")}
     )
+    private Collection<Actor> actor;
 
-    private Collection<Actor> actor = new ArrayList<Actor>();
-
-    @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.MERGE)
     @JoinTable(name = "film_category",
             joinColumns = {@JoinColumn(name = "category_id")},
             inverseJoinColumns = {@JoinColumn(name = "film_id")})
     private Collection<Category> category;
 
-//    public void setSpecialFeatures(Set specialFeatures) {
-//        this.specialFeatures = specialFeatures;
-//    }
-//
-//    public Set getSpecialFeatures() {
-//        return specialFeatures;
-//    }
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    @JoinColumn(name = "original_language_id")
+    private Language originalLanguage;
+
+
+
+    @OneToMany(cascade = CascadeType.MERGE, mappedBy = "film")
+    private Set<Inventory> inventories = new LinkedHashSet<>();
+
+    @OneToMany(cascade = CascadeType.MERGE, mappedBy = "film")
+    private Set<FilmActor> filmActors = new LinkedHashSet<>();
+
+
+
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "language_id", nullable = false)
+    private Language language;
+
+    @Lob
+    @Column(name = "special_features")
+    private String specialFeatures;
+
+    @OneToMany(cascade = CascadeType.MERGE, mappedBy = "film")
+    private Set<FilmCategory> filmCategories = new LinkedHashSet<>();
+
+    @Column(name = "release_year")
+    private Integer releaseYear;
+
+    public Integer getReleaseYear() {
+        return releaseYear;
+    }
+
+    public void setReleaseYear(Integer releaseYear) {
+        this.releaseYear = releaseYear;
+    }
+
+
+    public Set<FilmCategory> getFilmCategories() {
+        return filmCategories;
+    }
+
+    public void setFilmCategories(Set<FilmCategory> filmCategories) {
+        this.filmCategories = filmCategories;
+    }
+
+    public String getSpecialFeatures() {
+        return specialFeatures;
+    }
+
+    public void setSpecialFeatures(String specialFeatures) {
+        this.specialFeatures = specialFeatures;
+    }
+
+    public Set<FilmActor> getFilmActors() {
+        return filmActors;
+    }
+
+    public void setFilmActors(Set<FilmActor> filmActors) {
+        this.filmActors = filmActors;
+    }
+
+    public java.util.Set<Inventory> getInventories() {
+        return inventories;
+    }
+
+    public void setInventories(Set<Inventory> inventories) {
+        this.inventories = inventories;
+    }
+
+    public Language getOriginalLanguage() {
+        return originalLanguage;
+    }
+
+    public void setOriginalLanguage(Language originalLanguage) {
+        this.originalLanguage = originalLanguage;
+    }
 
 
     public String toStringHeavy() {
         return     title + "\n" +
                 "Actors: " + actor + "\n" +
-                "Release Year: " + releaseYear + "\n" +
+//                "Release Year: " + releaseYear + "\n" +
                 "Language: " + language + "\n" +
                 "Length: " + length + "\n" +
                 "Rating: " + rating + "\n" +
@@ -93,7 +147,7 @@ public class Film {
                 "Film last updated: " + lastUpdate;
     }
 
-    public Film(short filmId, String title, String description, Date releaseYear,
+    public Film(short filmId, String title, String description,
                 Language language, byte rentalDuration,
                 BigDecimal rentalRate, short length, BigDecimal replacementCost,
                 String rating, Timestamp lastUpdate,
@@ -101,7 +155,6 @@ public class Film {
         this.filmId = filmId;
         this.title = title;
         this.description = description;
-        this.releaseYear = releaseYear;
         this.language = language;
         this.rentalDuration = rentalDuration;
         this.rentalRate = rentalRate;
@@ -114,7 +167,7 @@ public class Film {
         this.category = category;
     }
 
-    public Film(short filmId, String title, String description, Date releaseYear,
+    public Film(short filmId, String title, String description,
                 Language language, byte rentalDuration,
                 BigDecimal rentalRate, short length, BigDecimal replacementCost,
                 String rating, Timestamp lastUpdate,
@@ -122,7 +175,6 @@ public class Film {
         this.filmId = filmId;
         this.title = title;
         this.description = description;
-        this.releaseYear = releaseYear;
         this.language = language;
         this.rentalDuration = rentalDuration;
         this.rentalRate = rentalRate;
@@ -146,10 +198,11 @@ public class Film {
     public void setCategory(Collection<Category> category) {
         this.category = category;
     }
-    public void addCategory(Category category) {
-        this.category.add(category);
-    }
     public void setCategory(Category category) {
+        if(this.category==null){
+            Collection<Category> emptycategory = new ArrayList<Category>();
+            this.category= emptycategory;
+        }
         this.category.add(category);
     }
 
@@ -197,14 +250,6 @@ public class Film {
         this.language = language;
     }
 
-    public Byte getOriginalLanguageId() {
-        return originalLanguageId;
-    }
-
-    public void setOriginalLanguageId(Byte originalLanguageId) {
-        this.originalLanguageId = originalLanguageId;
-    }
-
     public void setRentalDuration(Byte rentalDuration) {
         this.rentalDuration = rentalDuration;
     }
@@ -237,10 +282,6 @@ public class Film {
         this.rating = rating;
     }
 
-    public Date getReleaseYear() {
-        return releaseYear;
-    }
-
     public int getRentalDuration() {
         return rentalDuration;
     }
@@ -251,10 +292,6 @@ public class Film {
 
     public void setLastUpdate(Timestamp lastUpdate) {
         this.lastUpdate = lastUpdate;
-    }
-
-    public void setReleaseYear(Date releaseYear) {
-        this.releaseYear = releaseYear;
     }
 
 }

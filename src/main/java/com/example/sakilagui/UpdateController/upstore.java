@@ -54,7 +54,7 @@ public class upstore {
     public void setFields(Store storex) {
         store = storex;
         addressDropDown.setValue(store.getAddress());
-        managerDropDown.setValue((store.getStaff()));
+        managerDropDown.setValue(store.getManagerStaff());
     }
 
     @FXML

@@ -48,7 +48,7 @@ public class CategoryDAO implements DAO {
     public void delete(Object o) throws IOException {
         Data data = new Data();
         Category category = (Category) o;
-        data.deleteEm(Category.class, category.getCategoryId());
+        data.deleteEm(Category.class, category.getId());
 
     }
 

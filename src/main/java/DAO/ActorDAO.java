@@ -23,7 +23,7 @@ public class ActorDAO implements DAO{
     List<Object[]> actorObjects = data.getDataListQuery("SELECT * FROM actor");
     List<Actor> actors = new ArrayList<Actor>();
         for (Object[] o : actorObjects) {
-        Actor actor = new Actor((Short) o[0], o[1].toString(), o[2].toString(), (Timestamp) o[3]);
+        Actor actor = new Actor((short) o[0], o[1].toString(), o[2].toString(), (Timestamp) o[3]);
         actors.add(actor);
     }
         return actors;
@@ -45,7 +45,7 @@ public class ActorDAO implements DAO{
     public void delete(Object o) throws IOException {
     Data data = new Data();
     Actor actor = (Actor) o;
-        data.deleteEm(Actor.class, actor.getActorId());
+        data.deleteEm(Actor.class, actor.getId());
     }
 
     @Override

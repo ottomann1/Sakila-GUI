@@ -23,6 +23,8 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.Year;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -131,7 +133,7 @@ public class upfilm {
     public void setFields(Film filmx) {
         film = filmx;
         filmTitleField.setText(film.getTitle());
-        releaseYearField.setText(String.valueOf(film.getReleaseYear()));
+//        releaseYearField.setText(String.valueOf(film.getReleaseYear()));
         filmLengthField.setText(String.valueOf(film.getLength()));
         ratingDropDown.setValue(film.getRating());
         categoryDropDown.setValue((Category) film.getCategory());
@@ -148,7 +150,9 @@ public class upfilm {
     void addFilmOnClick(ActionEvent event) throws IOException, ClassNotFoundException {
         FilmDAO filmDAO = new FilmDAO();
         film.setTitle(filmTitleField.getText());
-        film.setReleaseYear(Date.valueOf(releaseYearField.getText()));
+        LocalDate date = LocalDate.now();
+        date.getYear();
+//        film.setReleaseYear(String.valueOf(date.getYear()));
         film.setLength(Short.parseShort(filmLengthField.getText()));
         film.setRating(ratingDropDown.getValue());
         film.setCategory(categoryDropDown.getValue());

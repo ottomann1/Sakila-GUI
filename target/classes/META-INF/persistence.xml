@@ -33,6 +33,12 @@
         <class>Business.SalesByFilmCategory</class>
         <class>Business.SalesByStore</class>
         <class>Business.StaffList</class>
+        <class>Business.Coupling.FilmCategoryId</class>
+        <class>Business.Coupling.FilmCategory</class>
+        <class>Business.Coupling.FilmActorId</class>
+        <class>Business.Coupling.FilmActor</class>
+        <class>Business.Coupling.FilmActorId</class>
+        <class>Business.Coupling.FilmActor</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>

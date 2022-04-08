@@ -2,7 +2,9 @@ package Business;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.LinkedHashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 public class Customer {
@@ -10,9 +12,6 @@ public class Customer {
     @Id
     @Column(name = "customer_id")
     private short customerId;
-    @Basic
-    @Column(name = "store_id")
-    private byte storeId;
     @Basic
     @Column(name = "first_name")
     private String firstName;
@@ -32,9 +31,43 @@ public class Customer {
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
-    @OneToOne
-    @JoinColumn(name = "address_id")
+    @OneToMany(mappedBy = "customer")
+    private Set<Payment> payments = new LinkedHashSet<>();
+
+    @OneToMany(mappedBy = "customer")
+    private Set<Rental> rentals = new LinkedHashSet<>();
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "store_id", nullable = false)
+    private Store store;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "address_id", nullable = false)
     private Address address;
+
+    public Store getStore() {
+        return store;
+    }
+
+    public void setStore(Store store) {
+        this.store = store;
+    }
+
+    public Set<Rental> getRentals() {
+        return rentals;
+    }
+
+    public void setRentals(Set<Rental> rentals) {
+        this.rentals = rentals;
+    }
+
+    public Set<Payment> getPayments() {
+        return payments;
+    }
+
+    public void setPayments(Set<Payment> payments) {
+        this.payments = payments;
+    }
 
     public String toStringHeavy() {
         return
@@ -44,9 +77,9 @@ public class Customer {
                 "Customer last updated: " + lastUpdate;
     }
 
-    public Customer(short customerId, byte storeId, String firstName, String lastName, String email, boolean active, Timestamp createDate, Timestamp lastUpdate, Address address) {
+    public Customer(short customerId, Store store, String firstName, String lastName, String email, boolean active, Timestamp createDate, Timestamp lastUpdate, Address address) {
         this.customerId = customerId;
-        this.storeId = storeId;
+        this.store = store;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -60,10 +93,10 @@ public class Customer {
 
     }
 
-    public Customer(short i, Byte aByte, String toString, String toString1, String toString2,
+    public Customer(short i, Store aByte, String toString, String toString1, String toString2,
                     Address data, boolean active , Timestamp timestamp, Timestamp timestamp1) {
         this.customerId = i;
-        this.storeId = aByte;
+        this.store = aByte;
         this.firstName = toString;
         this.lastName = toString1;
         this.email = toString2;
@@ -79,14 +112,6 @@ public class Customer {
 
     public void setCustomerId(short customerId) {
         this.customerId = customerId;
-    }
-
-    public byte getStoreId() {
-        return storeId;
-    }
-
-    public void setStoreId(byte storeId) {
-        this.storeId = storeId;
     }
 
     public String getFirstName() {

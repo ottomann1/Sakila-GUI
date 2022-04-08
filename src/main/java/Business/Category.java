@@ -1,15 +1,16 @@
 package Business;
 
+import Business.Coupling.FilmCategory;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.LinkedHashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 public class Category {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Id
-    @Column(name = "category_id")
-    private byte categoryId;
+
     @Basic
     @Column(name = "name")
     private String name;
@@ -17,25 +18,43 @@ public class Category {
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
+//    @OneToMany(cascade = CascadeType.MERGE, mappedBy = "category")
+//    private Set<FilmCategory> filmCategories = new LinkedHashSet<>();
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "category_id", nullable = false)
+    private byte id;
+
+
+//    public Set<FilmCategory> getFilmCategories() {
+//        return filmCategories;
+//    }
+//
+//    public void setFilmCategories(Set<FilmCategory> filmCategories) {
+//        this.filmCategories = filmCategories;
+//    }
+
     @Override
     public String toString() {return name;
     }
 
+    public byte getId() {
+        return id;
+    }
+
+    public void setId(byte id) {
+        this.id = id;
+    }
 
     public Category(byte categoryId, String name, Timestamp lastUpdate) {
-        this.categoryId = categoryId;
+        this.id = categoryId;
         this.name = name;
         this.lastUpdate = lastUpdate;
     }
     public Category(){
 
     }
-
-    public byte getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(byte categoryId) {this.categoryId = categoryId;}
 
     public String getName() {
         return name;
@@ -53,16 +72,4 @@ public class Category {
         this.lastUpdate = lastUpdate;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Category category = (Category) o;
-        return categoryId == category.categoryId && Objects.equals(name, category.name) && Objects.equals(lastUpdate, category.lastUpdate);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(categoryId, name, lastUpdate);
-    }
 }

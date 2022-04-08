@@ -2,7 +2,9 @@ package Business;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.LinkedHashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 public class Country {
@@ -16,6 +18,17 @@ public class Country {
     @Basic
     @Column(name = "last_update")
     private Timestamp lastUpdate;
+
+    @OneToMany(mappedBy = "country")
+    private Set<City> cities = new LinkedHashSet<>();
+
+    public Set<City> getCities() {
+        return cities;
+    }
+
+    public void setCities(Set<City> cities) {
+        this.cities = cities;
+    }
 
     @Override
     public String toString() { return country;

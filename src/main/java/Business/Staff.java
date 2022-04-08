@@ -18,18 +18,12 @@ public class Staff {
     @Basic
     @Column(name = "last_name")
     private String lastName;
-    @OneToOne
-    @JoinColumn(name = "address_id")
-    private Address address;
     @Basic
     @Column(name = "picture")
     private byte[] picture;
     @Basic
     @Column(name = "email")
     private String email;
-    @OneToOne
-    @JoinColumn(name = "store_id")
-    private Store store;
     @Basic
     @Column(name = "active")
     private boolean active;
@@ -42,10 +36,30 @@ public class Staff {
     @Basic
     @Column(name = "last_update")
     private Timestamp lastUpdate;
-//    @OneToMany(mappedBy = "paymentsByStaffId")
-//    private Collection<Payment> paymentsByStaffId;
-//    @OneToMany(mappedBy = "rentalsByStaffId")
-//    private Collection<Rental> rentalsByStaffId;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "address_id", nullable = false)
+    private Address address;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "store_id", nullable = false)
+    private Store store;
+
+    public Store getStore() {
+        return store;
+    }
+
+    public void setStore(Store store) {
+        this.store = store;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 
     public String toStringHeavy() {
         return
@@ -114,14 +128,6 @@ public class Staff {
         this.lastName = lastName;
     }
 
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-
     public byte[] getPicture() {
         return picture;
     }
@@ -136,14 +142,6 @@ public class Staff {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public Store getStore() {
-        return store;
-    }
-
-    public void setStore(Store store) {
-        this.store = store;
     }
 
     public boolean isActive() {

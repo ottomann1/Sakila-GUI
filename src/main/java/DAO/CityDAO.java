@@ -23,8 +23,9 @@ public class CityDAO implements DAO {
         Data data = new Data();
         List<Object[]> cityObjects = data.getDataListQuery("SELECT * FROM city");
         List<City> citys = new ArrayList<City>();
+        CountryDAO countryDAO = new CountryDAO();
         for (Object[] o : cityObjects) {
-            City city = new City((short) o[0], o[1].toString(), (short) o[2], (Timestamp) o[3]);
+            City city = new City((short) o[0], o[1].toString(), (Country) countryDAO.read((short) o[2]).get(), (Timestamp) o[3]);
             citys.add(city);
         }
         return citys;

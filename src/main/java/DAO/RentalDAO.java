@@ -1,6 +1,9 @@
 package DAO;
 
+import Business.Customer;
+import Business.Inventory;
 import Business.Rental;
+import Business.Staff;
 import Database.Data;
 
 import java.io.IOException;
@@ -22,8 +25,11 @@ public class RentalDAO implements DAO {
         Data data = new Data();
         List<Object[]> rentalObjects = data.getDataListQuery("SELECT * FROM rental");
         List<Rental> rentals = new ArrayList<Rental>();
+        InventoryDAO inventoryDAO = new InventoryDAO();
+        CustomerDAO customerDAO = new CustomerDAO();
+        StaffDAO staffDAO = new StaffDAO();
         for (Object[] o : rentalObjects) {
-            Rental rental = new Rental((Integer) o[0], (Timestamp) o[1], (int) o[2], (int) o[3], (Timestamp) o[4], (int) o[5], (Timestamp) o[6]);
+            Rental rental = new Rental((Integer) o[0], (Timestamp) o[1], (Inventory) o[2], (Customer) o[3], (Timestamp) o[4], (Staff) o[5], (Timestamp) o[6]);
             rentals.add(rental);
         }
         return rentals;

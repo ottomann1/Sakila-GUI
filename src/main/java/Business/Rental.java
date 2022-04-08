@@ -4,7 +4,9 @@ import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.Collection;
+import java.util.LinkedHashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 public class Rental {
@@ -16,61 +18,80 @@ public class Rental {
     @Column(name = "rental_date")
     private Timestamp rentalDate;
     @Basic
-    @Column(name = "inventory_id")
-    private int inventoryId;
-    @Basic
-    @Column(name = "customer_id")
-    private int customerId;
-    @Basic
     @Column(name = "return_date")
     private Timestamp returnDate;
     @Basic
-    @Column(name = "staff_id")
-    private int staffId;
-    @Basic
     @Column(name = "last_update")
     private Timestamp lastUpdate;
-    @OneToMany(mappedBy = "paymentsByRentalId")
-    private Collection<Payment> paymentsByRentalId;
-//    @ManyToOne
-//    @JoinColumn(name = "customer_id", referencedColumnName = "customer_id", nullable = false)
-//    private Customer customerByCustomerId;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "rentals_by_staff_id_staff_id")
-    private Staff rentalsByStaffId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "rental_by_staff_id_staff_id")
-    private Staff rentalByStaffId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "inventory_id")
+    private Inventory inventory;
 
-    public Staff getRentalByStaffId() {
-        return rentalByStaffId;
+    @OneToMany(mappedBy = "rental")
+    private Set<Payment> payments = new LinkedHashSet<>();
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "staff_id", nullable = false)
+    private Staff staff;
+
+    public Staff getStaff() {
+        return staff;
     }
 
-    public void setRentalByStaffId(Staff rentalByStaffId) {
-        this.rentalByStaffId = rentalByStaffId;
+    public void setStaff(Staff staff) {
+        this.staff = staff;
     }
 
-    public Staff getRentalsByStaffId() {
-        return rentalsByStaffId;
+    public Rental(Integer rentalId, Timestamp rentalDate, Inventory inventory, Customer customer, Timestamp returnDate, Staff staff, Timestamp lastUpdate) {
+    this.rentalId=rentalId;
+    this.rentalDate=rentalDate;
+    this.inventory=inventory;
+    this.customer=customer;
+    this.returnDate=returnDate;
+    this.staff=staff;
+    this.lastUpdate=lastUpdate;
     }
 
-    public void setRentalsByStaffId(Staff rentalsByStaffId) {
-        this.rentalsByStaffId = rentalsByStaffId;
+    public Set<Payment> getPayments() {
+        return payments;
     }
 
-    public Rental(int rentalId, Timestamp rentalDate, int inventoryId, int customerId, Timestamp returnDate, int staffId, Timestamp lastUpdate) {
+    public void setPayments(Set<Payment> payments) {
+        this.payments = payments;
+    }
+
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Rental(int rentalId, Timestamp rentalDate, Inventory inventory, Timestamp returnDate, Staff staff, Timestamp lastUpdate, Customer customer, Set<Payment> payments) {
         this.rentalId = rentalId;
         this.rentalDate = rentalDate;
-        this.inventoryId = inventoryId;
-        this.customerId = customerId;
+        this.inventory = inventory;
         this.returnDate = returnDate;
-        this.staffId = staffId;
+        this.staff = staff;
         this.lastUpdate = lastUpdate;
-       // this.paymentsByRentalId = paymentsByRentalId;
-       // this.customerByCustomerId = customerByCustomerId;
+        this.customer = customer;
+        this.payments = payments;
     }
+
     public Rental(){
 
     }
@@ -91,22 +112,6 @@ public class Rental {
         this.rentalDate = rentalDate;
     }
 
-    public int getInventoryId() {
-        return inventoryId;
-    }
-
-    public void setInventoryId(int inventoryId) {
-        this.inventoryId = inventoryId;
-    }
-
-    public int getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
-    }
-
     public Timestamp getReturnDate() {
         return returnDate;
     }
@@ -115,41 +120,12 @@ public class Rental {
         this.returnDate = returnDate;
     }
 
-    public int getStaffId() {
-        return staffId;
-    }
-
-    public void setStaffId(int staffId) {
-        this.staffId = staffId;
-    }
-
     public Timestamp getLastUpdate() {
         return lastUpdate;
     }
 
     public void setLastUpdate(Timestamp lastUpdate) {
         this.lastUpdate = lastUpdate;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Rental rental = (Rental) o;
-        return rentalId == rental.rentalId && inventoryId == rental.inventoryId && customerId == rental.customerId && staffId == rental.staffId && Objects.equals(rentalDate, rental.rentalDate) && Objects.equals(returnDate, rental.returnDate) && Objects.equals(lastUpdate, rental.lastUpdate);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(rentalId, rentalDate, inventoryId, customerId, returnDate, staffId, lastUpdate);
-    }
-
-    public Collection<Payment> getPaymentsByRentalId() {
-        return paymentsByRentalId;
-    }
-
-    public void setPaymentsByRentalId(Collection<Payment> paymentsByRentalId) {
-        this.paymentsByRentalId = paymentsByRentalId;
     }
 
 //    public Customer getCustomerByCustomerId() {

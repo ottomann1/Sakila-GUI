@@ -2,20 +2,21 @@ package com.example.sakilagui.AddController;
 
 import Business.Actor;
 import Business.Category;
+import Business.Coupling.FilmActor;
+import Business.Coupling.FilmCategory;
 import Business.Film;
 import Business.Language;
 import DAO.ActorDAO;
 import DAO.CategoryDAO;
 import DAO.FilmDAO;
 import DAO.LanguageDAO;
-import DAO.kopplingstabeller.FilmActor;
-import DAO.kopplingstabeller.FilmCategory;
+import DAO.kopplingstabeller.FilmActorDAO;
+import DAO.kopplingstabeller.FilmCategoryDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ListView;
@@ -28,7 +29,12 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Year;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -78,6 +84,7 @@ public class film {
     private Collection<Category> categories = new ArrayList<>();
     private Collection<Language> languages = new ArrayList<>();
     private Collection<Actor> newActors= new ArrayList<Actor>();
+    private ActorDAO actorDAO = new ActorDAO();
 
     @FXML
     private Button addActorButton;
@@ -87,7 +94,6 @@ public class film {
 
     @FXML
     void initialize() throws IOException, ClassNotFoundException {
-        ActorDAO actorDAO = new ActorDAO();
         actors = actorDAO.readAll();
         ObservableList<Actor> observableActors = FXCollections.observableArrayList(actors);
         selectActorDropDown.setItems(observableActors);
@@ -149,31 +155,51 @@ public class film {
     void addFilmOnClick(ActionEvent event) throws IOException, ClassNotFoundException {
         Film film = new Film();
         film.setTitle(filmTitleField.getText());
-//        Date date = new Date(2000, 01, 02);
-//        film.setReleaseYear(date);
-        film.setLength(Short.parseShort(filmLengthField.getText()));
-        film.setRating(ratingDropDown.getValue());
+        Calendar cal = Calendar.getInstance();
+//        LocalDate localDate = LocalDate.now();
+        LocalDate date = LocalDate.now();
+
+//        film.setTitle(localDate.toString());
+//        film.setReleaseYear(String.valueOf(date.getYear()));
+        film.setLength((short) 5);
+//        film.setLength(Short.parseShort(filmLengthField.getText()));
+//        film.setRating(ratingDropDown.getValue());
+        film.setRating("R");
+//        film.setLanguage(selectLanuageDropDown.getValue());
         film.setLanguage(selectLanuageDropDown.getValue());
-        film.setRentalRate(BigDecimal.valueOf(Long.parseLong(rentalRateField.getText())));
-        film.setRentalDuration(Byte.parseByte(rentalDurationField.getText()));
-        film.setReplacementCost(BigDecimal.valueOf(Long.parseLong(replacementCostField.getText())));
-//        film.setSpecialFeatures(specialFeatureField.getText());
-        film.setDescription(filmDescriptionField.getText());
+//        film.setRentalRate(BigDecimal.valueOf(Long.parseLong(rentalRateField.getText())));
+        film.setRentalRate(BigDecimal.valueOf(5));
+//        film.setRentalDuration(Byte.parseByte(rentalDurationField.getText()));
+        film.setRentalDuration((byte) 5);
+//        film.setReplacementCost(BigDecimal.valueOf(Long.parseLong(replacementCostField.getText())));
+        film.setReplacementCost(BigDecimal.valueOf(5));
+//        film.setSpecialFeatures("Trailers");
+        film.setSpecialFeatures("Trailers");
+//        film.setDescription(filmDescriptionField.getText());
+        film.setDescription(String.valueOf(555));
+//        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+//        film.setLastUpdate(timestamp);
         film.setLastUpdate(timestamp);
         FilmDAO filmDAO = new FilmDAO();
-        short filmId = filmDAO.createFilm(film);
-        Film createdFilm = (Film) filmDAO.read(filmId).get();
-        createdFilm.setActor(newActors);
-        createdFilm.setCategory(categoryDropDown.getSelectionModel().getSelectedItem());
-        FilmCategory filmCategory = new FilmCategory();
-        FilmActor filmActor = new FilmActor();
+//        filmDAO.read(filmId).get();
+        film.setActor(newActors);
+        film.setCategory(categoryDropDown.getSelectionModel().getSelectedItem());
+        FilmCategoryDAO filmCategory = new FilmCategoryDAO();
+        FilmActorDAO filmActor = new FilmActorDAO();
         Iterator filmActorIte = newActors.iterator();
+//        short filmId = filmDAO.createFilm(film);
         while(filmActorIte.hasNext()){
-            filmActor.createFilmIdAndActorId(createdFilm.getFilmId(), (short) newActors.iterator().next().getActorId());
+//            filmActor.createFilmIdAndActorId(film.getFilmId(), (short) ((Actor) filmActorIte.next()).getActorId());
+            FilmActor filmActorSave = new FilmActor((Actor) filmActorIte.next(), film);
+            filmActor.createFilmActor(filmActorSave);
         }
-        filmCategory.createFilmIdAndCategoryId(createdFilm.getFilmId(), categoryDropDown.getSelectionModel().getSelectedItem().getCategoryId());
-        filmDAO.update(createdFilm, film);
+//        (short) xActor.getActorId()
+//        filmCategory.createFilmIdAndCategoryId(film.getFilmId(), categoryDropDown.getSelectionModel().getSelectedItem().getId());
+        FilmCategory filmCategorySave = new FilmCategory(film, categoryDropDown.getSelectionModel().getSelectedItem());
+        filmCategory.createFilmCategory(filmCategorySave);
+        short filmIda = filmDAO.createFilm(film);
+//        filmDAO.update(film, film);
 
 //        film.addCategory(categoryDropDown.getValue());
 //        filmCa

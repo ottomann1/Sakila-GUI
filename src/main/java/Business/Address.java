@@ -2,7 +2,9 @@ package Business;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.LinkedHashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "address")
@@ -20,9 +22,6 @@ public class Address {
     @Basic
     @Column(name = "district")
     private String district;
-//    @Basic
-//    @Column(name = "city_id")
-//    private int cityId;
     @Basic
     @Column(name = "postal_code")
     private String postalCode;
@@ -39,6 +38,40 @@ public class Address {
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     @JoinColumn(name = "city_id")
     private City city;
+
+    @OneToMany(mappedBy = "address")
+    private Set<Staff> staff = new LinkedHashSet<>();
+
+    @OneToMany(mappedBy = "address")
+    private Set<Store> stores = new LinkedHashSet<>();
+
+    @OneToMany(mappedBy = "address")
+    private Set<Customer> customers = new LinkedHashSet<>();
+
+    public Set<Customer> getCustomers() {
+        return customers;
+    }
+
+    public void setCustomers(Set<Customer> customers) {
+        this.customers = customers;
+    }
+
+    public Set<Store> getStores() {
+        return stores;
+    }
+
+    public void setStores(Set<Store> stores) {
+        this.stores = stores;
+    }
+
+
+    public Set<Staff> getStaff() {
+        return staff;
+    }
+
+    public void setStaff(Set<Staff> staff) {
+        this.staff = staff;
+    }
 
     @Override
     public String toString() {
@@ -58,7 +91,6 @@ public class Address {
         this.addressId = addressId;
         this.address = address;
         this.district = district;
-//        this.cityId = cityId;
         this.city = city;
         this.postalCode = postalCode;
         this.phone = phone;

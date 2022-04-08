@@ -1,6 +1,9 @@
 package DAO.kopplingstabeller;
 
 import Business.Category;
+import Business.Coupling.FilmActor;
+import Business.Coupling.FilmCategory;
+import Business.Coupling.FilmCategoryId;
 import Business.Film;
 import DAO.CategoryDAO;
 import DAO.FilmDAO;
@@ -11,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class FilmCategory {
+public class FilmCategoryDAO {
 
     public List<Film> getFilmsByCategoryId(short id) throws IOException, ClassNotFoundException {
         Data data = new Data();
@@ -24,9 +27,27 @@ public class FilmCategory {
         return films;
     }
 
-    public void createFilmIdAndCategoryId(short filmId, short categoryId){
+    public void createFilmCategory(FilmCategory filmCategory){
         Data data = new Data();
-        data.setDataQuery("INSERT INTO film_category VALUES ("+filmId+", "+categoryId+");");
+        FilmCategoryId filmCategoryId = new FilmCategoryId();
+        filmCategoryId.setCategoryId(filmCategory.getCategory().getId());
+        filmCategoryId.setFilmId(filmCategory.getFilm().getFilmId());
+        filmCategory.setId(filmCategoryId);
+        data.setData(filmCategory);
+    }
+
+    public void createFilmIdAndCategoryId(short filmId, short categoryId) throws IOException, ClassNotFoundException {
+        Data data = new Data();
+        FilmDAO filmDAO = new FilmDAO();
+        CategoryDAO categoryDAO = new CategoryDAO();
+        Film film = (Film) filmDAO.read(filmId).get();
+        Category category = (Category) categoryDAO.read(categoryId).get();
+        FilmCategory filmCategory = new FilmCategory();
+        filmCategory.setCategory(category);
+        filmCategory.setFilm(film);
+        data.setData(filmCategory);
+
+
     }
 
     public List<Category> getCategoriesByFilmId(short id) throws IOException, ClassNotFoundException {

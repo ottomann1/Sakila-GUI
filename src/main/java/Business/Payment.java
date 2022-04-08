@@ -12,14 +12,8 @@ public class Payment {
     @Column(name = "payment_id")
     private int paymentId;
     @Basic
-    @Column(name = "customer_id")
-    private int customerId;
-    @Basic
     @Column(name = "staff_id")
     private int staffId;
-    @Basic
-    @Column(name = "rental_id")
-    private Integer rentalId;
     @Basic
     @Column(name = "amount")
     private BigDecimal amount;
@@ -29,58 +23,44 @@ public class Payment {
     @Basic
     @Column(name = "last_update")
     private Timestamp lastUpdate;
-//    @ManyToOne
-//    @JoinColumn(name = "customer_id", referencedColumnName = "customer_id", nullable = false)
-//    private Customer customerByCustomerId;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "staff_by_staff_id_staff_id")
-    private Staff staffByStaffId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "payments_by_staff_id_staff_id")
-    private Staff paymentsByStaffId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "rental_id")
+    private Rental rental;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "payments_by_rental_id_rental_id")
-    private Rental paymentsByRentalId;
-
-    public Rental getPaymentsByRentalId() {
-        return paymentsByRentalId;
+    public Rental getRental() {
+        return rental;
     }
 
-    public void setPaymentsByRentalId(Rental paymentsByRentalId) {
-        this.paymentsByRentalId = paymentsByRentalId;
+    public void setRental(Rental rental) {
+        this.rental = rental;
     }
 
-    public Staff getPaymentsByStaffId() {
-        return paymentsByStaffId;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setPaymentsByStaffId(Staff paymentsByStaffId) {
-        this.paymentsByStaffId = paymentsByStaffId;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
-    public Staff getStaffByStaffId() {
-        return staffByStaffId;
+
+
+    public Payment(){
     }
 
-    public void setStaffByStaffId(Staff staffByStaffId) {
-        this.staffByStaffId = staffByStaffId;
-    }
-
-    public Payment(int paymentId, int customerId, int staffId, Integer rentalId, BigDecimal amount, Timestamp paymentDate, Timestamp lastUpdate) {
+    public Payment(int paymentId, int staffId, BigDecimal amount, Timestamp paymentDate, Timestamp lastUpdate, Customer customer, Rental rental) {
         this.paymentId = paymentId;
-        this.customerId = customerId;
         this.staffId = staffId;
-        this.rentalId = rentalId;
         this.amount = amount;
         this.paymentDate = paymentDate;
         this.lastUpdate = lastUpdate;
-       // this.customerByCustomerId = customerByCustomerId;
-    }
-    public Payment(){
-
+        this.customer = customer;
+        this.rental = rental;
     }
 
     public int getPaymentId() {
@@ -91,28 +71,12 @@ public class Payment {
         this.paymentId = paymentId;
     }
 
-    public int getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
-    }
-
     public int getStaffId() {
         return staffId;
     }
 
     public void setStaffId(int staffId) {
         this.staffId = staffId;
-    }
-
-    public Integer getRentalId() {
-        return rentalId;
-    }
-
-    public void setRentalId(Integer rentalId) {
-        this.rentalId = rentalId;
     }
 
     public BigDecimal getAmount() {
@@ -139,18 +103,6 @@ public class Payment {
         this.lastUpdate = lastUpdate;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Payment payment = (Payment) o;
-        return paymentId == payment.paymentId && customerId == payment.customerId && staffId == payment.staffId && Objects.equals(rentalId, payment.rentalId) && Objects.equals(amount, payment.amount) && Objects.equals(paymentDate, payment.paymentDate) && Objects.equals(lastUpdate, payment.lastUpdate);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(paymentId, customerId, staffId, rentalId, amount, paymentDate, lastUpdate);
-    }
 //
 //    public Customer getCustomerByCustomerId() {
 //        return customerByCustomerId;

@@ -2,10 +2,7 @@ package com.example.sakilagui;
 
 import Business.*;
 import DAO.*;
-import com.example.sakilagui.UpdateController.upActor;
-import com.example.sakilagui.UpdateController.upaddress;
-import com.example.sakilagui.UpdateController.upcustomer;
-import com.example.sakilagui.UpdateController.upfilm;
+import com.example.sakilagui.UpdateController.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -485,6 +482,34 @@ public class BusinessTabs {
                 customerStage.setScene(customerScene);
                 customerStage.showAndWait();
                 filmLoad();
+            }
+        }
+        if(storeTab.isSelected()){
+            if(!(storeTable.getSelectionModel().getSelectedItem()==null)){
+                Store store = storeTable.getSelectionModel().getSelectedItem();
+                FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/upstore.fxml"));
+                Scene storeScene = new Scene(loader.load());
+                Stage storeStage = new Stage();
+                upstore upStore = loader.getController();
+                upStore.setFields(store);
+                storeStage.initModality(Modality.APPLICATION_MODAL);
+                storeStage.setScene(storeScene);
+                storeStage.showAndWait();
+                storeLoad();
+            }
+        }
+        if(staffTab.isSelected()){
+            if(!(staffTable.getSelectionModel().getSelectedItem()==null)){
+                Staff staff = staffTable.getSelectionModel().getSelectedItem();
+                FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/upstaff.fxml"));
+                Scene staffScene = new Scene(loader.load());
+                Stage staffStage = new Stage();
+                upstaff upStaff = loader.getController();
+                upStaff.setFields(staff);
+                staffStage.initModality(Modality.APPLICATION_MODAL);
+                staffStage.setScene(staffScene);
+                staffStage.showAndWait();
+                storeLoad();
             }
         }
 

@@ -7,7 +7,7 @@
 
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.text.Font?>
-<AnchorPane prefHeight="110.0" prefWidth="577.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sakilagui.UpdateController.upActor">
+<AnchorPane prefHeight="110.0" prefWidth="577.0" xmlns="http://javafx.com/javafx/17" style="-fx-background-color: black;" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sakilagui.UpdateController.upActor">
    <children>
       <TextField fx:id="actorFirstNameField" layoutX="104.0" layoutY="45.0" />
       <TextField fx:id="actorLAstNameField" layoutX="272.0" layoutY="45.0" />

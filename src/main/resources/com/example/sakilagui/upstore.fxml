@@ -9,7 +9,7 @@
 
 
 
-<AnchorPane prefHeight="241.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sakilagui.UpdateController.upstore">
+<AnchorPane prefHeight="241.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" style="-fx-background-color: black;" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sakilagui.UpdateController.upstore">
 
    <children>
       <Button layoutX="383.0" layoutY="100.0" mnemonicParsing="false" onAction="#addStoreOnClick" prefHeight="43.0" prefWidth="117.0" style="-fx-background-color: #e50914#e50914;" text="SAVE" textFill="WHITE">

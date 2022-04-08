@@ -136,6 +136,7 @@ public class BusinessTabs {
         filmLoad();
         customerLoad();
         actorLoad();
+        storeLoad();
         staffLoad();
         addressLoad();
     }
@@ -272,7 +273,7 @@ public class BusinessTabs {
 //            thisStage.setScene(scene);
 //            thisStage.show();
         }
-           else if(storeTab.isSelected()){
+           else if(storeTab.isSelected()) {
 //            Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/store.fxml"));
             Scene sceneStore = new Scene(loader.load());
@@ -360,7 +361,7 @@ public class BusinessTabs {
                 if(staffTab.isSelected()){
             if(!(staffTable.getSelectionModel().getSelectedItem()==null)){
                 Staff staff = staffTable.getSelectionModel().getSelectedItem();
-                Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Stage thisStage = new Stage();
                 FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/FieldOfText.fxml"));
                 Scene scene = new Scene(loader.load());
                 Read read = loader.getController();
@@ -370,10 +371,36 @@ public class BusinessTabs {
                 thisStage.show();
             }
         }
+        if(staffTab.isSelected()){
+            if(!(staffTable.getSelectionModel().getSelectedItem()==null)){
+                Staff staff = staffTable.getSelectionModel().getSelectedItem();
+                Stage thisStage = new Stage();
+                FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/FieldOfText.fxml"));
+                Scene scene = new Scene(loader.load());
+                Read read = loader.getController();
+                read.setText(staff.toStringHeavy());
+                thisStage.initModality(Modality.APPLICATION_MODAL);
+                thisStage.setScene(scene);
+                thisStage.show();
+            }
+        }
+        if(storeTab.isSelected()){
+            if(!(storeTable.getSelectionModel().getSelectedItem()==null)){
+                Store store = storeTable.getSelectionModel().getSelectedItem();
+                Stage thisStage = new Stage();
+                FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/FieldOfText.fxml"));
+                Scene scene = new Scene(loader.load());
+                Read read = loader.getController();
+                read.setText(store.toStringHeavy());
+                thisStage.initModality(Modality.APPLICATION_MODAL);
+                thisStage.setScene(scene);
+                thisStage.show();
+            }
+        }
                 if(customerTab.isSelected()){
             if(!(customerTable.getSelectionModel().getSelectedItem()==null)){
                 Customer customer = customerTable.getSelectionModel().getSelectedItem();
-                Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Stage thisStage = new Stage();
                 FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/FieldOfText.fxml"));
                 Scene scene = new Scene(loader.load());
                 Read read = loader.getController();
@@ -386,7 +413,7 @@ public class BusinessTabs {
                 if(addressTab.isSelected()){
             if(!(addressTable.getSelectionModel().getSelectedItem()==null)){
                 Address address = addressTable.getSelectionModel().getSelectedItem();
-                Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Stage thisStage = new Stage();
                 FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/FieldOfText.fxml"));
                 Scene scene = new Scene(loader.load());
                 Read read = loader.getController();

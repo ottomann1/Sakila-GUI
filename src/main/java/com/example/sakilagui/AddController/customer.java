@@ -39,7 +39,7 @@ public class customer {
     @FXML
     void initialize() throws IOException, ClassNotFoundException {
         AddressDAO addressDAO = new AddressDAO();
-        Collection<Address> address = addressDAO.readAll();
+        address = addressDAO.readAll();
         ObservableList<Address> observableAddress = FXCollections.observableArrayList(address);
         addressDropDown.setItems(observableAddress);
 
@@ -52,7 +52,10 @@ public class customer {
         customer.setLastName(lastNameField.getText());
         customer.setEmail(emailField.getText());
         customer.setAddress(addressDropDown.getValue());
+        customer.setActive(true);
+        customer.setStoreId((byte) 1);
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        customer.setCreateDate(timestamp);
         customer.setLastUpdate(timestamp);
         CustomerDAO customerDAO = new CustomerDAO();
         customerDAO.create(customer);

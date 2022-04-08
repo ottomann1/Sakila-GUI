@@ -3,9 +3,13 @@ package com.example.sakilagui.AddController;
 import Business.Actor;
 import Business.Category;
 import Business.Film;
+import Business.Language;
 import DAO.ActorDAO;
 import DAO.CategoryDAO;
 import DAO.FilmDAO;
+import DAO.LanguageDAO;
+import DAO.kopplingstabeller.FilmActor;
+import DAO.kopplingstabeller.FilmCategory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -26,6 +30,7 @@ import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 
 public class film {
 
@@ -49,6 +54,9 @@ public class film {
     private ChoiceBox<String> ratingDropDown;
 
     @FXML
+    private ChoiceBox<Language> selectLanuageDropDown;
+
+    @FXML
     private TextField releaseYearField;
 
     @FXML
@@ -68,8 +76,8 @@ public class film {
 
     private Collection<Actor> actors = new ArrayList<>();
     private Collection<Category> categories = new ArrayList<>();
-//    private Collection<Film> film = new ArrayList<>();
-    
+    private Collection<Language> languages = new ArrayList<>();
+    private Collection<Actor> newActors= new ArrayList<Actor>();
 
     @FXML
     private Button addActorButton;
@@ -80,15 +88,23 @@ public class film {
     @FXML
     void initialize() throws IOException, ClassNotFoundException {
         ActorDAO actorDAO = new ActorDAO();
-        Collection<Actor> actors = actorDAO.readAll();
+        actors = actorDAO.readAll();
         ObservableList<Actor> observableActors = FXCollections.observableArrayList(actors);
         selectActorDropDown.setItems(observableActors);
 
         CategoryDAO categoryDAO = new CategoryDAO();
-        Collection<Category> categories = categoryDAO.readAll();
+        categories = categoryDAO.readAll();
         ObservableList<Category> observableCategory = FXCollections.observableArrayList(categories);
         categoryDropDown.setItems(observableCategory);
 
+        LanguageDAO languageDAO = new LanguageDAO();
+        languages = languageDAO.readAll();
+        ObservableList<Language> observableLanguages = FXCollections.observableArrayList(languages);
+        selectLanuageDropDown.setItems(observableLanguages);
+
+        String[] ratings = {"G", "PG", "PG-13", "R", "NC-17"};
+        ObservableList<String> rating = FXCollections.observableArrayList(ratings);
+        ratingDropDown.setItems(rating);
 
 // secenSwapChanges
         FXMLLoader loader1 = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/actor.fxml"));
@@ -108,6 +124,13 @@ public class film {
 //        ratingDropDown.setItems(observableFilm);
 // master
     }
+
+    @FXML
+    void removeActorsClick(ActionEvent event){
+        newActors.remove(selectActorDropDown.getValue());
+        ObservableList<Actor> observableActors = FXCollections.observableArrayList(newActors);
+        actorList.setItems(observableActors);
+    }
     @FXML
     void newActorOnClick(ActionEvent event) throws IOException, ClassNotFoundException {
         // secenSwapChanges
@@ -125,10 +148,8 @@ public class film {
     }
     @FXML
     void addActorOnClick(ActionEvent event) {
-
-
-        actors.add(selectActorDropDown.getValue());
-        ObservableList<Actor> observableActors = FXCollections.observableArrayList(actors);
+        newActors.add(selectActorDropDown.getValue());
+        ObservableList<Actor> observableActors = FXCollections.observableArrayList(newActors);
         actorList.setItems(observableActors);
 // master
     }
@@ -137,25 +158,41 @@ public class film {
     void addFilmOnClick(ActionEvent event) throws IOException, ClassNotFoundException {
         Film film = new Film();
         film.setTitle(filmTitleField.getText());
-        film.setReleaseYear(Date.valueOf(releaseYearField.getText()));
+//        Date date = new Date(2000, 01, 02);
+//        film.setReleaseYear(date);
         film.setLength(Short.parseShort(filmLengthField.getText()));
         film.setRating(ratingDropDown.getValue());
+        film.setLanguage(selectLanuageDropDown.getValue());
 //        film.setCategory(categoryDropDown.getValue());
         film.setRentalRate(BigDecimal.valueOf(Long.parseLong(rentalRateField.getText())));
         film.setRentalDuration(Byte.parseByte(rentalDurationField.getText()));
         film.setReplacementCost(BigDecimal.valueOf(Long.parseLong(replacementCostField.getText())));
-        film.setSpecialFeatures(specialFeatureField.getText());
+//        film.setSpecialFeatures(specialFeatureField.getText());
         film.setDescription(filmDescriptionField.getText());
         film.setActor(actorList.itemsProperty().getValue());
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         film.setLastUpdate(timestamp);
         FilmDAO filmDAO = new FilmDAO();
-        filmDAO.create(film);
-        Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/businessTabs.fxml"));
-        Scene scene = new Scene(loader.load());
-        thisStage.setScene(scene);
-        thisStage.show();
+        short filmId = filmDAO.createFilm(film);
+        Film createdFilm = (Film) filmDAO.read(filmId).get();
+        createdFilm.setActor(newActors);
+        createdFilm.setCategory(categoryDropDown.getSelectionModel().getSelectedItem());
+        FilmCategory filmCategory = new FilmCategory();
+        FilmActor filmActor = new FilmActor();
+        Iterator filmActorIte = newActors.iterator();
+        while(filmActorIte.hasNext()){
+            filmActor.createFilmIdAndActorId(createdFilm.getFilmId(), (short) newActors.iterator().next().getActorId());
+        }
+        filmCategory.createFilmIdAndCategoryId(createdFilm.getFilmId(), categoryDropDown.getSelectionModel().getSelectedItem().getCategoryId());
+        filmDAO.update(createdFilm, film);
+
+//        film.addCategory(categoryDropDown.getValue());
+//        filmCa
+//        Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/businessTabs.fxml"));
+//        Scene scene = new Scene(loader.load());
+//        thisStage.setScene(scene);
+//        thisStage.show();
 
 
     }

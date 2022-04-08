@@ -26,7 +26,7 @@ public class AddressDAO implements DAO {
         for (Object[] o : addressObjects) {
             Address address = new Address((short) o[0], o[1].toString(),
                     o[3].toString(), (City) (data.getData(City.class, (short) o[4])), o[5].toString(),
-                    o[6].toString(), o[7].toString(), (Timestamp) o[8]);
+                    o[6].toString(), (byte[]) o[7], (Timestamp) o[8]);
             addresss.add(address);
         }
         return addresss;

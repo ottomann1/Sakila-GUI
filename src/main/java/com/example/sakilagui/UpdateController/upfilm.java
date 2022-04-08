@@ -138,7 +138,7 @@ public class upfilm {
         rentalRateField.setText(String.valueOf(film.getRentalRate()));
         rentalDurationField.setText(String.valueOf(film.getRentalDuration()));
         replacementCostField.setText(String.valueOf(film.getReplacementCost()));
-        specialFeatureField.setText(film.getSpecialFeatures());
+//        specialFeatureField.setText(film.getSpecialFeatures());
         filmDescriptionField.setText(film.getDescription());
        // actorList.setValue(actorList.itemsProperty());
 
@@ -155,7 +155,7 @@ public class upfilm {
         film.setRentalRate(BigDecimal.valueOf(Long.parseLong(rentalRateField.getText())));
         film.setRentalDuration(Byte.parseByte(rentalDurationField.getText()));
         film.setReplacementCost(BigDecimal.valueOf(Long.parseLong(replacementCostField.getText())));
-        film.setSpecialFeatures(specialFeatureField.getText());
+//        film.setSpecialFeatures(specialFeatureField.getText());
         film.setDescription(filmDescriptionField.getText());
         film.setActor(actorList.itemsProperty().getValue());
         film.setLastUpdate(new Timestamp(System.currentTimeMillis()));

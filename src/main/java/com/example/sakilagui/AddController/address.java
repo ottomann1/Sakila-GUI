@@ -60,6 +60,8 @@ public class address {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         address.setLastUpdate(timestamp);
         AddressDAO addressDAO = new AddressDAO();
+        Address randaddress = (Address) addressDAO.read(1).get();
+        address.setLocation(randaddress.getLocation());
         addressDAO.create(address);
 //        Stage thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 //        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/businessTabs.fxml"));

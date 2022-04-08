@@ -1,0 +1,13 @@
+        if(storeTab.isSelected()){
+            if(!(storeTable.getSelectionModel().getSelectedItem()==null)){
+                Store store = storeTable.getSelectionModel().getSelectedItem();
+                Stage thisStage = new Stage();
+                FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/sakilagui/FieldOfText.fxml"));
+                Scene scene = new Scene(loader.load());
+                Read read = loader.getController();
+                read.setText(store.toStringHeavy());
+                thisStage.initModality(Modality.APPLICATION_MODAL);
+                thisStage.setScene(scene);
+                thisStage.show();
+            }
+        }

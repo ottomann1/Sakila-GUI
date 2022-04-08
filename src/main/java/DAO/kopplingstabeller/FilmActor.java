@@ -22,6 +22,10 @@ public class FilmActor {
         return actors;
     }
 
+    public void createFilmIdAndActorId(short filmId, short actorId){
+        Data data = new Data();
+        data.setDataQuery("INSERT INTO film_actor VALUES ("+filmId+", "+actorId+");");
+    }
     public List<Film> getFilmByActorId(short id) throws IOException, ClassNotFoundException {
         Data data = new Data();
         FilmDAO filmDAO = new FilmDAO();

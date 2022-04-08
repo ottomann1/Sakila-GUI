@@ -24,6 +24,11 @@ public class FilmCategory {
         return films;
     }
 
+    public void createFilmIdAndCategoryId(short filmId, short categoryId){
+        Data data = new Data();
+        data.setDataQuery("INSERT INTO film_category VALUES ("+filmId+", "+categoryId+");");
+    }
+
     public List<Category> getCategoriesByFilmId(short id) throws IOException, ClassNotFoundException {
         Data data = new Data();
         CategoryDAO categoryDAO = new CategoryDAO();

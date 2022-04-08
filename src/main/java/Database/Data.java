@@ -1,6 +1,7 @@
 package Database;
 
 import Business.Actor;
+import Business.Film;
 
 import javax.persistence.*;
 import java.util.List;
@@ -24,6 +25,27 @@ public class Data {
         }finally{
             em.close();
         }
+    }
+    public short setDataFilm(Film o){
+        EntityManager em = ENTITY_MANAGER_FACTORY.createEntityManager();
+        EntityTransaction transaction= null;
+        try{
+            transaction= em.getTransaction();
+            transaction.begin();
+            em.persist(o);
+            em.flush();
+            transaction.commit();
+        }catch(Exception e){
+            if(transaction!= null)
+            {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }finally{
+            em.close();
+        }
+
+        return o.getFilmId();
     }
     public void setDataQuery(String query){
         EntityManager em = ENTITY_MANAGER_FACTORY.createEntityManager();

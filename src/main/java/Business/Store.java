@@ -35,6 +35,12 @@ public class Store {
 
     @Override
     public String toString() {
+        return "Store{" +
+                "address=" + address +
+                '}';
+    }
+
+    public String toStringHeavy() {
         return  "Store ID: " + storeId + "\n" +
                 "Manager: " + staff + "\n" +
                 "Address: " + address + "\n" +

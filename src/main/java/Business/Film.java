@@ -1,5 +1,7 @@
 package Business;
 
+import org.hibernate.mapping.Set;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Date;
@@ -45,9 +47,8 @@ public class Film {
     @Basic
     @Column(name = "rating")
     private String rating;
-    @Basic
-    @Column(name = "special_features")
-    private String specialFeatures;
+    @Transient
+    private Set specialFeatures;
     @Basic
     @Column(name = "last_update")
     private Timestamp lastUpdate;
@@ -61,9 +62,19 @@ public class Film {
 
     private Collection<Actor> actor = new ArrayList<Actor>();
 
-    @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
-    @JoinColumn(name = "category_id")
+    @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @JoinTable(name = "film_category",
+            joinColumns = {@JoinColumn(name = "category_id")},
+            inverseJoinColumns = {@JoinColumn(name = "film_id")})
     private Collection<Category> category;
+
+//    public void setSpecialFeatures(Set specialFeatures) {
+//        this.specialFeatures = specialFeatures;
+//    }
+//
+//    public Set getSpecialFeatures() {
+//        return specialFeatures;
+//    }
 
 
     public String toStringHeavy() {
@@ -73,6 +84,7 @@ public class Film {
                 "Language: " + language + "\n" +
                 "Length: " + length + "\n" +
                 "Rating: " + rating + "\n" +
+                "Category: " + category.toString() +"\n"+
                 "Description \n" + description + "\n" + "\n" +
                 "Rental Duration: " + rentalDuration + "\n" +
                 "Rental Rate: " + rentalRate + "\n" +
@@ -84,7 +96,7 @@ public class Film {
     public Film(short filmId, String title, String description, Date releaseYear,
                 Language language, byte rentalDuration,
                 BigDecimal rentalRate, short length, BigDecimal replacementCost,
-                String rating, String specialFeatures, Timestamp lastUpdate,
+                String rating, Timestamp lastUpdate,
                 Collection<Actor> actor, Collection<Category> category) {
         this.filmId = filmId;
         this.title = title;
@@ -96,7 +108,7 @@ public class Film {
         this.length = length;
         this.replacementCost = replacementCost;
         this.rating = rating;
-        this.specialFeatures = specialFeatures;
+//        this.specialFeatures = specialFeatures;
         this.lastUpdate = lastUpdate;
         this.actor = actor;
         this.category = category;
@@ -105,7 +117,7 @@ public class Film {
     public Film(short filmId, String title, String description, Date releaseYear,
                 Language language, byte rentalDuration,
                 BigDecimal rentalRate, short length, BigDecimal replacementCost,
-                String rating, String specialFeatures, Timestamp lastUpdate,
+                String rating, Timestamp lastUpdate,
                 Collection<Actor> actor, Category category) {
         this.filmId = filmId;
         this.title = title;
@@ -117,7 +129,7 @@ public class Film {
         this.length = length;
         this.replacementCost = replacementCost;
         this.rating = rating;
-        this.specialFeatures = specialFeatures;
+//        this.specialFeatures = specialFeatures;
         this.lastUpdate = lastUpdate;
         this.actor = actor;
         this.category.add(category);
@@ -133,6 +145,9 @@ public class Film {
 
     public void setCategory(Collection<Category> category) {
         this.category = category;
+    }
+    public void addCategory(Category category) {
+        this.category.add(category);
     }
     public void setCategory(Category category) {
         this.category.add(category);
@@ -230,10 +245,6 @@ public class Film {
         return rentalDuration;
     }
 
-    public String getSpecialFeatures() {
-        return specialFeatures;
-    }
-
     public Timestamp getLastUpdate() {
         return lastUpdate;
     }
@@ -244,10 +255,6 @@ public class Film {
 
     public void setReleaseYear(Date releaseYear) {
         this.releaseYear = releaseYear;
-    }
-
-    public void setSpecialFeatures(String specialFeatures) {
-        this.specialFeatures = specialFeatures;
     }
 
 }

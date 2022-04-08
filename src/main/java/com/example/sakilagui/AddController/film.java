@@ -113,9 +113,9 @@ public class film {
         actorStage.setScene(sceneActor);
         actorStage.initModality(Modality.APPLICATION_MODAL);
 
-        String[] ratings = {"G", "PG", "PG-13", "R", "NC-17"};
-        ObservableList<String> rating = FXCollections.observableArrayList(ratings);
-        ratingDropDown.setItems(rating);
+//        String[] ratings = {"G", "PG", "PG-13", "R", "NC-17"};
+//        ObservableList<String> rating = FXCollections.observableArrayList(ratings);
+//        ratingDropDown.setItems(rating);
 
 
 //        FilmDAO filmDAO = new FilmDAO();
